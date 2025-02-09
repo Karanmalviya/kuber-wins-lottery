@@ -1,0 +1,19 @@
+.time-selector {
+  margin: 5px;
+  width: 128px;
+  background-color: #e3f1fe;
+}
+.MuiInput-root {
+  border-bottom: none !important;
+}
+.MuiInput-root:hover {
+  border-bottom: none !important;
+}
+.MuiInput-underline {
+  /* display: none !important; */
+  /* border-bottom: 10px !important; */
+}
+.underline_disabled {
+  /* border: 1px solid #ccced1 !important; */
+  background: #e9ecef !important;
+}

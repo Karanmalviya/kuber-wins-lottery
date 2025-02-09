@@ -1,0 +1,26 @@
+/* custom css mui datepicker  */
+.css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root,
+.date-picker {
+  padding: 3.5px 10px 3.5px 10px !important;
+}
+.css-1pduc5x-MuiStack-rootm,
+.date-picker {
+  margin-top: -10px !important;
+}
+.MuiInput-root {
+  margin-top: -4px !important;
+}
+.css-1pduc5x-MuiStack-root {
+  padding-top: 0 !important;
+}
+.MuiInput-root {
+  position: relative;
+  height: 40px !important;
+  margin-top: -2px !important;
+}
+.css-1eclwr0 {
+  margin-top: -9px !important;
+}
+.MuiInputBase-input {
+  margin-left: 10px !important;
+}
