@@ -1,0 +1,27 @@
+/* .num input[type="number"] {
+  -webkit-appearance: textfield !important;
+  -moz-appearance: textfield !important;
+  appearance: textfield !important;
+}
+
+.num input[type="number"]::-webkit-inner-spin-button,
+.num input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+} */
+
+.plusminus {
+  height: 100%;
+  width: 30%;
+  background: white;
+  border: none;
+  font-size: 40px;
+  color: #5f5fce;
+}
+
+.num {
+  /* height: 100%; */
+  width: 39%;
+  border: none;
+  font-size: 30px;
+  outline: none;
+}
