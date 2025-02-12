@@ -298,7 +298,7 @@ export default function DepositCommissionLog(props) {
                                       </td>
 
                                       <td>
-                                        {row?.percent}%<br></br>${row?.amount}
+                                        {row?.percent}%<br></br>Rs.{row?.amount}
                                       </td>
                                       <td>{row?.randomNo}</td>
                                       <td>{row?.level}</td>

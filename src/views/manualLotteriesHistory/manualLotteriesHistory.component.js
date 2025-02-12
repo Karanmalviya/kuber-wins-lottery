@@ -1,10 +1,17 @@
-import React, {useState, useEffect, Fragment} from "react";
-import {Link, useNavigate} from "react-router-dom";
-import {HeaderPageContainer} from "../../component/header/header.container";
-import {SidebarPageContainer} from "../../component/sidebar/sidebar.container";
-import {FooterPageContainer} from "../../component/footer/footer.container";
-import {Container, Row, Col, Button, Modal, InputGroup} from "react-bootstrap";
-import {BsArrowDownUp} from "react-icons/bs";
+import React, { useState, useEffect, Fragment } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { HeaderPageContainer } from "../../component/header/header.container";
+import { SidebarPageContainer } from "../../component/sidebar/sidebar.container";
+import { FooterPageContainer } from "../../component/footer/footer.container";
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Modal,
+  InputGroup,
+} from "react-bootstrap";
+import { BsArrowDownUp } from "react-icons/bs";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import Table from "react-bootstrap/Table";
@@ -12,9 +19,10 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Loader from "../../component/Loader";
 import ScrollToTop from "react-scroll-to-top";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 
 export default function ManualLotteriesHistoryPage(props) {
+  const { id } = useParams();
   const [openSidebar, setOpenSidebar] = useState(false);
   const navigate = useNavigate();
   const {
@@ -33,13 +41,14 @@ export default function ManualLotteriesHistoryPage(props) {
   const [limit, setLimit] = useState(10);
   const [search, setSearch] = useState("");
   const [selected, setSelected] = useState({
-    gameInformationId: "",
+    gameInformationId: id || "",
     winnerDetails: [
-      {winnerUserId: "", ticketNumber: "", winRatio: "", tickets: []},
+      { winnerUserId: "", ticketNumber: "", winRatio: "", tickets: [] },
     ],
   });
   const [open, setOpen] = useState(false);
   const [data, setData] = useState({});
+  const [selectLottery, setSelectedLottery] = useState({});
 
   useEffect(() => {
     fetchlottery();
@@ -65,7 +74,7 @@ export default function ManualLotteriesHistoryPage(props) {
       ...prevState,
       winnerDetails: [
         ...prevState.winnerDetails,
-        {winnerUserId: "", ticketNumber: "", winRatio: 0, tickets: []},
+        { winnerUserId: "", ticketNumber: "", winRatio: 0, tickets: [] },
       ],
     }));
   };
@@ -78,19 +87,19 @@ export default function ManualLotteriesHistoryPage(props) {
   };
 
   const updateWinner = (index, e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     setSelected((prevState) => {
       const updatedDetails = [...prevState.winnerDetails];
       updatedDetails[index] = {
         ...updatedDetails[index],
         [name]: value,
       };
-      return {...prevState, winnerDetails: updatedDetails};
+      return { ...prevState, winnerDetails: updatedDetails };
     });
   };
 
   const handleManualDrawTickets = async (index, e) => {
-    const {value} = e.target;
+    const { value } = e.target;
     if (selected?.gameInformationId) {
       const res = await fetchManualDrawTickets({
         gameInformationId: selected.gameInformationId,
@@ -109,7 +118,7 @@ export default function ManualLotteriesHistoryPage(props) {
           tickets: res.filter((ticket) => !selectedTickets.has(ticket)),
         };
 
-        return {...prevState, winnerDetails: updatedDetails};
+        return { ...prevState, winnerDetails: updatedDetails };
       });
     }
   };
@@ -144,7 +153,7 @@ export default function ManualLotteriesHistoryPage(props) {
       return;
     }
     if (sumOfWinRatio === 100) {
-      updateManualDraw({...selected, id: data.id});
+      updateManualDraw({ ...selected, id: data.id });
     } else {
       toast("Win Ratio must sum up to 100%");
     }
@@ -156,8 +165,14 @@ export default function ManualLotteriesHistoryPage(props) {
     }
   }, [isSaved]);
 
-  console.log(manualDrawHistory);
-
+  useEffect(() => {
+    if (lotteries?.length) {
+      const l = lotteries?.find(
+        (item) => item.id === +selected.gameInformationId
+      );
+      setSelectedLottery(l || {});
+    }
+  }, [selected?.gameInformationId, lotteries?.length]);
   return (
     <>
       <Loader loading={isLoading} />
@@ -187,7 +202,9 @@ export default function ManualLotteriesHistoryPage(props) {
                     </li>
                     <li className="breadcrumb-item active">Lotteries</li>
                     <li className="breadcrumb-item active">
-                      <Link to="/manual-draw">Manual Draw History</Link>
+                      <Link to={"/manual-draw-history/" + id}>
+                        Manual Draw History
+                      </Link>
                     </li>
                   </ol>
                 </nav>
@@ -196,39 +213,23 @@ export default function ManualLotteriesHistoryPage(props) {
               <section className="section">
                 <Row className="row">
                   <Col lg={12}>
-                    <Card className="card px-3 pb-3">
-                      <h5 className="card-title">Manual Draw History</h5>
-                      <Form.Select
-                        type="text"
-                        onChange={(e) =>
-                          setSelected({
-                            ...selected,
-                            gameInformationId: e.target.value,
-                          })
-                        }
-                      >
-                        {lotteries?.length &&
-                          lotteries.map((item, i) => (
-                            <>
-                              {i == 0 && <option value="">Select</option>}
-                              <option
-                                value={item.gamePhases?.[0]?.gameInformationId}
-                              >
-                                {item?.gameName}
-                              </option>
-                            </>
-                          ))}
-                      </Form.Select>
-                    </Card>
-                  </Col>
-                  <Col lg={12}>
                     <Card className="card">
                       <Card.Body className="card-body">
                         <div className="row d-flex align-items-center">
                           <div className="col-6">
-                            <h5 className="card-title">Upload History</h5>
+                            <h5 className="card-title">
+                              Upload History{" "}
+                              {selectLottery?.gameName &&
+                                "of " + selectLottery?.gameName}
+                            </h5>
                           </div>
-                          <div className="col-6 text-end"></div>
+
+                          <div className="col-6 text-end">
+                            {" "}
+                            <Link className="btn btn-primary" to="/manual-draw">
+                              Back to Pending Draws
+                            </Link>
+                          </div>
                         </div>
                         <div className="showentriesDiv">
                           <h6>
@@ -313,10 +314,6 @@ export default function ManualLotteriesHistoryPage(props) {
                                   <BsArrowDownUp className="updownArrow" />
                                 </th>{" "}
                                 <th>
-                                  Status{" "}
-                                  <BsArrowDownUp className="updownArrow" />
-                                </th>
-                                <th>
                                   Action{" "}
                                   <BsArrowDownUp className="updownArrow" />
                                 </th>
@@ -342,17 +339,6 @@ export default function ManualLotteriesHistoryPage(props) {
                                       </td>
                                       <td>Rs.{row?.winningAmount}</td>{" "}
                                       <td>{row?.winnerDetails?.length}</td>{" "}
-                                      <td>
-                                        {row.status == 0 ? (
-                                          <span className="badge rounded-pill bg-danger">
-                                            Winning Upload Pending
-                                          </span>
-                                        ) : (
-                                          <span className="badge rounded-pill bg-success">
-                                            Winning Uploaded
-                                          </span>
-                                        )}
-                                      </td>
                                       <td>
                                         <button
                                           onClick={() => {
@@ -381,13 +367,13 @@ export default function ManualLotteriesHistoryPage(props) {
                         </div>
                         <div className="tableBottomEntries">
                           <h6>
-                            Showing {(page - 1) * limit + 1} to{" "}
-                            {count > page * limit ? page * limit : count} of{" "}
+                            Showing {selectLottery ? (page - 1) * limit + 1 : 0}{" "}
+                            to {count > page * limit ? page * limit : count} of{" "}
                             {count} entries
                           </h6>
                           <p>
                             <span
-                              style={page > 1 ? {cursor: "pointer"} : {}}
+                              style={page > 1 ? { cursor: "pointer" } : {}}
                               onClick={() => {
                                 if (page > 1) {
                                   definePage(page - 1);
@@ -401,7 +387,9 @@ export default function ManualLotteriesHistoryPage(props) {
                             &nbsp;&nbsp;
                             <span
                               style={
-                                count > page * limit ? {cursor: "pointer"} : {}
+                                count > page * limit
+                                  ? { cursor: "pointer" }
+                                  : {}
                               }
                               onClick={() => {
                                 if (count > page * limit) {
@@ -459,7 +447,18 @@ export default function ManualLotteriesHistoryPage(props) {
                             <Form.Label>Select Customer:</Form.Label>
                             <Form.Control
                               name="winnerUserId"
-                              value={item.winnerUserId}
+                              value={
+                                manualDrawUsers
+                                  ? (() => {
+                                      const winner = manualDrawUsers.find(
+                                        (user) => user.id == item.winnerUserId
+                                      );
+                                      return winner
+                                        ? `${winner.fname} ${winner.lname}`
+                                        : "";
+                                    })()
+                                  : ""
+                              }
                               readOnly
                             />
                           </Col>

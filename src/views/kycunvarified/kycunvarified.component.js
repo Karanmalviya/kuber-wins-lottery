@@ -293,7 +293,7 @@ export default function KycUnvarifiedPage(props) {
                                       </td>
                                       <td>
                                         <b>
-                                          $
+                                        Rs.
                                           {row.balance
                                             ? parseInt(
                                                 row.balance

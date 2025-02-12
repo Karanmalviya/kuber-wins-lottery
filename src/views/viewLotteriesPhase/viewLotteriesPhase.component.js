@@ -175,8 +175,6 @@ export default function ViewLotteriesPage(props) {
                                                 })
                                             : "Daily"}
                                         </td>
-                                        {/* <td>${value.prize}</td>
-                                        <td>{value.winners}</td> */}
                                         <td>
                                           {value.odds_of_win}/
                                           {100 - value.odds_of_win}
@@ -204,7 +202,7 @@ export default function ViewLotteriesPage(props) {
                                             <tbody>
                                               {value.table.map((item) => (
                                                 <tr>
-                                                  <td>${item.prize}</td>
+                                                  <td>Rs.{item.prize}</td>
                                                 </tr>
                                               ))}
                                             </tbody>

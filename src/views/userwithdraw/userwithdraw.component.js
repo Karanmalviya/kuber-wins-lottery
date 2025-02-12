@@ -178,7 +178,7 @@ export default function UserWithDrawPage(props) {
                                       </td>
                                       <td>{row.tansactionId}</td>
                                       <td>{row.Type_of_account}</td>
-                                      <td>${row.Amount}</td>
+                                      <td>Rs.{row.Amount}</td>
                                       <td>USD</td>
                                       <td>{row.Account_Holder_Name}</td>
                                       {/* <td>{row.transactionType}</td> */}

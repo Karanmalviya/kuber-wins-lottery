@@ -1,10 +1,17 @@
-import React, {useState, useEffect, Fragment} from "react";
-import {Link, useNavigate} from "react-router-dom";
-import {HeaderPageContainer} from "../../component/header/header.container";
-import {SidebarPageContainer} from "../../component/sidebar/sidebar.container";
-import {FooterPageContainer} from "../../component/footer/footer.container";
-import {Container, Row, Col, Button, Modal, InputGroup} from "react-bootstrap";
-import {BsArrowDownUp} from "react-icons/bs";
+import React, { useState, useEffect, Fragment } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { HeaderPageContainer } from "../../component/header/header.container";
+import { SidebarPageContainer } from "../../component/sidebar/sidebar.container";
+import { FooterPageContainer } from "../../component/footer/footer.container";
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Modal,
+  InputGroup,
+} from "react-bootstrap";
+import { BsArrowDownUp } from "react-icons/bs";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import Table from "react-bootstrap/Table";
@@ -12,8 +19,8 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Loader from "../../component/Loader";
 import ScrollToTop from "react-scroll-to-top";
-import {toast} from "react-toastify";
-
+import { toast } from "react-toastify";
+import CountDown from "../../component/CountDown";
 export default function ManualLotteriesPage(props) {
   const [openSidebar, setOpenSidebar] = useState(false);
   const navigate = useNavigate();
@@ -35,11 +42,12 @@ export default function ManualLotteriesPage(props) {
   const [selected, setSelected] = useState({
     gameInformationId: "",
     winnerDetails: [
-      {winnerUserId: "", ticketNumber: "", winRatio: "", tickets: []},
+      { winnerUserId: "", ticketNumber: "", winRatio: "", tickets: [] },
     ],
   });
   const [open, setOpen] = useState(false);
   const [data, setData] = useState({});
+  const [selectLottery, setSelectedLottery] = useState({});
 
   useEffect(() => {
     fetchlottery();
@@ -65,7 +73,7 @@ export default function ManualLotteriesPage(props) {
       ...prevState,
       winnerDetails: [
         ...prevState.winnerDetails,
-        {winnerUserId: "", ticketNumber: "", winRatio: 0, tickets: []},
+        { winnerUserId: "", ticketNumber: "", winRatio: 0, tickets: [] },
       ],
     }));
   };
@@ -78,19 +86,19 @@ export default function ManualLotteriesPage(props) {
   };
 
   const updateWinner = (index, e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     setSelected((prevState) => {
       const updatedDetails = [...prevState.winnerDetails];
       updatedDetails[index] = {
         ...updatedDetails[index],
         [name]: value,
       };
-      return {...prevState, winnerDetails: updatedDetails};
+      return { ...prevState, winnerDetails: updatedDetails };
     });
   };
 
   const handleManualDrawTickets = async (index, e) => {
-    const {value} = e.target;
+    const { value } = e.target;
     if (selected?.gameInformationId) {
       const res = await fetchManualDrawTickets({
         gameInformationId: selected.gameInformationId,
@@ -109,7 +117,7 @@ export default function ManualLotteriesPage(props) {
           tickets: res.filter((ticket) => !selectedTickets.has(ticket)),
         };
 
-        return {...prevState, winnerDetails: updatedDetails};
+        return { ...prevState, winnerDetails: updatedDetails };
       });
     }
   };
@@ -144,7 +152,7 @@ export default function ManualLotteriesPage(props) {
       return;
     }
     if (sumOfWinRatio === 100) {
-      updateManualDraw({...selected, id: data.id});
+      updateManualDraw({ ...selected, id: data.id });
     } else {
       toast("Win Ratio must sum up to 100%");
     }
@@ -156,7 +164,14 @@ export default function ManualLotteriesPage(props) {
     }
   }, [isSaved]);
 
-  console.log(manualDrawHistory);
+  useEffect(() => {
+    if (lotteries?.length) {
+      const l = lotteries?.find(
+        (item) => item.id === +selected.gameInformationId
+      );
+      setSelectedLottery(l || {});
+    }
+  }, [selected?.gameInformationId, lotteries?.length]);
 
   return (
     <>
@@ -200,12 +215,12 @@ export default function ManualLotteriesPage(props) {
                       <h5 className="card-title">Manual Draw</h5>
                       <Form.Select
                         type="text"
-                        onChange={(e) =>
+                        onChange={(e) => {
                           setSelected({
                             ...selected,
                             gameInformationId: e.target.value,
-                          })
-                        }
+                          });
+                        }}
                       >
                         {lotteries?.length &&
                           lotteries.map((item, i) => (
@@ -220,6 +235,27 @@ export default function ManualLotteriesPage(props) {
                           ))}
                       </Form.Select>
                     </Card>
+                    {selectLottery && Object.keys(selectLottery).length > 0 && (
+                      <Card className="card px-3 py-3">
+                        <div className="d-flex justify-content-center align-items-center">
+                          <div>
+                            Next Draw In :
+                            <CountDown
+                              props={{
+                                // type: "ticket",
+                                dateTime:
+                                  selectLottery.gameDuration +
+                                  " " +
+                                  selectLottery.startTime,
+                              }}
+                            />{" "}
+                          </div>
+                        </div>
+                        <div className="text-center">
+                          {selectLottery.gameDuration}, {selectLottery.startTime}
+                        </div>
+                      </Card>
+                    )}
                   </Col>
                   <Col lg={12}>
                     <Card className="card">
@@ -230,8 +266,13 @@ export default function ManualLotteriesPage(props) {
                           </div>
                           <div className="col-6 text-end">
                             <Link
-                              className="btn btn-primary"
-                              to="/manual-draw-history"
+                              className={`btn btn-primary ${
+                                !selected?.gameInformationId && `disabled`
+                              }`}
+                              to={
+                                "/manual-draw-history/" +
+                                selected?.gameInformationId
+                              }
                             >
                               View Upload History
                             </Link>
@@ -316,10 +357,6 @@ export default function ManualLotteriesPage(props) {
                                   <BsArrowDownUp className="updownArrow" />
                                 </th>{" "}
                                 <th>
-                                  Status{" "}
-                                  <BsArrowDownUp className="updownArrow" />
-                                </th>
-                                <th>
                                   Action{" "}
                                   <BsArrowDownUp className="updownArrow" />
                                 </th>
@@ -344,17 +381,6 @@ export default function ManualLotteriesPage(props) {
                                           : "Monthly"}
                                       </td>
                                       <td>Rs.{row?.winningAmount}</td>{" "}
-                                      <td>
-                                        {row.status == 0 ? (
-                                          <span className="badge rounded-pill bg-danger">
-                                            Inactive
-                                          </span>
-                                        ) : (
-                                          <span className="badge rounded-pill bg-success">
-                                            Active
-                                          </span>
-                                        )}
-                                      </td>
                                       <td>
                                         <button
                                           onClick={() => {
@@ -381,13 +407,16 @@ export default function ManualLotteriesPage(props) {
                         </div>
                         <div className="tableBottomEntries">
                           <h6>
-                            Showing {(page - 1) * limit + 1} to{" "}
-                            {count > page * limit ? page * limit : count} of{" "}
+                            Showing{" "}
+                            {Object.keys(selectLottery).length
+                              ? (page - 1) * limit + 1
+                              : 0}{" "}
+                            to {count > page * limit ? page * limit : count} of{" "}
                             {count} entries
                           </h6>
                           <p>
                             <span
-                              style={page > 1 ? {cursor: "pointer"} : {}}
+                              style={page > 1 ? { cursor: "pointer" } : {}}
                               onClick={() => {
                                 if (page > 1) {
                                   definePage(page - 1);
@@ -401,7 +430,9 @@ export default function ManualLotteriesPage(props) {
                             &nbsp;&nbsp;
                             <span
                               style={
-                                count > page * limit ? {cursor: "pointer"} : {}
+                                count > page * limit
+                                  ? { cursor: "pointer" }
+                                  : {}
                               }
                               onClick={() => {
                                 if (count > page * limit) {

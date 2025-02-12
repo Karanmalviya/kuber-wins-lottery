@@ -308,7 +308,7 @@ export default function Withdrawals(props) {
                                         </td>
 
                                         <td>
-                                          ${row?.Amount?.toLocaleString()}
+                                        Rs.{row?.Amount?.toLocaleString()}
                                         </td>
                                         <td>
                                           {row.status

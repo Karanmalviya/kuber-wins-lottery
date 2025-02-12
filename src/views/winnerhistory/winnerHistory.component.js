@@ -162,7 +162,7 @@ export default function WinnerHistory(props) {
         : elt.frequency === 2
         ? "Weekly"
         : "Monthly",
-      "$" + elt.price.toLocaleString(),
+      "Rs." + elt.price.toLocaleString(),
       elt.ticketNumber,
       new Date(elt.createdAt).toLocaleString(),
     ]);
@@ -488,7 +488,7 @@ export default function WinnerHistory(props) {
                                       <td>{row?.gameInformation?.gameName}</td>
                                       <td>{row?.gamePhase?.game}</td>
                                       <td>{row.ticketNumber}</td>
-                                      <td>${row?.price}</td>
+                                      <td>Rs.{row?.price}</td>
 
                                       <td>
                                         {new Date(

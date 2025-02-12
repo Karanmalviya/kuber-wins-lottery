@@ -157,8 +157,8 @@ export default function ScratchCardWinner(props) {
       elt.email,
       elt.card_name,
       JSON.parse(elt.frequency).map((item) => item.frequency)[0],
-      "$" + elt.amount.toLocaleString(),
-      "$" + elt.post_balance.toLocaleString(),
+      "Rs." + elt.amount.toLocaleString(),
+      "Rs." + elt.post_balance.toLocaleString(),
       new Date(elt.createdAt).toLocaleString(),
     ]);
 
@@ -494,9 +494,9 @@ export default function ScratchCardWinner(props) {
                                         })()}
                                       </td>
 
-                                      <td>${row?.amount.toLocaleString()}</td>
+                                      <td>Rs.{row?.amount.toLocaleString()}</td>
                                       <td>
-                                        ${row?.post_balance.toLocaleString()}
+                                        Rs.{row?.post_balance.toLocaleString()}
                                       </td>
 
                                       <td>

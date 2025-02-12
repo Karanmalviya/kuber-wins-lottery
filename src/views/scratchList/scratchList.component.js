@@ -293,7 +293,7 @@ export default function ScratchListPage(props) {
                                         {row?.card_name}
                                       </td>
                                       <td>
-                                        ${row?.ticketPrize?.toLocaleString()}
+                                        Rs.{row?.ticketPrize?.toLocaleString()}
                                       </td>
                                       <td>
                                         {row?.card_type === "single-scratch"
@@ -315,7 +315,7 @@ export default function ScratchListPage(props) {
                                             })()}{" "}
                                       </td>{" "}
                                       <td>
-                                        $
+                                        Rs.
                                         {row?.totalPayout?.toLocaleString() ??
                                           0}
                                       </td>

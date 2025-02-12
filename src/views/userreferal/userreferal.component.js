@@ -220,7 +220,7 @@ export default function UserReferalPage(props) {
                                       <td>{row.userName}</td>
                                       <td>{row.email}</td>
                                       <td>
-                                        $
+                                        Rs.
                                         {referal?.commission
                                           ?.filter(
                                             (item) => item.to_id === row.id

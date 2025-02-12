@@ -291,7 +291,7 @@ export default function WithBalancePage(props) {
                                       </td>
                                       <td>
                                         <b>
-                                          $
+                                        Rs.
                                           {row.balance
                                             ? parseInt(
                                                 row.balance

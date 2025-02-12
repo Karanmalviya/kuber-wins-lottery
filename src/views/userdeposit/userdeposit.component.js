@@ -218,7 +218,7 @@ export default function UserDepositPage(props) {
                                       </td>
                                       <td>{row?.tansactionId}</td>
                                       <td>{row?.type}</td>
-                                      <td>${row?.amount?.toLocaleString()}</td>
+                                      <td>Rs.{row?.amount?.toLocaleString()}</td>
                                       <td>{row?.currency && "usd"}</td>
                                       <td>{row?.sender}</td>
                                       <td>{row?.receiver}</td>

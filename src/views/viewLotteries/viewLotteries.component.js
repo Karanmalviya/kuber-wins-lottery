@@ -133,7 +133,7 @@ export default function ViewLotteriesPage(props) {
                           >
                             Total Win Amount
                           </Form.Label>
-                          <h6>${selected.winnersSum}</h6>
+                          <h6>Rs.{selected.winnersSum}</h6>
                         </Col>
                         <Col lg={2} className="col-lg-2 col-md-2 mb-3">
                           <Form.Label
@@ -142,7 +142,7 @@ export default function ViewLotteriesPage(props) {
                           >
                             Total Win Amount
                           </Form.Label>
-                          <h6>${selected?.sumOfPurchase}</h6>
+                          <h6>Rs.{selected?.sumOfPurchase}</h6>
                         </Col>
                       </Row>
                     </Card.Body>

@@ -300,7 +300,7 @@ export default function AllusersPage(props) {
                                       </td>
                                       <td>
                                         <b>
-                                          $
+                                          Rs.
                                           {row.balance
                                             ? parseInt(
                                                 row.balance

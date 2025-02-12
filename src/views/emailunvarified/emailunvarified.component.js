@@ -25,7 +25,6 @@ const useSortableData = (tickets, config = null) => {
     let sortableItems = [...tickets];
     if (sortConfig !== null) {
       sortableItems.sort((a, b) => {
-
         if (a[sortConfig.key] < b[sortConfig.key]) {
           return sortConfig.direction === "ascending" ? -1 : 1;
         }
@@ -290,7 +289,7 @@ export default function EmailUnvarifiedPage(props) {
                                       </td>
                                       <td>
                                         <b>
-                                          $
+                                          Rs.
                                           {row.balance
                                             ? parseInt(
                                                 row.balance

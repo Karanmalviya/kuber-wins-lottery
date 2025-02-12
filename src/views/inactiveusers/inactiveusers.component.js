@@ -290,7 +290,7 @@ export default function InActiveUsersPage(props) {
                                       </td>
                                       <td>
                                         <b>
-                                          $
+                                        Rs.
                                           {row.balance
                                             ? parseInt(
                                                 row.balance

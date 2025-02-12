@@ -92,10 +92,9 @@ export default function HeaderPage(props) {
   return (
     <header id="header" className="header fixed-top d-flex align-items-center">
       <div className="d-flex align-items-center justify-content-between">
-        <a
-          href="/"
-          className="logo d-flex align-items-center justify-content-center"
-        >
+        {/* <div className="logo-container"></div> */}
+
+        <a href="/" className="logo d-flex align-items-center ps-3">
           <img src={LifetimeLottoLOGO} alt="" />
         </a>
         <BsList

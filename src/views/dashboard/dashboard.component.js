@@ -670,7 +670,7 @@ export default function DashboardPage({
                               <h5 className="card-title">Total Deposited</h5>
                               <div className="d-flex align-items-center">
                                 <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                  <i className="bi bi-currency-dollar" />
+                                  <i className="bi bi-currency-rupee" />
                                 </div>
                                 <div className="ps-3">
                                   <h6>
@@ -712,7 +712,7 @@ export default function DashboardPage({
                                 <div className="ps-3">
                                   <h6>
                                     {" "}
-                                    $
+                                    Rs.
                                     {withdrawal
                                       .filter((item) => item.status === 1)
                                       .reduce(
@@ -749,7 +749,7 @@ export default function DashboardPage({
                                 </div>
                                 <div className="ps-3">
                                   <h6>
-                                    $
+                                    Rs.
                                     {withdrawal
                                       .filter((item) => item.status === 0)
                                       .reduce(
@@ -784,7 +784,7 @@ export default function DashboardPage({
                                 </div>
                                 <div className="ps-3">
                                   <h6>
-                                    $
+                                    Rs.
                                     {withdrawal
                                       .filter((item) => item.status === 2)
                                       .reduce(
@@ -898,7 +898,7 @@ export default function DashboardPage({
                                 </div>
                                 <div className="ps-3">
                                   <h6>
-                                    $
+                                    Rs.
                                     {(
                                       winners?.data
                                         ?.filter((win) => win.UserId !== null)

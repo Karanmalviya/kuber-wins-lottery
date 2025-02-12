@@ -223,7 +223,7 @@ export default function SoldScratchCards(props) {
                                       <td>{row?.scratchCard?.card_name}</td>
                                       <td>{row?.scratchDrawCount}</td>
                                       <td>
-                                        ${row?.totalPrice.toLocaleString()}
+                                        Rs.{row?.totalPrice.toLocaleString()}
                                       </td>
                                       <td>
                                         {" "}

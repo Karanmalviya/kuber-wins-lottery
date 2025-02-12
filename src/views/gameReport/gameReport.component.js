@@ -314,7 +314,7 @@ export default function GameReport(props) {
                               </div>
                               <div className="ps-3">
                                 <h6>
-                                  $
+                                  Rs.
                                   {gameReport?.totalSalesAmount?.toLocaleString()}
                                 </h6>
                               </div>
@@ -335,7 +335,7 @@ export default function GameReport(props) {
                               </div>
                               <div className="ps-3">
                                 <h6>
-                                  ${gameReport?.totalWinSum?.toLocaleString()}
+                                  Rs.{gameReport?.totalWinSum?.toLocaleString()}
                                 </h6>
                               </div>
                             </div>
@@ -355,7 +355,7 @@ export default function GameReport(props) {
                               </div>
                               <div className="ps-3">
                                 <h6>
-                                  ${gameReport?.totalRevenue?.toLocaleString()}
+                                  Rs.{gameReport?.totalRevenue?.toLocaleString()}
                                 </h6>
                               </div>
                             </div>
@@ -375,7 +375,7 @@ export default function GameReport(props) {
                               </div>
                               <div className="ps-3">
                                 <h6>
-                                  ${gameReport?.totalRevenue?.toLocaleString()}
+                                  Rs.{gameReport?.totalRevenue?.toLocaleString()}
                                 </h6>
                               </div>
                             </div>
@@ -521,7 +521,7 @@ export default function GameReport(props) {
                                         <td>{item.gameName}</td>
                                         <td>{item.sold}</td>
                                         <td>
-                                          ${item?.winnersSum?.toLocaleString()}
+                                          Rs.{item?.winnersSum?.toLocaleString()}
                                         </td>
                                         <td>{item.totalDraw}</td>
                                         <td>{item.winnersLength}</td>
@@ -787,7 +787,7 @@ export default function GameReport(props) {
                               </div>
                               <div className="ps-3">
                                 <h6>
-                                  $
+                                  Rs.
                                   {scratchGameReport?.totalSumOfPurchaseCardPrices?.toLocaleString()}
                                 </h6>
                               </div>
@@ -808,7 +808,7 @@ export default function GameReport(props) {
                               </div>
                               <div className="ps-3">
                                 <h6>
-                                  $
+                                  Rs.
                                   {scratchGameReport?.totalSumOfWonCardPrices?.toLocaleString()}
                                 </h6>
                               </div>
@@ -829,7 +829,7 @@ export default function GameReport(props) {
                               </div>
                               <div className="ps-3">
                                 <h6>
-                                  $
+                                  Rs.
                                   {scratchGameReport?.totalNetRevenue?.toLocaleString()}
                                 </h6>
                               </div>
@@ -850,7 +850,7 @@ export default function GameReport(props) {
                               </div>
                               <div className="ps-3">
                                 <h6>
-                                  $
+                                  Rs.
                                   {scratchGameReport?.totalNetRevenue?.toLocaleString()}
                                 </h6>
                               </div>
@@ -994,7 +994,7 @@ export default function GameReport(props) {
                                           <td>{item.card_name}</td>
                                           <td>{item.scratchDrawCount}</td>
                                           <td>
-                                            $
+                                            Rs.
                                             {item.totalAmount?.toLocaleString()}
                                           </td>
                                           <td>{item.rescheduleTime}</td>

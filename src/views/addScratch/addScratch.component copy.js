@@ -686,7 +686,7 @@ export default function AddScratchPage(props) {
                                 <span className="text-danger">*</span>
                               </Form.Label>
                               <InputGroup className="mb-1">
-                                <InputGroup.Text>$</InputGroup.Text>
+                                <InputGroup.Text>Rs.</InputGroup.Text>
 
                                 <Form.Control
                                   type="number"
@@ -783,7 +783,7 @@ export default function AddScratchPage(props) {
                               </Form.Label>
                               <InputGroup className="mb-1">
                                 {" "}
-                                <InputGroup.Text>$</InputGroup.Text>
+                                <InputGroup.Text>Rs.</InputGroup.Text>
                                 <Form.Control
                                   required
                                   type="number"

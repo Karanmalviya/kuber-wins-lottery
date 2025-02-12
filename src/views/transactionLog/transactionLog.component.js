@@ -695,9 +695,9 @@ export default function TransactionLog(props) {
                                             "AdminWithdraw"
                                           ? "-"
                                           : ""}{" "}
-                                        ${row?.amount?.toLocaleString()}
+                                        Rs.{row?.amount?.toLocaleString()}
                                       </td>
-                                      <td>${row?.balance?.toLocaleString()}</td>
+                                      <td>Rs.{row?.balance?.toLocaleString()}</td>
                                       <td>{row?.description}</td>
                                     </tr>
                                   );

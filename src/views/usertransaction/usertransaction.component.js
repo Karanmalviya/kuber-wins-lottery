@@ -236,10 +236,12 @@ export default function UserTransactionPage(props) {
                                       </td>
                                       <td>{row?.tansactionId}</td>
                                       {/* <td>{row.type}</td> */}
-                                      <td>${row?.amount?.toLocaleString()}</td>
+                                      <td>
+                                        Rs.{row?.amount?.toLocaleString()}
+                                      </td>
                                       <td>
                                         {row?.currency == 1
-                                          ? "usd"
+                                          ? "Rs."
                                           : row?.currency}
                                       </td>
                                       {/* <td>{row.sender}</td>

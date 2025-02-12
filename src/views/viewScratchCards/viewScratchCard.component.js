@@ -140,7 +140,7 @@ export default function ViewScratchCard(props) {
                           >
                             Total Win Amount
                           </Form.Label>
-                          <h6>${selected?.totalAmount?.toLocaleString()}</h6>
+                          <h6>Rs.{selected?.totalAmount?.toLocaleString()}</h6>
                         </Col>
                         <Col lg={2} className="col-lg-2 col-md-2 mb-3">
                           <Form.Label
@@ -149,7 +149,7 @@ export default function ViewScratchCard(props) {
                           >
                             Total Sold Amount
                           </Form.Label>
-                          <h6>${selected?.sumOfAmount?.toLocaleString()}</h6>
+                          <h6>Rs.{selected?.sumOfAmount?.toLocaleString()}</h6>
                         </Col>
                         <Col lg={2} className="col-lg-2 col-md-2 mb-3">
                           <Form.Label
@@ -184,7 +184,7 @@ export default function ViewScratchCard(props) {
                           >
                             Scratch Card Price
                           </Form.Label>
-                          <h6>${selected.ticketPrize?.toLocaleString()}</h6>
+                          <h6>Rs.{selected.ticketPrize?.toLocaleString()}</h6>
                         </Col>
                         <Col lg={3} className="col-lg-3 col-md-3 mb-3">
                           <Form.Label
@@ -193,7 +193,7 @@ export default function ViewScratchCard(props) {
                           >
                             Top Prize
                           </Form.Label>
-                          <h6>${selected.topPrize?.toLocaleString()}</h6>
+                          <h6>Rs.{selected.topPrize?.toLocaleString()}</h6>
                         </Col>{" "}
                         <Col lg={3} className="col-lg-3 col-md-3 mb-3">
                           <Form.Label
@@ -506,7 +506,7 @@ export default function ViewScratchCard(props) {
                                     <th scope="row">{index + 1}</th>
                                     <td>{item.odds_of_price}%</td>
                                     <td>
-                                      ${Number(item.price)?.toLocaleString()}
+                                    Rs.{Number(item.price)?.toLocaleString()}
                                     </td>
                                     <td>{item.rng}</td>
                                   </tr>

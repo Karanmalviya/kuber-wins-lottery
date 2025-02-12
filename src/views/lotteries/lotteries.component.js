@@ -275,7 +275,7 @@ export default function LotteriesPage(props) {
                                       </td>
                                       <td>{row?.gameName}</td>
                                       <td>
-                                        ${(+row?.ticketPrice).toLocaleString()}
+                                        Rs.{(+row?.ticketPrice).toLocaleString()}
                                       </td>{" "}
                                       <td className="text-capitalize">
                                         {row?.draw?.replace("-", " ")}

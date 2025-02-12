@@ -36,6 +36,7 @@ import {
   BsBell,
   BsArrowRightSquare,
   BsFillXCircleFill,
+  BsCurrencyRupee,
 } from "react-icons/bs";
 // React bootstrap end
 import {
@@ -180,7 +181,7 @@ export default function AllUserDetailPage(props) {
                                 <h5 className="card-title">Balance</h5>
                                 <div className="d-flex align-items-center">
                                   <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                    <BsCurrencyDollar />
+                                    <BsCurrencyRupee />
                                   </div>
                                   <div className="ps-3">
                                     <h6>
@@ -207,7 +208,7 @@ export default function AllUserDetailPage(props) {
                                     </div>
                                     <div className="ps-3">
                                       <h6>
-                                        ${" "}
+                                      Rs.{" "}
                                         {transactionById?.deposit?.length
                                           ? transactionById.deposit
                                               .reduce(
@@ -238,7 +239,7 @@ export default function AllUserDetailPage(props) {
                                     </div>
                                     <div className="ps-3">
                                       <h6>
-                                        ${" "}
+                                      Rs.{" "}
                                         {(
                                           userdetails?.data
                                             ?.total_transaction_withdraw ?? 0
@@ -903,7 +904,7 @@ export default function AllUserDetailPage(props) {
                                 setAddBalance(e.target.value);
                               }}
                             />
-                            <div className="input-group-text">USD</div>
+                            <div className="input-group-text">RS</div>
                           </div>
                         </div>
                         <div className="form-group">
@@ -1006,7 +1007,7 @@ export default function AllUserDetailPage(props) {
                                 setSubBalance(e.target.value);
                               }}
                             />
-                            <div className="input-group-text">USD</div>
+                            <div className="input-group-text">RS</div>
                           </div>
                         </div>
                         <div className="form-group">

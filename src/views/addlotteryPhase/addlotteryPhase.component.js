@@ -1,14 +1,14 @@
-import React, {useState, useEffect} from "react";
-import {useParams, useNavigate, Link} from "react-router-dom";
-import {HeaderPageContainer} from "./../../component/header/header.container";
-import {SidebarPageContainer} from "./../../component/sidebar/sidebar.container";
-import {FooterPageContainer} from "./../../component/footer/footer.container";
-import {toast, ToastContainer} from "react-toastify";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import { HeaderPageContainer } from "./../../component/header/header.container";
+import { SidebarPageContainer } from "./../../component/sidebar/sidebar.container";
+import { FooterPageContainer } from "./../../component/footer/footer.container";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {Container, Row, Col, Button} from "react-bootstrap";
-import {BsArrowUpShort} from "react-icons/bs";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { BsArrowUpShort } from "react-icons/bs";
 import Form from "react-bootstrap/Form";
-import {MultiSelect} from "react-multi-select-component";
+import { MultiSelect } from "react-multi-select-component";
 
 import Loader from "./../../component/Loader";
 import ScrollToTop from "react-scroll-to-top";
@@ -35,6 +35,7 @@ const emptyCounter = {
   odds_winner: "",
   odds_out_of_winner: "",
   winningAmount: "",
+  showStatus: 0,
 };
 
 export default function AddLotteryPhasePage(props) {
@@ -48,7 +49,7 @@ export default function AddLotteryPhasePage(props) {
     lotteries,
     isLoading,
   } = props;
-  const {id} = useParams();
+  const { id } = useParams();
   const [openSidebar, setOpenSidebar] = useState(false);
   const navigate = useNavigate();
   const [selected, setSelected] = useState(emptyData);
@@ -62,46 +63,46 @@ export default function AddLotteryPhasePage(props) {
   const admin = adminData && JSON.parse(adminData);
 
   const optionsWeek = [
-    {label: "Monday", value: "monday"},
-    {label: "Tuesday", value: "tuesday"},
-    {label: "Wednesday", value: "wednesday"},
-    {label: "Thursday", value: "thursday"},
-    {label: "Friday", value: "friday"},
-    {label: "Saturday", value: "saturday"},
-    {label: "Sunday", value: "sunday"},
+    { label: "Monday", value: "monday" },
+    { label: "Tuesday", value: "tuesday" },
+    { label: "Wednesday", value: "wednesday" },
+    { label: "Thursday", value: "thursday" },
+    { label: "Friday", value: "friday" },
+    { label: "Saturday", value: "saturday" },
+    { label: "Sunday", value: "sunday" },
   ];
   const optionsMonth = [
-    {label: "01", value: "01"},
-    {label: "02", value: "02"},
-    {label: "03", value: "03"},
-    {label: "04", value: "04"},
-    {label: "05", value: "05"},
-    {label: "06", value: "06"},
-    {label: "07", value: "07"},
-    {label: "08", value: "08"},
-    {label: "09", value: "09"},
-    {label: "10", value: "10"},
-    {label: "11", value: "11"},
-    {label: "12", value: "12"},
-    {label: "13", value: "13"},
-    {label: "14", value: "14"},
-    {label: "15", value: "15"},
-    {label: "16", value: "16"},
-    {label: "17", value: "17"},
-    {label: "18", value: "18"},
-    {label: "19", value: "19"},
-    {label: "20", value: "20"},
-    {label: "21", value: "21"},
-    {label: "22", value: "22"},
-    {label: "23", value: "23"},
-    {label: "24", value: "24"},
-    {label: "25", value: "25"},
-    {label: "26", value: "26"},
-    {label: "27", value: "27"},
-    {label: "28", value: "28"},
-    {label: "29", value: "29"},
-    {label: "30", value: "30"},
-    {label: "31", value: "31"},
+    { label: "01", value: "01" },
+    { label: "02", value: "02" },
+    { label: "03", value: "03" },
+    { label: "04", value: "04" },
+    { label: "05", value: "05" },
+    { label: "06", value: "06" },
+    { label: "07", value: "07" },
+    { label: "08", value: "08" },
+    { label: "09", value: "09" },
+    { label: "10", value: "10" },
+    { label: "11", value: "11" },
+    { label: "12", value: "12" },
+    { label: "13", value: "13" },
+    { label: "14", value: "14" },
+    { label: "15", value: "15" },
+    { label: "16", value: "16" },
+    { label: "17", value: "17" },
+    { label: "18", value: "18" },
+    { label: "19", value: "19" },
+    { label: "20", value: "20" },
+    { label: "21", value: "21" },
+    { label: "22", value: "22" },
+    { label: "23", value: "23" },
+    { label: "24", value: "24" },
+    { label: "25", value: "25" },
+    { label: "26", value: "26" },
+    { label: "27", value: "27" },
+    { label: "28", value: "28" },
+    { label: "29", value: "29" },
+    { label: "30", value: "30" },
+    { label: "31", value: "31" },
   ];
   const addInput = () => {
     setCounter(counter.concat([emptyCounter]));
@@ -155,7 +156,7 @@ export default function AddLotteryPhasePage(props) {
         )
       );
     } else if (t === "table") {
-      const {name, value} = v.target;
+      const { name, value } = v.target;
       if (name === "prize" && parseFloat(value) === 0) {
         return;
       }
@@ -164,14 +165,14 @@ export default function AddLotteryPhasePage(props) {
         updatedCounter[i] = {
           ...updatedCounter[i],
           table: updatedCounter[i].table.map((tableItem, index) =>
-            index === tidx ? {...tableItem, [name]: value} : tableItem
+            index === tidx ? { ...tableItem, [name]: value } : tableItem
           ),
         };
         return updatedCounter;
       });
     } else {
       setCounter(
-        counter.map((item, index) => (i == index ? {...item, [t]: v} : item))
+        counter.map((item, index) => (i == index ? { ...item, [t]: v } : item))
       );
     }
   };
@@ -256,7 +257,7 @@ export default function AddLotteryPhasePage(props) {
   };
 
   const rowsDate = Array.from(
-    {length: Math.ceil(optionsMonth.length / 5)},
+    { length: Math.ceil(optionsMonth.length / 5) },
     (_, index) => optionsMonth.slice(index * 5, index * 5 + 5)
   );
   const handleDateClick = (item, idx) => {
@@ -314,7 +315,7 @@ export default function AddLotteryPhasePage(props) {
   const CurrentLotteryPhase =
     lotteryPhase.length &&
     lotteryPhase.filter(
-      (item) => item.gameInformation.draw === CurrentLottery?.draw
+      (item) => item.gameInformation?.draw === CurrentLottery?.draw
     );
 
   return (
@@ -459,7 +460,7 @@ export default function AddLotteryPhasePage(props) {
                                   ...selected,
                                   gameData: JSON.stringify(counter),
                                   ...(admin.role === "sub-admin"
-                                    ? {roleId: admin.id}
+                                    ? { roleId: admin.id }
                                     : {}),
                                 });
                               } else {
@@ -563,7 +564,7 @@ export default function AddLotteryPhasePage(props) {
                                 value={selected.game}
                               />
                             </div>
-                            <div className="col-lg-4 col-md-4 mb-3">
+                            {/* <div className="col-lg-4 col-md-4 mb-3">
                               <Form.Label
                                 for="inputText"
                                 className="col-form-label"
@@ -588,11 +589,64 @@ export default function AddLotteryPhasePage(props) {
                                   ).map((x, i) => {
                                     return (
                                       <option value={i} key={x.id}>
-                                        {x.gameInformation.gameName} | {x.game}
+                                        {x.gameInformation?.gameName} | {x.game}
                                       </option>
                                     );
                                   })}
                               </Form.Select>
+                            </div> */}
+                            <div className="col-lg-4 col-md-4 mb-3">
+                              <Form.Label
+                                for="inputText"
+                                className="col-form-label"
+                              >
+                                {" "}
+                                Winning Amount{" "}
+                                <span className="text-danger">*</span>
+                              </Form.Label>
+                              <div className="input-group">
+                                <input
+                                  type="number"
+                                  required
+                                  className="form-control"
+                                  value={selected?.winningAmount}
+                                  onChange={(e) =>
+                                    setSelected({
+                                      ...selected,
+                                      winningAmount: e.target.value,
+                                    })
+                                  }
+                                />
+                                <span
+                                  className="input-group-text"
+                                  id="basic-addon2"
+                                >
+                                  Rs.
+                                </span>
+                              </div>
+                            </div>
+                            <div className="col-lg-12 mb-3">
+                              <div className="form-check form-switch">
+                                <input
+                                  className="form-check-input"
+                                  type="checkbox"
+                                  role="switch"
+                                  id="flexSwitchCheckDefault"
+                                  checked={selected?.showStatus}
+                                  onChange={(e) =>
+                                    setSelected({
+                                      ...selected,
+                                      showStatus: e.target.checked ? 1 : 0,
+                                    })
+                                  }
+                                />
+                                <label
+                                  className="form-check-label"
+                                  htmlFor="flexSwitchCheckDefault"
+                                >
+                                  Visible on Frontend
+                                </label>
+                              </div>
                             </div>
                             <div className="row">
                               <div className="col-lg-12 mb-3">
@@ -693,7 +747,7 @@ export default function AddLotteryPhasePage(props) {
                                                   </Form.Select>
                                                 </div>
                                                 <div
-                                                  className="col-lg-3 mb-3"
+                                                  className="col-lg-4 mb-3"
                                                   hidden={
                                                     item.frequency == 1
                                                       ? true
@@ -755,7 +809,7 @@ export default function AddLotteryPhasePage(props) {
                                                             ?.join(",")
                                                         : ""
                                                     }
-                                                    style={{cursor: "unset"}}
+                                                    style={{ cursor: "unset" }}
                                                     className="form-select"
                                                     type="text"
                                                     data-bs-toggle={
@@ -818,75 +872,6 @@ export default function AddLotteryPhasePage(props) {
                                                         )}
                                                       </table>
                                                     </ul>
-                                                  </div>
-                                                </div>
-                                                <div className="col-lg-3 mb-3">
-                                                  <Form.Label
-                                                    for="inputText"
-                                                    className="col-form-label"
-                                                  >
-                                                    {" "}
-                                                    Odds of Win/Loss{" "}
-                                                    <span className="text-danger">
-                                                      *
-                                                    </span>
-                                                  </Form.Label>
-                                                  <div className="d-flex">
-                                                    <input
-                                                      type="number"
-                                                      max={"100"}
-                                                      min={"0"}
-                                                      required
-                                                      className="form-control"
-                                                      value={
-                                                        counter[idx].odds_of_win
-                                                      }
-                                                      onChange={(e) =>
-                                                        updateCounter(
-                                                          idx,
-                                                          e.target.value,
-                                                          "odds_of_win"
-                                                        )
-                                                      }
-                                                    />{" "}
-                                                    <input
-                                                      className="form-control ms-1"
-                                                      readOnly
-                                                      value={
-                                                        100 -
-                                                        counter[idx].odds_of_win
-                                                      }
-                                                    />
-                                                  </div>
-                                                </div>
-
-                                                <div className="col-lg-3 mb-3">
-                                                  <Form.Label
-                                                    for="inputText"
-                                                    className="col-form-label"
-                                                  >
-                                                    {" "}
-                                                    Winning Amount{" "}
-                                                    <span className="text-danger">
-                                                      *
-                                                    </span>
-                                                  </Form.Label>
-                                                  <div className="d-flex">
-                                                    <input
-                                                      type="number"
-                                                      required
-                                                      className="form-control"
-                                                      value={
-                                                        selected?.winningAmount
-                                                      }
-                                                      onChange={(e) =>
-                                                        setSelected({
-                                                          ...selected,
-                                                          winningAmount:
-                                                            e.target.value,
-                                                        })
-                                                      }
-                                                    />
                                                   </div>
                                                 </div>
                                               </div>

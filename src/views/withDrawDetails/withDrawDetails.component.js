@@ -207,12 +207,12 @@ export default function WithdrawalsDetails(props) {
                               </tr>
                               <tr>
                                 <td>Amount :</td>
-                                <td>${data[0]?.Amount?.toLocaleString()}</td>
+                                <td>Rs.{data[0]?.Amount?.toLocaleString()}</td>
                               </tr>
                               <tr>
                                 <td>Total Wallet Amount :</td>
                                 <td>
-                                  ${data[0]?.User?.balance?.toLocaleString()}
+                                  Rs.{data[0]?.User?.balance?.toLocaleString()}
                                 </td>
                               </tr>
                               <tr>
