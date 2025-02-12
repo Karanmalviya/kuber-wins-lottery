@@ -1,9 +1,9 @@
-import React, {useState, useEffect, useRef} from "react";
-import {Link, useLocation, useParams} from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { Link, useLocation, useParams } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import CountDown from "../components/CountDown";
-import {decrypt, encrypt} from "../../utils/encryptdecrypt";
+import { decrypt, encrypt } from "../../utils/encryptdecrypt";
 import AbbrNumber from "../components/AbbrNumber";
 import {
   fetchBuyLotteryTicket,
@@ -11,16 +11,16 @@ import {
   fetchUserBuyLottery,
   fetchUserLotteryWinner,
 } from "../../features/apiSlice";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LoadingBar from "react-top-loading-bar";
 import moment from "moment";
 import "moment-timezone";
 
-export default function TicketDetailPage({props}) {
+export default function TicketDetailPage({ props }) {
   const location = useLocation();
   const ref = useRef();
   const dispatch = useDispatch();
-  const {id: ticketId, number: ticketNumber} = useParams();
+  const { id: ticketId, number: ticketNumber } = useParams();
   const [buyTickets, setBuyTickets] = useState([]);
   const [buyTicket, setBuyTicket] = useState({});
   const [totalGenTickets, setTotalGenTickets] = useState([]);
@@ -57,7 +57,7 @@ export default function TicketDetailPage({props}) {
   useEffect(() => {
     window.scrollTo(0, 0);
     if (Object.keys(buyLotteryTicketById).length) {
-      const {lotteryId} = buyLotteryTicketById;
+      const { lotteryId } = buyLotteryTicketById;
       dispatch(fetchLotteryTicketDetails(lotteryId));
       setLotteryId(lotteryId);
     }
@@ -68,7 +68,7 @@ export default function TicketDetailPage({props}) {
       setBuyTicket(buyLotteryTicketById);
     }
     if (Object.keys(lotteryTicketDetails).length) {
-      const {maxNumberTickets, sold} = lotteryTicketDetails;
+      const { maxNumberTickets, sold } = lotteryTicketDetails;
       setTotalGenTickets(+maxNumberTickets);
       setAvailableTickets(+maxNumberTickets - sold);
     }
@@ -121,6 +121,7 @@ export default function TicketDetailPage({props}) {
           number,
           lotteryId: item.lotteryId,
           drawTime: item.drawTime,
+          ticketType: item.paymentStatus,
         }))
       );
 
@@ -139,7 +140,7 @@ export default function TicketDetailPage({props}) {
     const totalTickets = filteredTickets.length;
 
     setBuyTickets(filteredTickets);
-    setBuyTotal({totalTickets, totalTicketsPrice});
+    setBuyTotal({ totalTickets, totalTicketsPrice });
   }, [
     userId,
     lotteryId,
@@ -260,12 +261,14 @@ export default function TicketDetailPage({props}) {
       }
     }
   };
+
+  console.log(buyTickets);
   return (
-    <div style={{backgroundColor: "#f5f6ff"}}>
+    <div style={{ backgroundColor: "#f5f6ff" }}>
       <title>Dashboard - Kuber Wins</title>
       <LoadingBar ref={ref} color="rgb(245, 246, 255)" id="bar" />
 
-      <Navbar props={{mainPage: "dashboard", subPage: "ticketDetail"}} />
+      <Navbar props={{ mainPage: "dashboard", subPage: "ticketDetail" }} />
       <section className="sec-ticket-dtls mb-5 mt-5 pb-5">
         <div className="container">
           <div className="row d-flex justify-content-center align-items-center">
@@ -287,7 +290,7 @@ export default function TicketDetailPage({props}) {
               >
                 <p
                   className="p-label-lotto text-capitalize"
-                  style={{overflow: "visible"}}
+                  style={{ overflow: "visible" }}
                 >
                   {buyTicket?.gameInformation?.draw?.replace("-", " ")}
                 </p>
@@ -303,7 +306,7 @@ export default function TicketDetailPage({props}) {
                       <div className="col-lg-8">
                         <p
                           className="text-white"
-                          style={{textAlign: "left", marginBottom: 0}}
+                          style={{ textAlign: "left", marginBottom: 0 }}
                         >
                           {buyTicket?.gameInformation?.nextDraw === 0
                             ? "Draw Starts "
@@ -333,7 +336,7 @@ export default function TicketDetailPage({props}) {
             <h6 className="mb-0">
               Minimum Prize Pool:{" "}
               <span className="text-success h4">
-                ${(+buyTicket?.gameInformation?.minPrizePool).toLocaleString()}
+              Rs.{(+buyTicket?.gameInformation?.minPrizePool).toLocaleString()}
               </span>
             </h6>
           </div>
@@ -358,7 +361,7 @@ export default function TicketDetailPage({props}) {
                       </h6>
 
                       <h3 className="text-success">
-                        ${buyTicket?.User?.balance?.toLocaleString()}
+                      Rs.{buyTicket?.User?.balance?.toLocaleString()}
                       </h3>
                     </div>
                     <div className="col-lg-2 col-md-2 col-sm col-6">
@@ -372,7 +375,7 @@ export default function TicketDetailPage({props}) {
                     <div className="col-lg-2 col-md-2 col-sm col-6">
                       <h6>Ticket Price :</h6>
                       <h3 className="text-dark fw-bold">
-                        $
+                      Rs.
                         {(+buyTicket?.gameInformation
                           ?.ticketPrice).toLocaleString()}
                         <span className="fw-light">/Ticket</span>
@@ -399,7 +402,7 @@ export default function TicketDetailPage({props}) {
                     <div className="col-lg-2 col-md-2 col-sm col-6">
                       <h6>Total Won :</h6>
                       <h3 className="text-dark fw-bold">
-                        ${totalWon.toLocaleString()}
+                      Rs.{totalWon.toLocaleString()}
                       </h3>
                     </div>
                   </div>
@@ -415,11 +418,13 @@ export default function TicketDetailPage({props}) {
                           <table className="table table-striped">
                             <thead>
                               <tr>
-                                <th style={{borderTopLeftRadius: 15}}>S.No.</th>
+                                <th style={{ borderTopLeftRadius: 15 }}>
+                                  S.No.
+                                </th>
                                 <th>Ticket Number</th>
                                 <th>Total Won</th>
                                 <th>Date and Time</th>
-                                <th style={{borderTopRightRadius: 15}}>
+                                <th style={{ borderTopRightRadius: 15 }}>
                                   View Winning
                                 </th>
                               </tr>
@@ -434,9 +439,16 @@ export default function TicketDetailPage({props}) {
                                   return (
                                     <tr key={index}>
                                       <td>{index + 1}</td>
-                                      <td>{item?.number}</td>
                                       <td>
-                                        $
+                                        {item?.number}
+                                        {item?.ticketType === "Free Ticket" && (
+                                          <div className="badge bg-primary rounded-pill">
+                                            Free
+                                          </div>
+                                        )}
+                                      </td>
+                                      <td>
+                                      Rs.
                                         {restTicketWonPrize ? (
                                           <AbbrNumber
                                             props={{
@@ -500,7 +512,7 @@ export default function TicketDetailPage({props}) {
                           alt=""
                         />
                         <h5 className="m-0 ps-2 fw-bold">
-                          ${buyTotal?.totalTicketsPrice?.toLocaleString()}
+                        Rs.{buyTotal?.totalTicketsPrice?.toLocaleString()}
                         </h5>
                       </div>
                     </div>
@@ -568,7 +580,7 @@ export default function TicketDetailPage({props}) {
                     >
                       <div
                         className="row m-0 pt-2 pb-1"
-                        style={{background: "#F5F5F5"}}
+                        style={{ background: "#F5F5F5" }}
                       >
                         <div className="col-lg-4 col-md-4 col-sm col-4 text-center">
                           <h6>Frequency</h6>
@@ -595,7 +607,7 @@ export default function TicketDetailPage({props}) {
                                     {data?.odds_of_win}%
                                   </div>
                                   <div className="col-lg-4 col-md-4 col-sm col-4 text-center fw-bold">
-                                    $
+                                  Rs.
                                     {data.table
                                       .reduce(
                                         (acc, item) => acc + +item.prize,

@@ -361,7 +361,7 @@ export default function DashboardPage({props}) {
                                       {ticket?.gamePhase?.game}
                                     </td>
                                     <td className="text-start">
-                                      $
+                                    Rs.
                                       {totalTktPrize ? (
                                         <AbbrNumber
                                           props={{

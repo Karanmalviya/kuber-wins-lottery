@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import {useNavigate, useLocation, Link} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import {
@@ -11,16 +11,16 @@ import {
   commissionTransaction,
   generateLotteryNumber,
 } from "../../utils/index";
-import {useAuth} from "../../utils/auth";
+import { useAuth } from "../../utils/auth";
 import $ from "jquery";
 import CountDown from "../components/CountDown";
 import StripComponent from "../../utils/stripPayment/StripComponent";
 import "../../styles/paymentModal.css";
 import LoadingSpinner from "../components/LoadingSpinner";
 import AbbrNumber from "../components/AbbrNumber";
-import {generateTransactionId} from "../../utils/generateTransactionId";
+import { generateTransactionId } from "../../utils/generateTransactionId";
 import CustomModalAlert from "../../utils/CustomModalAlert";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LoadingBar from "react-top-loading-bar";
 import {
   clearLotteryTicketDetails,
@@ -30,22 +30,22 @@ import {
   fetchUser,
   fetchUserBuyLotteryTicket,
 } from "../../features/apiSlice";
-import {useRef} from "react";
+import { useRef } from "react";
 
-export default function LotteryDetailPage({props}) {
+export default function LotteryDetailPage({ props }) {
   const ref = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {user} = useAuth();
+  const { user } = useAuth();
   const [ticket, setTicket] = useState({});
   const location = useLocation();
-  const {id} = location.state ? location.state : "";
+  const { id } = location.state ? location.state : "";
   const userId = localStorage.getItem("userId");
-  const currencySymbol = "$";
+  const currencySymbol = "Rs.";
   const [frequency, setFrequency] = useState([]);
   const [availableTickets, setAvailableTickets] = useState();
   const [serviceList, setServiceList] = useState([
-    {number: "0000000000", price: ticket?.ticketPrice},
+    { number: "0000000000", price: ticket?.ticketPrice },
   ]);
   const [paymentModal, setPaymentModal] = useState(null);
   const [paymentConfirmation, setPaymentConfirmation] = useState("");
@@ -181,7 +181,7 @@ export default function LotteryDetailPage({props}) {
 
       setServiceList([
         ...serviceList,
-        {number: "0000000000", price: `${ticket?.ticketPrice}`},
+        { number: "0000000000", price: `${ticket?.ticketPrice}` },
       ]);
     } else {
       setAlertMessage({
@@ -231,7 +231,7 @@ export default function LotteryDetailPage({props}) {
       );
       const selectedNumber = availableNumbers[selectedNumberIndex].randomNumber;
       const updatedServiceList = [...serviceList];
-      updatedServiceList[idx] = {number: selectedNumber, price: ticketPrice};
+      updatedServiceList[idx] = { number: selectedNumber, price: ticketPrice };
       setServiceList(updatedServiceList);
 
       // Trigger the animation
@@ -253,7 +253,7 @@ export default function LotteryDetailPage({props}) {
         setShowModal(true);
       } else {
         $("body").addClass("modal-open");
-        $("body").css({overflow: "hidden", "padding-right": "15px"});
+        $("body").css({ overflow: "hidden", "padding-right": "15px" });
         $("#buy-now-modal").addClass("show");
         $("#buy-now-modal").css("display", "block");
         $("#buy-now-modal-bg").addClass(" fade show");
@@ -300,7 +300,7 @@ export default function LotteryDetailPage({props}) {
     } else {
       const listArray = [];
       $.each(list, function (index, value) {
-        listArray[index] = {ticketNumber: `${value?.number}`};
+        listArray[index] = { ticketNumber: `${value?.number}` };
       });
       const buyLottery = async () => {
         const lotteryId = id;
@@ -323,7 +323,7 @@ export default function LotteryDetailPage({props}) {
           setLoading(false);
           listArray.forEach((item) => {
             updateLotteryGeneratedNumber(
-              {"Content-Type": "application/json"},
+              { "Content-Type": "application/json" },
               item?.ticketNumber,
               lotteryId
             );
@@ -331,7 +331,9 @@ export default function LotteryDetailPage({props}) {
           closeModal();
           localStorage.setItem(
             "lotteryTicketList",
-            JSON.stringify([{number: "0000000000", price: ticket?.ticketPrice}])
+            JSON.stringify([
+              { number: "0000000000", price: ticket?.ticketPrice },
+            ])
           );
           if (referByValue !== 0 && buyStatus[0] !== 0) {
             handleCommission(totalPrice);
@@ -478,7 +480,7 @@ export default function LotteryDetailPage({props}) {
           lotteryId: id,
           tickets: tickets.toString(),
         },
-        {Authorization: `Bearer ${token}`},
+        { Authorization: `Bearer ${token}` },
         userId
       );
       if (response) {
@@ -534,7 +536,7 @@ export default function LotteryDetailPage({props}) {
         setAlertMessage({
           title: "Complete Your KYC",
           message:
-            "Your total amount exceeds $3000!! In order to make a transaction, Please complete your KYC",
+            "Your total amount exceeds Rs.3000!! In order to make a transaction, Please complete your KYC",
           primaryButtonText: "Complete Your KYC",
           link: "/kyc",
         });
@@ -571,11 +573,11 @@ export default function LotteryDetailPage({props}) {
   }, [lotteryTicketDetailsLoading]);
 
   return (
-    <div style={{backgroundColor: "#f5f6ff"}}>
+    <div style={{ backgroundColor: "#f5f6ff" }}>
       {loading && <LoadingSpinner />}
       <title>{ticket?.gameName} - Kuber Wins</title>
       <LoadingBar ref={ref} color="rgb(245, 246, 255)" />
-      <Navbar props={{mainPage: "lotteries", subPage: "details"}} />
+      <Navbar props={{ mainPage: "lotteries", subPage: "details" }} />
       <section className="sec-ticket-dtls mb-5 mt-5 pb-5">
         <div className="container">
           <div className="row d-flex justify-content-center align-items-center">
@@ -604,7 +606,7 @@ export default function LotteryDetailPage({props}) {
                       <div className="col-lg-8">
                         <p
                           className="text-white"
-                          style={{textAlign: "left", marginBottom: 0}}
+                          style={{ textAlign: "left", marginBottom: 0 }}
                         >
                           {ticket?.nextDraw === 0
                             ? "Draw Starts "
@@ -652,7 +654,7 @@ export default function LotteryDetailPage({props}) {
               <span className="text-success h4">
                 {currencySymbol}
                 <AbbrNumber
-                  props={{number: ticket?.minPrizePool, decPlaces: 2}}
+                  props={{ number: ticket?.minPrizePool, decPlaces: 2 }}
                 />
               </span>
             </h6>
@@ -702,7 +704,7 @@ export default function LotteryDetailPage({props}) {
                       <h3 className="text-dark fw-bold">
                         {currencySymbol}
                         <AbbrNumber
-                          props={{number: ticket?.ticketPrice, decPlaces: 2}}
+                          props={{ number: ticket?.ticketPrice, decPlaces: 2 }}
                         />{" "}
                         <span className="fw-light">/Ticket</span>
                       </h3>
@@ -711,7 +713,7 @@ export default function LotteryDetailPage({props}) {
                       <h6 className="mb-3">Frequency</h6>
                       <h3
                         className="text-dark fw-light fs-6"
-                        style={{fontSize: "0.7rem"}}
+                        style={{ fontSize: "0.7rem" }}
                       >
                         {frequency?.daily?.length > 0 ? "Daily" : ""}
                         {frequency?.weekly?.length > 0 &&
@@ -773,7 +775,7 @@ export default function LotteryDetailPage({props}) {
                                           {index + 1}
                                           <sup
                                             className="fs-6"
-                                            style={{fontSize: "0.7rem"}}
+                                            style={{ fontSize: "0.7rem" }}
                                           >
                                             {index === 0
                                               ? "st"
@@ -786,7 +788,7 @@ export default function LotteryDetailPage({props}) {
                                         </h3>
                                         <h5
                                           className="text-yellow fs-6"
-                                          style={{fontSize: "0.7rem"}}
+                                          style={{ fontSize: "0.7rem" }}
                                         >
                                           Ticket
                                         </h5>
@@ -809,7 +811,7 @@ export default function LotteryDetailPage({props}) {
                                         </span>{" "}
                                         <span
                                           className="float-end ps-1"
-                                          style={{marginTop: "-10px"}}
+                                          style={{ marginTop: "-10px" }}
                                           onClick={(e) =>
                                             handleServiceRemove(index)
                                           }
@@ -1012,7 +1014,7 @@ export default function LotteryDetailPage({props}) {
                     >
                       <div
                         className="row m-0 pt-2 pb-1"
-                        style={{background: "#F5F5F5"}}
+                        style={{ background: "#F5F5F5" }}
                       >
                         <div className="col-lg-4 col-md-4 col-sm col-4 text-center">
                           <h6>Frequency</h6>
@@ -1060,7 +1062,7 @@ export default function LotteryDetailPage({props}) {
                               <div className="col-lg-4 col-md-4 col-sm col-4 text-center fw-bold">
                                 {currencySymbol}
                                 <AbbrNumber
-                                  props={{number: data?.prize, decPlaces: 2}}
+                                  props={{ number: data?.prize, decPlaces: 2 }}
                                 />
                                 /winner
                               </div>
@@ -1079,7 +1081,7 @@ export default function LotteryDetailPage({props}) {
                               <div className="col-lg-4 col-md-4 col-sm col-4 text-center fw-bold">
                                 {currencySymbol}
                                 <AbbrNumber
-                                  props={{number: data?.prize, decPlaces: 2}}
+                                  props={{ number: data?.prize, decPlaces: 2 }}
                                 />
                                 /winner
                               </div>
@@ -1128,12 +1130,12 @@ export default function LotteryDetailPage({props}) {
                 </span>
               </div>
               <div className="mt-2 px-3 card py-3">
-                <ol className="mb-0 " style={{paddingInlineStart: 14}}>
+                <ol className="mb-0 " style={{ paddingInlineStart: 14 }}>
                   {serviceList.map((singleService, index) => (
                     <li
                       key={index}
                       className="fs-6"
-                      style={{fontSize: "0.7rem"}}
+                      style={{ fontSize: "0.7rem" }}
                     >
                       {singleService?.number}{" "}
                       <span className="float-end fw-bold">
@@ -1218,7 +1220,7 @@ export default function LotteryDetailPage({props}) {
                 <div
                   className="close-modal_modal btn-close btn-close-white"
                   onClick={() => setPaymentModal(false)}
-                  style={{cursor: "pointer"}}
+                  style={{ cursor: "pointer" }}
                 />
               </div>
               <div className="d-flex flex-column justify-content-center bg-light">

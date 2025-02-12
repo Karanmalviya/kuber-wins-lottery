@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
@@ -8,9 +8,9 @@ import Slider from "../components/Slider";
 import LotteryCard from "../components/LotteryCard";
 import ScratchCard from "../components/ScratchCard";
 import AbbrNumber from "../components/AbbrNumber";
-import {Swiper, SwiperSlide} from "swiper/react";
-import {Navigation, Scrollbar, Pagination, A11y, Parallax} from "swiper";
-import SwiperCore, {Autoplay} from "swiper/core";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Scrollbar, Pagination, A11y, Parallax } from "swiper";
+import SwiperCore, { Autoplay } from "swiper/core";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/less";
@@ -19,11 +19,11 @@ import "swiper/less/pagination";
 import "swiper/less/parallax";
 import "swiper/css/scrollbar";
 import "swiper/css/a11y";
-import {IoIosArrowBack, IoIosArrowForward} from "react-icons/io";
-import {AiOutlineArrowLeft, AiOutlineArrowRight} from "react-icons/ai";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import usePagination from "../../hooks/usePaginate";
 import ReactPaginate from "react-paginate";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   fetchLottery,
   fetchScratchCard,
@@ -105,14 +105,14 @@ export default function HomePage() {
     } else setPageSize(2);
   }, [currentWidth]);
 
-  const {currentPage, handlePageChange, getCurrentPageData, pageCount} =
+  const { currentPage, handlePageChange, getCurrentPageData, pageCount } =
     usePagination(lotteryTickets, pageSize);
-  const {currentPageData} = getCurrentPageData();
+  const { currentPageData } = getCurrentPageData();
 
   return (
     <div>
       <title>Home - Kuber Wins</title>
-      <Navbar props={{mainPage: "home", subPage: ""}} />
+      <Navbar props={{ mainPage: "home", subPage: "" }} />
       <section className="sec-slider pb-lg-4">
         <div className="container">
           <div className="col-lg-12">
@@ -279,7 +279,7 @@ export default function HomePage() {
                             />
                           </div>
                         </div>
-                        <p className="py-0 my-0">Total $ Payout</p>
+                        <p className="py-0 my-0">Total Rs. Payout</p>
                       </div>
                     </div>
                   </div>
@@ -290,7 +290,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="sec-second pb-4" style={{backgroundColor: "#f5f6ff"}}>
+      <section
+        className="sec-second pb-4"
+        style={{ backgroundColor: "#f5f6ff" }}
+      >
         <div className="container">
           <h2 className="mt-4 mb-4 sec-heading">Lotteries</h2>
           {lotteryDataLoading ? (
@@ -359,7 +362,7 @@ export default function HomePage() {
 
       <section
         className="sec-scratch-cards pt-1 pb-4"
-        style={{backgroundColor: "#f5f6ff"}}
+        style={{ backgroundColor: "#f5f6ff" }}
       >
         <div className="container">
           <h2 className="mt-3 mb-4 sec-heading">Scratch Cards</h2>
@@ -374,7 +377,7 @@ export default function HomePage() {
               {scratchCards.length > 3 && (
                 <div
                   className="d-none d-lg-block d-md-block ms-1 me-1 customPrevBtnn swiper-button-prev"
-                  style={{marginTop: "234px"}}
+                  style={{ marginTop: "234px" }}
                 >
                   <i className="fa fa-arrow-left" />
                 </div>
@@ -413,12 +416,12 @@ export default function HomePage() {
                   },
                 }}
                 slidesPerView={3}
-                pagination={{clickable: true, el: ".swiper-pagination"}}
+                pagination={{ clickable: true, el: ".swiper-pagination" }}
                 navigation={{
                   nextEl: ".swiper-button-next",
                   prevEl: ".swiper-button-prev",
                 }}
-                scrollbar={{draggable: true}}
+                scrollbar={{ draggable: true }}
                 grabCursor={true}
                 effect={false}
                 autoplay={{
@@ -447,7 +450,7 @@ export default function HomePage() {
               {scratchCards.length > 3 && (
                 <div
                   className="d-none d-lg-block d-md-block ms-1 me-1 customNextBtnn swiper-button-next"
-                  style={{marginTop: "234px"}}
+                  style={{ marginTop: "234px" }}
                 >
                   <i className="fa fa-arrow-right" />
                 </div>
@@ -459,7 +462,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="sec-five" style={{backgroundColor: "#f5f6ff"}}>
+      <section className="sec-five" style={{ backgroundColor: "#f5f6ff" }}>
         <div className="container pt-5 pb-5">
           <h2 className="sec-heading text-center">What Sets Us Apart</h2>
           <div className="row d-flex justify-content-center align-items-center">

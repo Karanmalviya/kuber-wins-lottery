@@ -380,14 +380,14 @@ export default function ScratchCardPlay() {
                     <h5>
                       {showMessage === "null"
                         ? "Top Prize: " +
-                          "$" +
+                          "Rs." +
                           (scratchCardData?.topPrize?.toLocaleString() || "N/A")
                         : scratchMessage
                         ? "Keep on Scratching"
                         : startPlay && scratchMessage !== "null"
                         ? "Good Luck 👍🏼"
                         : "Top Prize: " +
-                          "$" +
+                          "Rs." +
                           (scratchCardData?.topPrize?.toLocaleString() ||
                             "N/A")}
                       {scratchMessage && (
@@ -462,9 +462,9 @@ export default function ScratchCardPlay() {
                     Won{" "}
                     <Tooltip
                       placement="top"
-                      title={`$${scratchCardTotalWon?.won?.toLocaleString()}`}
+                      title={`Rs.${scratchCardTotalWon?.won?.toLocaleString()}`}
                     >
-                      ${scratchCardTotalWon?.won?.toLocaleString()}
+                      Rs.{scratchCardTotalWon?.won?.toLocaleString()}
                     </Tooltip>
                   </div>
                 </div>
@@ -477,9 +477,9 @@ export default function ScratchCardPlay() {
                     Wallet{" "}
                     <Tooltip
                       placement="top"
-                      title={`$${user?.balance?.toLocaleString()}`}
+                      title={`Rs.${user?.balance?.toLocaleString()}`}
                     >
-                      $
+                      Rs.
                       <AbbrNumber
                         props={{
                           number: user?.balance,

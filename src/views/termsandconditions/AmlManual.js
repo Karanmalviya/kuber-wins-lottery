@@ -580,7 +580,7 @@ export default function AmlManual({props}) {
                   involved in a pending decision affecting the Company. (For the
                   avoidance of doubt, a gift also includes the provision of free
                   services.) It is the policy of the Company that any proposed
-                  gift of a value of $125 or more must be approved by the MLRO
+                  gift of a value of Rs.125 or more must be approved by the MLRO
                   in advance.
                 </p>
                 <p>
@@ -592,7 +592,7 @@ export default function AmlManual({props}) {
                   considered to influence the staff member to act
                   inappropriately. In the event of a gift, benefit or inducement
                   of any kind being offered to a member of staff by a client or
-                  business partner with a value likely to be more than US$125,
+                  business partner with a value likely to be more than Rs.125,
                   the details must be reported to the MLRO.
                 </p>
                 <p>

@@ -247,7 +247,7 @@ export default function TicketDetailPage({props}) {
             <h6 className="mb-0">
               Minimum Prize Pool:{" "}
               <span className="text-success h4">
-                ${buyTicket?.gameInformation?.minPrizePool}
+              Rs.{buyTicket?.gameInformation?.minPrizePool}
               </span>
             </h6>
           </div>
@@ -272,7 +272,7 @@ export default function TicketDetailPage({props}) {
                       </h6>
 
                       <h3 className="text-success">
-                        ${buyTicket?.User?.balance?.toLocaleString()}
+                      Rs.{buyTicket?.User?.balance?.toLocaleString()}
                       </h3>
                     </div>
                     <div className="col-lg-2 col-md-2 col-sm col-6">
@@ -286,7 +286,7 @@ export default function TicketDetailPage({props}) {
                     <div className="col-lg-2 col-md-2 col-sm col-6">
                       <h6>Ticket Price :</h6>
                       <h3 className="text-dark fw-bold">
-                        $
+                      Rs.
                         {buyTicket?.gameInformation?.ticketPrice?.toLocaleString()}{" "}
                         <span className="fw-light">/Ticket</span>
                       </h3>
@@ -310,7 +310,7 @@ export default function TicketDetailPage({props}) {
                     <div className="col-lg-2 col-md-2 col-sm col-6">
                       <h6>Total Won :</h6>
                       <h3 className="text-dark fw-bold">
-                        ${totalWon.toLocaleString()}
+                      Rs.{totalWon.toLocaleString()}
                       </h3>
                     </div>
                   </div>
@@ -341,7 +341,7 @@ export default function TicketDetailPage({props}) {
                                   <h6 className="ps-1">
                                     Price :{" "}
                                     <span className="fw-bold price-d">
-                                      ${activeTicket?.ticketPrice}
+                                    Rs.{activeTicket?.ticketPrice}
                                     </span>
                                   </h6>
                                 </div>
@@ -364,7 +364,7 @@ export default function TicketDetailPage({props}) {
                                     <h6 className="">
                                       Total Won : <br />{" "}
                                       <span className="fw-bold highlighted-text">
-                                        $
+                                      Rs.
                                         {activeTicketWonPrize ? (
                                           <AbbrNumber
                                             props={{
@@ -430,7 +430,7 @@ export default function TicketDetailPage({props}) {
                                           <h6 className="ps-1">
                                             Price :{" "}
                                             <span className="fw-bold price-d">
-                                              ${item?.ticketPrice}
+                                            Rs.{item?.ticketPrice}
                                             </span>
                                           </h6>
                                           {/* <h6>Last Won : <span className="fw-bold price-d">$250</span></h6> */}
@@ -457,7 +457,7 @@ export default function TicketDetailPage({props}) {
                                             <h6 className="">
                                               Total Won : <br />{" "}
                                               <span className="fw-bold highlighted-text">
-                                                $
+                                              Rs.
                                                 {restTicketWonPrize ? (
                                                   <AbbrNumber
                                                     props={{
@@ -513,7 +513,7 @@ export default function TicketDetailPage({props}) {
                           alt=""
                         />
                         <h5 className="m-0 ps-2 fw-bold">
-                          ${buyTotal?.totalTicketsPrice}
+                        Rs.{buyTotal?.totalTicketsPrice}
                         </h5>
                       </div>
                     </div>
@@ -604,7 +604,7 @@ export default function TicketDetailPage({props}) {
                                   {data?.winners}
                                 </div>
                                 <div className="col-lg-4 col-md-4 col-sm col-4 text-center fw-bold">
-                                  ${data?.prize}/winner
+                                  Rs.{data?.prize}/winner
                                 </div>
                               </div>
                             );
@@ -620,7 +620,7 @@ export default function TicketDetailPage({props}) {
                                 {data?.winners}
                               </div>
                               <div className="col-lg-4 col-md-4 col-sm col-4 text-center fw-bold">
-                                ${data?.prize}/winner
+                              Rs.{data?.prize}/winner
                               </div>
                             </div>
                           ))
@@ -635,7 +635,7 @@ export default function TicketDetailPage({props}) {
                                 {data?.winners}
                               </div>
                               <div className="col-lg-4 col-md-4 col-sm col-4 text-center fw-bold">
-                                ${data?.prize}/winner
+                              Rs.{data?.prize}/winner
                               </div>
                             </div>
                           ))

@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import {useNavigate, useLocation} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import {
@@ -10,14 +10,14 @@ import {
   coinbasePayment,
   commissionTransaction,
 } from "../../utils/index";
-import {useAuth} from "../../utils/auth";
+import { useAuth } from "../../utils/auth";
 import CountDown from "../components/CountDown";
 import "../../styles/paymentModal.css";
 import LoadingSpinner from "../components/LoadingSpinner";
 import AbbrNumber from "../components/AbbrNumber";
-import {generateTransactionId} from "../../utils/generateTransactionId";
+import { generateTransactionId } from "../../utils/generateTransactionId";
 import CustomModalAlert from "../../utils/CustomModalAlert";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import LoadingBar from "react-top-loading-bar";
@@ -31,22 +31,22 @@ import {
   fetchUser,
   fetchUserBuyLotteryTicket,
 } from "../../features/apiSlice";
-import {useRef} from "react";
+import { useRef } from "react";
 import "../../styles/input.css";
-import {AiFillPlusCircle, AiFillMinusCircle} from "react-icons/ai";
+import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
 import TermAndConditionDialog from "../components/TermAndConditionDialog";
 
-export default function LotteryDetailPage({props}) {
+export default function LotteryDetailPage({ props }) {
   const termsAndConditonRef = useRef();
   const ref = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {user} = useAuth();
+  const { user } = useAuth();
   const [ticket, setTicket] = useState({});
   const location = useLocation();
-  const {id} = location.state ? location.state : "";
+  const { id } = location.state ? location.state : "";
   const userId = localStorage.getItem("userId");
-  const currencySymbol = "$";
+  const currencySymbol = "Rs.";
   const [frequency, setFrequency] = useState([]);
   const [availableTickets, setAvailableTickets] = useState();
   const [serviceList, setServiceList] = useState([]);
@@ -91,8 +91,10 @@ export default function LotteryDetailPage({props}) {
     };
   }, [dispatch, userId, id]);
 
+  console.log(ticket?.gamePhases);
+
   useEffect(() => {
-    dispatch(fetchLotteryNumber({id, ticketQuantity}));
+    dispatch(fetchLotteryNumber({ id, ticketQuantity }));
   }, [id, ticketQuantity]);
 
   const commissionPercent = useSelector((state) => state.api.commissionPercent);
@@ -156,8 +158,8 @@ export default function LotteryDetailPage({props}) {
       navigate("/login");
       return;
     }
-    const {balance} = buy;
-    const {id, ticketPrice, gamePhases, gameName} = ticket;
+    const { balance } = buy;
+    const { id, ticketPrice, gamePhases, gameName } = ticket;
     const lotteryId = id;
     const totalPrice = Number(ticketPrice) * list.length;
     const listArray = list.map((value) => ({
@@ -221,7 +223,6 @@ export default function LotteryDetailPage({props}) {
       document.getElementById("err").innerText = "Insufficient balance";
     }
   };
-
   let count = 0;
   const handleCommission = async (totalPrice) => {
     if (buyTicketLength < level.length && count === 0) {
@@ -315,7 +316,7 @@ export default function LotteryDetailPage({props}) {
         lotteryId: id,
         tickets: tickets.toString(),
       },
-      {Authorization: `Bearer ${token}`},
+      { Authorization: `Bearer ${token}` },
       userId
     );
     return response.message;
@@ -345,7 +346,7 @@ export default function LotteryDetailPage({props}) {
         setAlertMessage({
           title: "Complete Your KYC",
           message:
-            "Your total amount exceeds $3000!! In order to make a transaction, Please complete your KYC",
+            "Your total amount exceeds Rs.3000!! In order to make a transaction, Please complete your KYC",
           primaryButtonText: "Complete Your KYC",
           link: "/kyc",
         });
@@ -428,12 +429,17 @@ export default function LotteryDetailPage({props}) {
       setShowError(false);
     }, 1500);
   };
+
+  const isShowFrequency = ticket?.gamePhases?.find(
+    (game) => game.status === 1 && game.showStatus === 1
+  );
+  console.log(isShowFrequency);
   return (
-    <div style={{backgroundColor: "#f5f6ff"}}>
+    <div style={{ backgroundColor: "#f5f6ff" }}>
       {loading && <LoadingSpinner />}
       <title>{ticket?.gameName} - Kuber Wins</title>
       <LoadingBar ref={ref} color="rgb(245, 246, 255)" />
-      <Navbar props={{mainPage: "lotteries", subPage: "details"}} />
+      <Navbar props={{ mainPage: "lotteries", subPage: "details" }} />
       <section className="sec-ticket-dtls mb-5 mt-5 pb-5">
         <div className="container">
           <div className="row d-flex justify-content-center align-items-center">
@@ -454,7 +460,7 @@ export default function LotteryDetailPage({props}) {
               >
                 <p
                   className="p-label-lotto text-capitalize"
-                  style={{overflow: "visible"}}
+                  style={{ overflow: "visible" }}
                 >
                   {ticket?.draw?.replace("-", " ")}
                 </p>
@@ -468,7 +474,7 @@ export default function LotteryDetailPage({props}) {
                       <div className="col-lg-8">
                         <p
                           className="text-white"
-                          style={{textAlign: "left", marginBottom: 0}}
+                          style={{ textAlign: "left", marginBottom: 0 }}
                         >
                           {ticket?.nextDraw === 0
                             ? "Draw Starts "
@@ -512,7 +518,7 @@ export default function LotteryDetailPage({props}) {
               <span className="text-success h4">
                 {currencySymbol}
                 <AbbrNumber
-                  props={{number: ticket?.minPrizePool, decPlaces: 2}}
+                  props={{ number: ticket?.minPrizePool, decPlaces: 2 }}
                 />
               </span>
             </h6>
@@ -562,7 +568,7 @@ export default function LotteryDetailPage({props}) {
                       <h3 className="text-dark fw-bold">
                         {currencySymbol}
                         <AbbrNumber
-                          props={{number: ticket?.ticketPrice, decPlaces: 2}}
+                          props={{ number: ticket?.ticketPrice, decPlaces: 2 }}
                         />{" "}
                         <span className="fw-light">/Ticket</span>
                       </h3>
@@ -571,7 +577,7 @@ export default function LotteryDetailPage({props}) {
                       <h6 className="mb-3">Frequency</h6>
                       <h3
                         className="text-dark fw-light fs-6"
-                        style={{fontSize: "0.7rem"}}
+                        style={{ fontSize: "0.7rem" }}
                       >
                         {frequency?.daily?.length > 0 ? "Daily" : ""}
                         {frequency?.weekly?.length > 0 &&
@@ -598,7 +604,7 @@ export default function LotteryDetailPage({props}) {
                           onClick={() =>
                             handleQuantityChange(ticketQuantity - 1)
                           }
-                          style={{cursor: "pointer"}}
+                          style={{ cursor: "pointer" }}
                         />
                         <input
                           type="number"
@@ -618,7 +624,7 @@ export default function LotteryDetailPage({props}) {
                         />
                         <AiFillPlusCircle
                           className="fs-2 plusMinus"
-                          style={{cursor: "pointer"}}
+                          style={{ cursor: "pointer" }}
                           onClick={() =>
                             handleQuantityChange(ticketQuantity + 1)
                           }
@@ -721,7 +727,7 @@ export default function LotteryDetailPage({props}) {
                   <ul className="nav nav-pills" id="myTab" role="tablist">
                     <li className="nav-item" role="presentation">
                       <button
-                        className="nav-link"
+                        className="nav-link active"
                         id="home-tab"
                         data-bs-toggle="tab"
                         data-bs-target="#home"
@@ -733,26 +739,28 @@ export default function LotteryDetailPage({props}) {
                         Instructions
                       </button>
                     </li>
-                    <li className="nav-item" role="presentation">
-                      <button
-                        className="nav-link active"
-                        id="profile-tab"
-                        data-bs-toggle="tab"
-                        data-bs-target="#profile"
-                        type="button"
-                        role="tab"
-                        aria-controls="profile"
-                        aria-selected="false"
-                      >
-                        Win Bonuses
-                      </button>
-                    </li>
+                    {isShowFrequency && Object.keys(isShowFrequency).length && (
+                      <li className="nav-item" role="presentation">
+                        <button
+                          className="nav-link"
+                          id="profile-tab"
+                          data-bs-toggle="tab"
+                          data-bs-target="#profile"
+                          type="button"
+                          role="tab"
+                          aria-controls="profile"
+                          aria-selected="false"
+                        >
+                          Win Bonuses
+                        </button>
+                      </li>
+                    )}
                   </ul>
                 </div>
                 <div className="card-body pt-0 pb-3 px-0">
                   <div className="tab-content" id="myTabContent">
                     <div
-                      className="tab-pane fade"
+                      className="tab-pane fade show active"
                       id="home"
                       role="tabpanel"
                       aria-labelledby="home-tab"
@@ -765,14 +773,14 @@ export default function LotteryDetailPage({props}) {
                       ></div>
                     </div>
                     <div
-                      className="tab-pane fade show active"
+                      className="tab-pane fade"
                       id="profile"
                       role="tabpanel"
                       aria-labelledby="profile-tab"
                     >
                       <div
                         className="row m-0 pt-2 pb-1"
-                        style={{background: "#F5F5F5"}}
+                        style={{ background: "#F5F5F5" }}
                       >
                         <div className="col-lg-4 col-md-4 col-sm col-4 text-center">
                           <h6>Frequency</h6>
@@ -840,12 +848,16 @@ export default function LotteryDetailPage({props}) {
           </div>
           <div
             className="mt-2 px-3 card py-3"
-            style={{overflow: "auto", height: "100px"}}
+            style={{ overflow: "auto", height: "100px" }}
           >
-            <ol className="mb-0 " style={{paddingInlineStart: 14}}>
+            <ol className="mb-0 " style={{ paddingInlineStart: 14 }}>
               {serviceList.length &&
                 serviceList.map((singleService, index) => (
-                  <li key={index} className="fs-6" style={{fontSize: "0.7rem"}}>
+                  <li
+                    key={index}
+                    className="fs-6"
+                    style={{ fontSize: "0.7rem" }}
+                  >
                     {singleService?.number}{" "}
                     <span className="float-end fw-bold">
                       {currencySymbol +
@@ -856,7 +868,7 @@ export default function LotteryDetailPage({props}) {
             </ol>
           </div>
         </Modal.Body>
-        <Modal.Footer className="d-inline" style={{lineHeight: "9px"}}>
+        <Modal.Footer className="d-inline" style={{ lineHeight: "9px" }}>
           <div className="d-inline">
             <div className="mb-3">
               <span className="">

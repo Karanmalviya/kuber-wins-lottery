@@ -235,8 +235,8 @@ export default function DashboardPage({props}) {
                                         item?.createdAt
                                       ).toLocaleString()}{" "} */}
                                     </td>
-                                    <td>${item?.amount?.toLocaleString()}</td>
-                                    <td>${item?.balance?.toLocaleString()}</td>
+                                    <td>Rs.{item?.amount?.toLocaleString()}</td>
+                                    <td>Rs.{item?.balance?.toLocaleString()}</td>
                                     <td style={{textAlign: "left"}}>
                                       {item?.description}
                                     </td>

@@ -108,7 +108,7 @@ export default function ScratchCardWinnerList() {
                                     </td>
                                   </>
                                 )}
-                                <td>${item?.won_amount?.toLocaleString()}</td>
+                                <td>Rs.{item?.won_amount?.toLocaleString()}</td>
                                 {/* <td>${item?.post_balance}</td> */}
                                 <td>
                                   {" "}

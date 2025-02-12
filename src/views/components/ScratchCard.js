@@ -50,7 +50,7 @@ export default function ScratchCard({ props }) {
           {props?.card_type?.replace("-", " ")}
         </p>
         <p className="price">Price</p>
-        <h4 className="price-amt">${props?.ticketPrize}</h4>
+        <h4 className="price-amt">Rs.{props?.ticketPrize}</h4>
         <h5 className="scrtch-crd-title mb-0 pb-0 text-capitalize">
           {props?.card_name}
         </h5>

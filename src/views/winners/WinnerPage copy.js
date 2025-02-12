@@ -393,7 +393,7 @@ export default function Winner({props}) {
                                         )}
                                       </td>
                                       <td>USD</td>
-                                      <td>${item?.price}</td>
+                                      <td>Rs.{item?.price}</td>
                                       <td>
                                         {item?.User?.fname} {item?.User?.lname}
                                       </td>
@@ -541,7 +541,7 @@ export default function Winner({props}) {
                                           )}
                                         </td>
                                         <td>USD</td>
-                                        <td>${item?.price}</td>
+                                        <td>Rs.{item?.price}</td>
                                         <td>
                                           {item?.User?.fname}{" "}
                                           {item?.User?.lname}

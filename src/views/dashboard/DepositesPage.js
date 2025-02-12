@@ -1,11 +1,11 @@
-import React, {useState, useEffect, useRef} from "react";
-import {Link, useNavigate} from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import Sidebar from "../navbar/Sidebar";
 import "../../styles/paymentModal.css";
-import {encrypt} from "../.././utils/encryptdecrypt";
-import {useDispatch, useSelector} from "react-redux";
+import { encrypt } from "../.././utils/encryptdecrypt";
+import { useDispatch, useSelector } from "react-redux";
 import {
   fetchCommissionPercent,
   fetchDeposits,
@@ -14,11 +14,11 @@ import {
 } from "../../features/apiSlice";
 import MiniLoader from "../components/MiniLoader";
 import TermAndConditionDialog from "../components/TermAndConditionDialog";
-import {Modal} from "react-bootstrap";
-import {createDepositApi} from "../../api/api";
-import {Pagination} from "@mui/material";
+import { Modal } from "react-bootstrap";
+import { createDepositApi } from "../../api/api";
+import { Pagination } from "@mui/material";
 
-export default function DepositesPage({props}) {
+export default function DepositesPage({ props }) {
   const termsAndConditonRef = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ export default function DepositesPage({props}) {
 
   const user = useSelector((state) => state.api.user);
 
-  const {fetchDepositsData, fetchDepositsLoading} = useSelector(
+  const { fetchDepositsData, fetchDepositsLoading } = useSelector(
     (state) => state.api
   );
 
@@ -48,12 +48,12 @@ export default function DepositesPage({props}) {
   const totalPages = fetchDepositsData?.totalPages;
 
   useEffect(() => {
-    dispatch(fetchDeposits({id: userId, page, pageSize}));
+    dispatch(fetchDeposits({ id: userId, page, pageSize }));
   }, [dispatch, userId, page, pageSize]);
 
   const handleDepositeSubmit = async () => {
     if (depositAmount !== "" && depositAmount !== 0) {
-      const res = await createDepositApi({amount: depositAmount, token});
+      const res = await createDepositApi({ amount: depositAmount, token });
       if (res?.message === "Success") {
         navigate(
           `/deposit/${encrypt(res?.data?.id.toString()).replace(/=+$/, "")}`
@@ -84,8 +84,8 @@ export default function DepositesPage({props}) {
     <>
       {/* {loading && <LoadingSpinner />} */}
       <title>Deposits - Kuber Wins</title>
-      <Navbar props={{mainPage: "dashboard", subPage: ""}} />
-      <section className="sec-dashbaord" style={{backgroundColor: "#f5f6ff"}}>
+      <Navbar props={{ mainPage: "dashboard", subPage: "" }} />
+      <section className="sec-dashbaord" style={{ backgroundColor: "#f5f6ff" }}>
         <div className="container-fluid">
           <div className="row">
             <Sidebar props={"deposit"} />
@@ -131,7 +131,8 @@ export default function DepositesPage({props}) {
                                     <td>{idx + 1}</td>
                                     <td>Rs.{item?.amount}</td>
                                     <td>
-                                      {item?.payment_method ?? "Not done"}
+                                      {item?.payment_method?.toUpperCase() +
+                                        " Transfer" ?? "Not done"}
                                     </td>
                                     <td className="text-capitalize">
                                       {new Date(
@@ -213,11 +214,11 @@ export default function DepositesPage({props}) {
               className="form-control"
             />
           </Modal.Body>
-          <Modal.Footer className="d-inline" style={{lineHeight: "9px"}}>
+          <Modal.Footer className="d-inline" style={{ lineHeight: "9px" }}>
             <div className="mb-4">
               <span className="float-end">
                 Total Amount :{" "}
-                <span className="fw-bold text-black">${depositAmount}</span>
+                <span className="fw-bold text-black">Rs.{depositAmount}</span>
               </span>
             </div>
 

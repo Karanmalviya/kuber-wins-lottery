@@ -181,7 +181,7 @@ export default function ScratchListPage({props}) {
                                     {item?.scratchCard?.card_name}
                                   </td>
                                   <td className="text-start">
-                                    $
+                                  Rs.
                                     {Number(
                                       item?.totalPriceSum
                                     )?.toLocaleString()}
@@ -203,7 +203,7 @@ export default function ScratchListPage({props}) {
                                       })()}
                                   </td>
                                   <td className="text-start">
-                                    ${item?.won?.toLocaleString()}
+                                  Rs.{item?.won?.toLocaleString()}
                                   </td>
 
                                   <td>

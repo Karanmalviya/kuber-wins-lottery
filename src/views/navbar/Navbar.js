@@ -1,30 +1,32 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import {useAuth} from "../../utils/auth";
-import {useSelector} from "react-redux";
-import {BsPerson, BsGear, BsBoxArrowRight} from "react-icons/bs";
+import { Link } from "react-router-dom";
+import { useAuth } from "../../utils/auth";
+import { useSelector } from "react-redux";
+import { BsPerson, BsGear, BsBoxArrowRight } from "react-icons/bs";
 
-export default function Navbar({props}) {
-  const {user, logout} = useAuth();
+export default function Navbar({ props }) {
+  const { user, logout } = useAuth();
   const userDetail = useSelector((state) => state.api.user);
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light py-0 bg-light">
-        <div className="container-fluid px-lg-5">
-          <Link className="navbar-brand py-0" to={"/"}>
-            <img
-              src={
-                props.subPage
-                  ? "../assets/images/Lifetime-Lotto-LOGO.png"
-                  : "assets/images/Lifetime-Lotto-LOGO.png"
-              }
-              className="img-fluid"
-              style={{width: 157, padding: "5 0"}}
-              alt=""
-            />
-          </Link>
-
+      <nav className="navbar navbar-expand-lg navbar-light py-0 bg-light ">
+        <div className="container-fluid px-lg-4 ps-4">
+          <div className="position-relative py-2 px-4 overflow-hidden">
+            <div className="logo-container "></div>
+            <Link
+              className="navbar-brand py-0 ps-1 position-relative"
+              to={"/"}
+              style={{ zIndex: 1 }}
+            >
+              <img
+                src={process.env.REACT_APP_LOGO}
+                className="img-fluid px-2"
+                style={{ width: 145 }}
+                alt=""
+              />
+            </Link>
+          </div>
           <button
             className="navbar-toggler border-0 text-white"
             type="button"
@@ -36,7 +38,10 @@ export default function Navbar({props}) {
           >
             <i className="fa fa-bars"></i>
           </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <div
+            className="collapse navbar-collapse ms-4"
+            id="navbarSupportedContent"
+          >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link
@@ -162,10 +167,10 @@ export default function Navbar({props}) {
                         "assets/images/material-symbols_account-balance-wallet-old.png"
                       }
                       className="img-fluid"
-                      style={{filter: "brightness(0) invert(1)"}}
+                      style={{ filter: "brightness(0) invert(1)" }}
                       alt=""
                     />
-                    $ {userDetail?.balance?.toLocaleString()}
+                    Rs.{userDetail?.balance?.toLocaleString()}
                   </h5>
                   <div className="dropdown me-1">
                     <button
@@ -198,19 +203,19 @@ export default function Navbar({props}) {
                           height={"40px"}
                           src={userDetail?.image}
                           className="rounded-circle me-2"
-                          style={{border: "2px solid #fff"}}
+                          style={{ border: "2px solid #fff" }}
                         />
                       )}
                       {userDetail?.fname}
                     </button>
                     <ul
                       className="dropdown-menu p-0 dropdown-menu-arrow"
-                      style={{left: "-23px"}}
+                      style={{ left: "-23px" }}
                       aria-labelledby="dropdownMenuButton1"
                     >
                       <li
                         className="dropdown-header py-3"
-                        style={{padding: "9px 8px"}}
+                        style={{ padding: "9px 8px" }}
                       >
                         <h6
                           className="text-center mb-0"
@@ -239,10 +244,10 @@ export default function Navbar({props}) {
                         <Link
                           to="/profile"
                           className="dropdown-item py-2"
-                          style={{color: "#616467", cursor: "pointer"}}
+                          style={{ color: "#616467", cursor: "pointer" }}
                         >
                           <BsPerson className="profileIcons me-2" />
-                          <span style={{fontSize: "15px"}}>Profile</span>
+                          <span style={{ fontSize: "15px" }}>Profile</span>
                         </Link>
                       </li>
                       <li>
@@ -252,10 +257,10 @@ export default function Navbar({props}) {
                         <Link
                           to="/changepassword"
                           className="dropdown-item py-2"
-                          style={{color: "#616467", cursor: "pointer"}}
+                          style={{ color: "#616467", cursor: "pointer" }}
                         >
                           <BsGear className="profileIcons me-2" />
-                          <span style={{fontSize: "15px"}}>
+                          <span style={{ fontSize: "15px" }}>
                             Change Password
                           </span>
                         </Link>
@@ -266,11 +271,11 @@ export default function Navbar({props}) {
                       <li>
                         <a
                           className="dropdown-item py-2"
-                          style={{color: "#616467", cursor: "pointer"}}
+                          style={{ color: "#616467", cursor: "pointer" }}
                           onClick={() => logout()}
                         >
                           <BsBoxArrowRight className="profileIcons me-2" />
-                          <span style={{fontSize: "15px"}}>Sign Out </span>
+                          <span style={{ fontSize: "15px" }}>Sign Out </span>
                         </a>
                       </li>
                     </ul>

@@ -264,7 +264,7 @@ export default function ScratchCardBuyMore() {
 
               <div className="card-footer scratch-card-shadow-play ">
                 <h5 className="">
-                  Top Prize : ${scratchCardData?.topPrize?.toLocaleString()}
+                  Top Prize : Rs.{scratchCardData?.topPrize?.toLocaleString()}
                 </h5>
               </div>
             </div>
@@ -318,7 +318,7 @@ export default function ScratchCardBuyMore() {
                     Won{" "}
                     <Tooltip
                       placement="top"
-                      title={`$${scratchCardTotalWon?.won?.toLocaleString()}`}
+                      title={`Rs.${scratchCardTotalWon?.won?.toLocaleString()}`}
                     >
                       $
                       <AbbrNumber
@@ -339,7 +339,7 @@ export default function ScratchCardBuyMore() {
                     Wallet{" "}
                     <Tooltip
                       placement="top"
-                      title={`$${user?.balance?.toLocaleString()}`}
+                      title={`Rs.${user?.balance?.toLocaleString()}`}
                     >
                       $
                       <AbbrNumber
@@ -412,7 +412,7 @@ export default function ScratchCardBuyMore() {
                           );
                       }}
                     >
-                      Buy Now : $
+                      Buy Now : Rs.
                       {scratchCardData?.ticketPrize?.toLocaleString()}/Play
                     </button>
                   </div>

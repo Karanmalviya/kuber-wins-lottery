@@ -10,6 +10,7 @@ export async function upiQr(query) {
   if (!amount || !name || !upi) {
     return null;
   }
+  
   //   if (isNaN(amount)) {
   //     throw new Error("Amount must be a valid number");
   //   }

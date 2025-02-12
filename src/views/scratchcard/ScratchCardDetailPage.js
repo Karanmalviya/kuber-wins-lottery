@@ -332,7 +332,7 @@ export default function ScratchCardDetailPage() {
         setAlertMessage({
           title: "Complete Your KYC",
           message:
-            "Your total amount exceeds $3000!! In order to make a transaction, Please complete your KYC",
+            "Your total amount exceeds Rs.3000!! In order to make a transaction, Please complete your KYC",
           primaryButtonText: "Complete Your KYC",
           link: "/kyc",
         });
@@ -502,7 +502,7 @@ export default function ScratchCardDetailPage() {
               <h5 className="actual-p mb-4">
                 Price :{" "}
                 <span>
-                  ${scratchCardData?.ticketPrize?.toLocaleString()}/Play
+                Rs.{scratchCardData?.ticketPrize?.toLocaleString()}/Play
                 </span>
               </h5>
               <div className="card multiple-crd col-lg-12 mb-3">
@@ -649,7 +649,7 @@ export default function ScratchCardDetailPage() {
                   <h6 className="mt-4 mb-1">
                     Total Price :{" "}
                     <span className="fw-bold price-d">
-                      ${grandTotal?.toLocaleString()}
+                    Rs.{grandTotal?.toLocaleString()}
                     </span>
                   </h6>
                   <p
@@ -687,7 +687,7 @@ export default function ScratchCardDetailPage() {
                       multiDraw === 0 || multiDraw === "" ? true : false
                     }
                   >
-                    Pay ${grandTotal?.toLocaleString()}
+                    Pay Rs.{grandTotal?.toLocaleString()}
                   </button>
                 </div>
               </div>
@@ -739,7 +739,7 @@ export default function ScratchCardDetailPage() {
               {calculateDiscount?.discountAmount?.toLocaleString()}
             </span>
             <span className="float-end fw-bold">
-              Total Payable: $
+              Total Payable: Rs.
               {calculateDiscount?.amountAfterDiscount?.toLocaleString()}
             </span>
           </div>
@@ -753,7 +753,7 @@ export default function ScratchCardDetailPage() {
             <span className="float-end">
               Total Amount :{" "}
               <span className="fw-bold text-black">
-                ${grandTotal?.toLocaleString()}
+              Rs.{grandTotal?.toLocaleString()}
               </span>
             </span>
           </div>

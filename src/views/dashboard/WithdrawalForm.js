@@ -1,24 +1,24 @@
-import React, {useState, useEffect} from "react";
-import {Link, useLocation, useNavigate} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import Sidebar from "../navbar/Sidebar";
 import LoadingSpinner from "../components/LoadingSpinner";
 import Alert from "@mui/material/Alert";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   fetchUser,
   fetchUserWithDrawal,
   verfiy2fa,
 } from "../../features/apiSlice";
-import {withdrawal} from "../../utils";
+import { withdrawal } from "../../utils";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import {verifyTwofaVerification} from "../../api/api";
-import {toast} from "react-hot-toast";
+import { verifyTwofaVerification } from "../../api/api";
+import { toast } from "react-hot-toast";
 import CustomModalAlert from "../../utils/CustomModalAlert";
 
-export default function WithdrawalForm({props}) {
+export default function WithdrawalForm({ props }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -28,7 +28,7 @@ export default function WithdrawalForm({props}) {
   const userId = localStorage.getItem("userId");
   const [withdrawas, setWithdrawas] = useState([]);
   const [verifyCode, setVerifyCode] = useState("");
-  const [errMsg, setErrMsg] = useState({err: "", type: ""});
+  const [errMsg, setErrMsg] = useState({ err: "", type: "" });
   const [eligibleAmount, setEligibleAmount] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [show, setShow] = useState(false);
@@ -59,7 +59,7 @@ export default function WithdrawalForm({props}) {
   const userWithdrawal = useSelector((state) => state.api.withdrawal);
 
   const contactChange = (e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     if (name === "Amount" && value >= 5000) {
       setEligibleAmount(true);
     } else {
@@ -99,7 +99,7 @@ export default function WithdrawalForm({props}) {
         accountDetails.PanCard_No === "" ||
         accountDetails.Type_of_account === "")
     ) {
-      setErrMsg({err: "Please fill in all fields", type: "error"});
+      setErrMsg({ err: "Please fill in all fields", type: "error" });
       setTimeout(() => {
         setErrMsg();
       }, 2000);
@@ -124,7 +124,7 @@ export default function WithdrawalForm({props}) {
                 PanCard_No: withdrawas?.PanCard_No ?? accountDetails.PanCard_No,
                 Amount: accountDetails.Amount,
               },
-              {Authorization: `Bearer ${token}`}
+              { Authorization: `Bearer ${token}` }
             );
             if (res?.message == "Success") {
               setErrMsg({
@@ -150,10 +150,6 @@ export default function WithdrawalForm({props}) {
                 link: "/authentication",
               });
               setShowModal(true);
-              // toast.error("Enable you 2FA for $5000 or more of withdrawals", {
-              //   duration: 3000,
-              //   id: "clipboard",
-              // });
             } else {
               setShow(true);
             }
@@ -204,9 +200,9 @@ export default function WithdrawalForm({props}) {
       {loading && <LoadingSpinner />}
       <title>Withdrawal - Kuber Wins</title>
 
-      <Navbar props={{mainPage: "dashboard", subPage: ""}} />
+      <Navbar props={{ mainPage: "dashboard", subPage: "" }} />
 
-      <section className="sec-dashbaord" style={{backgroundColor: "#f5f6ff"}}>
+      <section className="sec-dashbaord" style={{ backgroundColor: "#f5f6ff" }}>
         <div className="container-fluid">
           <div className="row">
             <Sidebar props={"withdrawal"} />

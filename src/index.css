@@ -71,3 +71,13 @@ code {
 .modal-open {
   padding-right: 0 !important;
 }
+.logo-container {
+  height: 105px;
+  width: 100%;
+  background: #fff;
+  border-radius: 50%;
+  rotate: 22deg;
+  position: absolute;
+  left: 0px;
+  top: -14px;
+}

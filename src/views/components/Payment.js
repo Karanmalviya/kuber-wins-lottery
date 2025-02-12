@@ -1,10 +1,10 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
-import {useLocation} from "react-router";
-import {useEffect} from "react";
-import {Link} from "react-router-dom";
-import {getUserDetail} from "../../utils";
+import { useLocation } from "react-router";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { getUserDetail } from "../../utils";
 
 export default function Payment() {
   const location = useLocation();
@@ -33,18 +33,21 @@ export default function Payment() {
   }, []);
 
   return (
-    <div style={{backgroundColor: "#f5f6ff"}}>
+    <div style={{ backgroundColor: "#f5f6ff" }}>
       <title>Payment - Kuber Wins</title>
 
-      <Navbar props={{mainPage: "about", subPage: ""}} />
+      <Navbar props={{ mainPage: "about", subPage: "" }} />
 
       <section className="container-fluid py-lg-2 my-5">
         <div className="d-flex justify-content-around">
           {payment_url === "success" ? (
-            <div className="card p-4 ticket" style={{boxSizing: "content-box"}}>
+            <div
+              className="card p-4 ticket"
+              style={{ boxSizing: "content-box" }}
+            >
               <div className="d-flex justify-content-center">
                 <svg
-                  style={{position: "absolute"}}
+                  style={{ position: "absolute" }}
                   width="150"
                   height="150"
                   viewBox="0 0 150 150"
@@ -92,7 +95,7 @@ export default function Payment() {
                   style={{ height: "100px", width: "100px" }}
                 /> */}
 
-                  <div style={{position: "relative", marginTop: "160px"}}>
+                  <div style={{ position: "relative", marginTop: "160px" }}>
                     <h2
                       style={{
                         color: "#2A0",
@@ -101,7 +104,7 @@ export default function Payment() {
                     >
                       Transaction{" "}
                     </h2>
-                    <h2 style={{color: "#2A0", fontWeight: "700"}}>
+                    <h2 style={{ color: "#2A0", fontWeight: "700" }}>
                       Completed
                     </h2>
                   </div>
@@ -117,7 +120,7 @@ export default function Payment() {
                     <hr className="payment-line" />
                   </div>
                   <h5 className="fw-bolder mt-4">
-                    ${userDetail?.balance?.toLocaleString()}
+                    Rs.{userDetail?.balance?.toLocaleString()}
                   </h5>
                   <p className="text-secondary">Available Wallet Amount</p>
 
@@ -138,14 +141,14 @@ export default function Payment() {
           ) : (
             <div
               className="card p-4 ticket-failed"
-              style={{boxSizing: "content-box"}}
+              style={{ boxSizing: "content-box" }}
             >
               <div className="d-flex justify-content-center"></div>
               <div>
                 <div className="text-center">
                   <img
                     src="../assets/images/error.png"
-                    style={{height: "100px", width: "100px"}}
+                    style={{ height: "100px", width: "100px" }}
                   />
 
                   <div>
@@ -157,7 +160,7 @@ export default function Payment() {
                     >
                       Transaction{" "}
                     </h2>
-                    <h2 style={{color: "#ee5253", fontWeight: "700"}}>
+                    <h2 style={{ color: "#ee5253", fontWeight: "700" }}>
                       Failed
                     </h2>
                   </div>
@@ -173,7 +176,7 @@ export default function Payment() {
                     <hr className="payment-line" />
                   </div>
                   <h5 className="fw-bolder mt-4">
-                    ${userDetail?.balance?.toLocaleString()}
+                    Rs.{userDetail?.balance?.toLocaleString()}
                   </h5>
                   <p className="text-secondary">Available Wallet Amount</p>
 

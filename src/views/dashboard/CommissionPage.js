@@ -222,7 +222,7 @@ export default function CommissionPage() {
                                     <td>{offset1 + i + 1}</td>
                                     <td>{item?.referralName}</td>
                                     <td>Level {item?.level}</td>
-                                    <td>${item?.amount}</td>
+                                    <td>Rs.{item?.amount}</td>
                                     <td>Deposit Commission</td>
                                     <td>{item?.randomNo}</td>
                                   </tr>
@@ -311,7 +311,7 @@ export default function CommissionPage() {
                                     <td>{offset2 + i + 1}</td>
                                     <td>{item?.referralName}</td>
                                     <td>Level {item?.level}</td>
-                                    <td>${item?.amount}</td>
+                                    <td>Rs.{item?.amount}</td>
                                     <td>Lottery Buy Commission</td>
                                     <td>{item?.randomNo}</td>
                                   </tr>
@@ -400,7 +400,7 @@ export default function CommissionPage() {
                                     <td>{offset3 + i + 1}</td>
                                     <td>{item?.referralName}</td>
                                     <td>Level {item?.level}</td>
-                                    <td>${item?.amount}</td>
+                                    <td>Rs.{item?.amount}</td>
                                     <td>Win Commission</td>
                                     <td>{item?.randomNo}</td>
                                   </tr>

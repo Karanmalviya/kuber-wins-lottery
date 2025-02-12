@@ -1,13 +1,13 @@
-import React, {useState, useEffect} from "react";
-import {Link} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import Sidebar from "../navbar/Sidebar";
 import copy from "copy-to-clipboard";
 import CountDown from "../components/CountDown";
 import AbbrNumber from "../components/AbbrNumber";
-import {encrypt} from "../../utils/encryptdecrypt";
-import {useDispatch, useSelector} from "react-redux";
+import { encrypt } from "../../utils/encryptdecrypt";
+import { useDispatch, useSelector } from "react-redux";
 import {
   fetchAllPurchasedScratchCard,
   fetchBuyLotteryTicket,
@@ -18,11 +18,11 @@ import {
   fetchUserLotteryWinner,
   fetchUserWithDrawal,
 } from "../../features/apiSlice";
-import {toast} from "react-hot-toast";
-import {Pagination} from "@mui/material";
+import { toast } from "react-hot-toast";
+import { Pagination } from "@mui/material";
 import moment from "moment";
 
-export default function DashboardPage({props}) {
+export default function DashboardPage({ props }) {
   const [buyTickets, setBuyTickets] = useState([]);
   const [userWinners, setUserWinners] = useState([]);
   const [userDeposits, setUserDeposits] = useState([]);
@@ -91,13 +91,14 @@ export default function DashboardPage({props}) {
       const scratchDrawSumMap = new Map();
 
       soldScratchData.map((entry) => {
-        const {scratchCardId, createdAt, totalPrice, won, scratchDraw} = entry;
+        const { scratchCardId, createdAt, totalPrice, won, scratchDraw } =
+          entry;
 
         if (
           !latestEntriesMap.has(scratchCardId) ||
           createdAt > latestEntriesMap.get(scratchCardId).createdAt
         ) {
-          latestEntriesMap.set(scratchCardId, {...entry});
+          latestEntriesMap.set(scratchCardId, { ...entry });
         }
 
         totalPriceSumMap.set(
@@ -145,7 +146,7 @@ export default function DashboardPage({props}) {
 
   useEffect(() => {
     if (users) {
-      const {protocol, hostname, port} = window.location;
+      const { protocol, hostname, port } = window.location;
       const emailPrefix = users.email?.split("@")[0];
       const referenceLink = `${protocol}//${hostname}:${port}/#/reference/${emailPrefix}`;
       setReferenceLink(referenceLink);
@@ -370,7 +371,7 @@ export default function DashboardPage({props}) {
     <>
       <title>Dashboard - Kuber Wins</title>
 
-      <Navbar props={{mainPage: "dashboard", subPage: ""}} />
+      <Navbar props={{ mainPage: "dashboard", subPage: "" }} />
 
       <section className="sec-dashbaord">
         <div className="container-fluid">
@@ -379,7 +380,7 @@ export default function DashboardPage({props}) {
 
             <div
               className="col-lg-9 col-sm col-12 dash-right-side ps-lg-5 pe-lg-5 py-4"
-              style={{backgroundColor: "#f5f6ff"}}
+              style={{ backgroundColor: "#f5f6ff" }}
             >
               <div className="row">
                 <div className="col-lg-12">
@@ -400,7 +401,7 @@ export default function DashboardPage({props}) {
                             }}
                             className="img-fluid"
                             alt=""
-                            style={{cursor: "pointer"}}
+                            style={{ cursor: "pointer" }}
                           />
                           {/* <span
                             className="badge btn-info rounded-pill"
@@ -411,7 +412,7 @@ export default function DashboardPage({props}) {
                         </div>
                         <div
                           className="col-lg-3 col-sm col-4 col-md-3 end-3 py-3 px-4"
-                          style={{backgroundColor: "##212529"}}
+                          style={{ backgroundColor: "##212529" }}
                         >
                           <h6>
                             <img
@@ -424,7 +425,7 @@ export default function DashboardPage({props}) {
                             Wallet
                           </h6>
                           <h5 className="text-white fw-bold m-0">
-                            ${users?.balance?.toLocaleString() ?? 0}
+                            Rs.{users?.balance?.toLocaleString() ?? 0}
                           </h5>
                         </div>
                       </div>
@@ -443,7 +444,7 @@ export default function DashboardPage({props}) {
                         <div className="card-body py-2 px-4">
                           <p className="p-0 mb-2">Total Winnings</p>
                           <h3 className="p-0 m-0">
-                            $
+                            Rs.
                             <AbbrNumber
                               props={{
                                 number:
@@ -474,7 +475,7 @@ export default function DashboardPage({props}) {
                         <div className="card-body py-2 px-4">
                           <p className="p-0 mb-2">Total Deposits</p>
                           <h3 className="p-0 m-0">
-                            $
+                            Rs.
                             <AbbrNumber
                               props={{
                                 number:
@@ -504,7 +505,7 @@ export default function DashboardPage({props}) {
                         <div className="card-body py-2 px-4">
                           <p className="p-0 mb-2">Total Withdraw</p>
                           <h3 className="p-0 m-0">
-                            $
+                            Rs.
                             <AbbrNumber
                               props={{
                                 number:
@@ -534,7 +535,7 @@ export default function DashboardPage({props}) {
                         <div className="card-body py-2 px-4">
                           <p className="p-0 mb-2">Commission</p>
                           <h3 className="p-0 m-0">
-                            $
+                            Rs.
                             <AbbrNumber
                               props={{
                                 number:
@@ -558,7 +559,7 @@ export default function DashboardPage({props}) {
               </div>
               <div
                 className="col-lg-12 col-sm col-12 dash-right-side"
-                style={{marginTop: "-14px"}}
+                style={{ marginTop: "-14px" }}
               >
                 <div className="row commission-tab ">
                   <div className="mb-2">
@@ -671,7 +672,7 @@ export default function DashboardPage({props}) {
 
                                         <td
                                           className="text-capitalize text-truncate text-start"
-                                          style={{position: "relative"}}
+                                          style={{ position: "relative" }}
                                         >
                                           <img
                                             src={ticket?.gameInformation?.image}
@@ -701,7 +702,7 @@ export default function DashboardPage({props}) {
                                         </td>
                                         <td>{ticket?.tickets.length}</td>
                                         <td>
-                                          $
+                                          Rs.
                                           {totalTktPrize ? (
                                             <AbbrNumber
                                               props={{
@@ -713,7 +714,7 @@ export default function DashboardPage({props}) {
                                             0
                                           )}
                                         </td>
-                                        <td style={{textAlign: "left"}}>
+                                        <td style={{ textAlign: "left" }}>
                                           {ticket?.draw === "multi-draw" &&
                                             gamePhaseData &&
                                             (() => {
@@ -956,7 +957,7 @@ export default function DashboardPage({props}) {
                                         )}
                                       </td> */}
                                       <td className="text-start ">
-                                        $
+                                        Rs.
                                         {Number(
                                           item?.totalPriceSum
                                         )?.toLocaleString()}
@@ -977,7 +978,7 @@ export default function DashboardPage({props}) {
                                           })()}
                                       </td>
                                       <td className="text-start">
-                                        ${item?.won?.toLocaleString()}
+                                        Rs.{item?.won?.toLocaleString()}
                                       </td>
                                       <td>
                                         <Link

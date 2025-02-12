@@ -415,7 +415,7 @@ export default function TotalWinsPage({props}) {
                                         {winning?.ticketNumber}
                                       </td>
                                       <td style={{textAlign: "left"}}>
-                                        ${winning?.price?.toLocaleString()}
+                                      Rs.{winning?.price?.toLocaleString()}
                                       </td>
                                       <td>
                                         {" "}
@@ -617,7 +617,7 @@ export default function TotalWinsPage({props}) {
                                             })()}
                                       </td>
                                       <td className="text-start">
-                                        ${item?.amount?.toLocaleString()}
+                                      Rs.{item?.amount?.toLocaleString()}
                                       </td>
 
                                       <td>

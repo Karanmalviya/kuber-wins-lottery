@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import Sidebar from "../navbar/Sidebar";
-import {useLocation, useNavigate, useParams} from "react-router";
-import {useDispatch, useSelector} from "react-redux";
+import { useLocation, useNavigate, useParams } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
 import {
   fetchAccountDetailsById,
   fetchCommissionPercent,
@@ -12,14 +12,15 @@ import {
   fetchUser,
   updateDeposit,
 } from "../../features/apiSlice";
-import {upiQr} from "../../utils/generatePaymentQR";
-import {decrypt} from "../../utils/encryptdecrypt";
-import {updateDepositApi} from "../../api/api";
-import {commissionTransaction, CreateCommissionLog} from "../../utils";
+import { upiQr } from "../../utils/generatePaymentQR";
+import { decrypt } from "../../utils/encryptdecrypt";
+import { updateDepositApi } from "../../api/api";
+import { commissionTransaction, CreateCommissionLog } from "../../utils";
+import DepositesPaymentStatus from "./DepositPaymentStatus";
 
 export default function DepositesView() {
   const navigate = useNavigate();
-  const {id} = useParams();
+  const { id } = useParams();
   const userId = localStorage.getItem("userId");
   const [referredData, setReferredData] = useState("");
   const [referByValue, setReferByValue] = useState("");
@@ -52,7 +53,7 @@ export default function DepositesView() {
     dispatch(fetchUser(userId));
     dispatch(fetchCommissionPercent());
     dispatch(fetchReferedUser(userId));
-    dispatch(fetchDeposits({id: userId}));
+    dispatch(fetchDeposits({ id: userId }));
   }, [dispatch, userId]);
 
   useEffect(() => {
@@ -137,7 +138,8 @@ export default function DepositesView() {
     getAccountDetailsByIdData?.amount,
   ]);
 
-  const handleDeposite = async () => {
+  const handleDeposite = async (e) => {
+    e.preventDefault();
     const mData = {
       ...data,
       adminAccountId: getAccountDetailsByIdData?.adminAccountId,
@@ -148,7 +150,7 @@ export default function DepositesView() {
       const value = mData[key];
       params.append(key, value);
     });
-    const res = await updateDepositApi({body: params, token});
+    const res = await updateDepositApi({ body: params, token });
     if (res?.message === "Success") {
       handleCommission();
       navigate("/deposit");
@@ -157,11 +159,12 @@ export default function DepositesView() {
   };
 
   console.log(getAccountDetailsByIdData);
+
   return (
     <>
       <title>Deposites - Kuber Wins</title>
-      <Navbar props={{mainPage: "dashboard", subPage: ""}} />
-      <section className="sec-dashbaord" style={{backgroundColor: "#f5f6ff"}}>
+      <Navbar props={{ mainPage: "dashboard", subPage: "" }} />
+      <section className="sec-dashbaord" style={{ backgroundColor: "#f5f6ff" }}>
         <div className="container-fluid">
           <div className="row">
             <Sidebar props={"deposit"} />
@@ -169,109 +172,135 @@ export default function DepositesView() {
             <div className="col-lg-9 col-sm col-12 dash-right-side ps-lg-5 pe-lg-5 py-4">
               <div className="row">
                 <div className="col-lg-12">
-                  <div className="card card-table p-0">
-                    <div className="card-header py-3 px-4">
-                      <h5 className="mb-0 fs-5">Deposites Details</h5>
-                    </div>
-                    <div className="row px-4 py-4 ">
-                      <div className="col-lg-6 col-md-6 col-12 border-end">
-                        <div className="">
-                          Account Holder Name :{" "}
-                          {depositData?.account_holder_name}
+                  {getAccountDetailsByIdData?.status === 0 ? (
+                    <div className="card card-table p-0">
+                      <div className="card-header py-3 px-4">
+                        <h5 className="mb-0 fs-5">Deposites Details</h5>
+                      </div>
+                      <div className="row px-4 pt-4 pb-2">
+                        <h3 className="border-bottom">
+                          Amount : Rs.{getAccountDetailsByIdData.amount}
+                        </h3>
+                        <div className="col-lg-6 col-md-6 col-12 border-end">
+                          <h6 className="fw-bold">Bank Transfer</h6>
+                          <div className="">
+                            Account Holder Name :{" "}
+                            {depositData?.account_holder_name}
+                          </div>
+                          <div className="mt-3">
+                            Bank Name : {depositData?.bank_name}
+                          </div>
+                          <div className="mt-3">
+                            Account Type : {depositData?.account_type}
+                          </div>
+                          <div className="mt-3">
+                            Account Number : {depositData?.account_number}
+                          </div>
+                          <div className="mt-3">
+                            IFSC Code : {depositData?.ifsc_code}
+                          </div>
                         </div>
-                        <div className="mt-3">
-                          Bank Name : {depositData?.bank_name}
-                        </div>
-                        <div className="mt-3">
-                          Account Type : {depositData?.account_type}
-                        </div>
-                        <div className="mt-3">
-                          Account Number : {depositData?.account_number}
-                        </div>
-                        <div className="mt-3">
-                          IFSC Code : {depositData?.ifsc_code}
+                        <span className="py-3 text-center d-lg-none d-md-none">
+                          OR
+                        </span>
+                        <div className="col-lg-6 col-md-6 col-12">
+                          <h6 className="fw-bold">UPI Transfer</h6>
+                          <div>
+                            {canvas ? (
+                              <div
+                                ref={(node) => {
+                                  if (node && canvas) {
+                                    node.innerHTML = "";
+                                    node.appendChild(canvas);
+                                  }
+                                }}
+                              />
+                            ) : (
+                              <p>Loading QR code...</p>
+                            )}
+                          </div>{" "}
+                          <div className="">UPI ID : {depositData?.upi_id}</div>{" "}
+                          Scan the QR code from any UPI app to complete the
+                          payment.
                         </div>
                       </div>
-                      <span className="py-3 text-center d-lg-none d-md-none">
-                        OR
-                      </span>
-                      <div className="col-lg-6 col-md-6 col-12">
-                        <div>
-                          {canvas ? (
-                            <div
-                              ref={(node) => {
-                                if (node && canvas) {
-                                  node.innerHTML = "";
-                                  node.appendChild(canvas);
-                                }
-                              }}
-                            />
-                          ) : (
-                            <p>Loading QR code...</p>
-                          )}
-                        </div>{" "}
-                        <div className="">UPI ID : {depositData?.upi_id}</div>{" "}
-                        Scan the code using PhonePe, Google Pay or Paytm
+                      <div className="row px-4  pb-2">
+                        <div className="border-top" />
                       </div>
-                    </div>
-                    <div className="px-4">
-                      {getAccountDetailsByIdData?.status === 0 && (
-                        <div className="row">
-                          <div className="col-lg-6 col-md-6 col-12">
-                            <select
-                              className="form-select"
-                              onChange={(e) =>
-                                setData({
-                                  ...data,
-                                  payment_method: e.target.value,
-                                })
-                              }
-                            >
-                              <option value="">Select</option>
-                              <option value="upi">UPI</option>
-                              <option value="bank">Bank</option>
-                            </select>
-                          </div>
-                          <div className="col-lg-6 col-md-6 col-12">
-                            <input
-                              type="file"
-                              className="form-control"
-                              onChange={(e) =>
-                                setData({
-                                  ...data,
-                                  image: e.target.files[0],
-                                })
-                              }
-                            />
-                            Upload the screenshot of the payment you have done
-                          </div>
-                          <div className="col-12 py-2 text-center">
-                            <button
-                              className="btn btn-primary"
-                              onClick={handleDeposite}
-                            >
-                              Submit
-                            </button>
-                          </div>
-                        </div>
-                      )}
 
-                      {getAccountDetailsByIdData?.status === 1 && (
-                        <div className="py-2 text-danger">
-                          Request for Deposite is already been done, Pending
-                          from admin side
-                        </div>
-                      )}
-                      {getAccountDetailsByIdData?.status !== 0 && (
-                        <div>
-                          Payment done throungh{" "}
-                          <span className="text-uppercase">
-                            {getAccountDetailsByIdData?.payment_method} TRANSFER
-                          </span>
-                        </div>
-                      )}
+                      <div className="px-4">
+                        {getAccountDetailsByIdData?.status === 0 && (
+                          <form onSubmit={handleDeposite} className="row">
+                            <div className="col-lg-6 col-md-6 col-12">
+                              <div className="form-lable">
+                                Payment Method{" "}
+                                <span className="text-danger">*</span>
+                              </div>
+                              <select
+                                required
+                                className="form-select"
+                                onChange={(e) =>
+                                  setData({
+                                    ...data,
+                                    payment_method: e.target.value,
+                                  })
+                                }
+                              >
+                                <option value="">Select</option>
+                                <option value="upi">UPI</option>
+                                <option value="bank">Bank</option>
+                              </select>
+                            </div>
+                            <div className="col-lg-6 col-md-6 col-12">
+                              {" "}
+                              <div className="form-lable">
+                                Upload Screentshot (jpg, jpeg, png)
+                                <span className="text-danger">*</span>{" "}
+                              </div>
+                              <input
+                                required
+                                type="file"
+                                className="form-control"
+                                accept=".png, .jpg, .jpeg"
+                                onChange={(e) =>
+                                  setData({
+                                    ...data,
+                                    image: e.target.files[0],
+                                  })
+                                }
+                              />
+                              Upload the screenshot of the payment you have done
+                            </div>
+                            <div className="col-12 py-2 text-center">
+                              <button className="btn btn-primary" type="submit">
+                                Submit
+                              </button>
+                            </div>
+                          </form>
+                        )}
+
+                        {getAccountDetailsByIdData?.status === 1 && (
+                          <div className="py-2 text-danger">
+                            Request for Deposite is already been done, Pending
+                            from admin side
+                          </div>
+                        )}
+                        {getAccountDetailsByIdData?.status !== 0 && (
+                          <div>
+                            Payment done throungh{" "}
+                            <span className="text-uppercase">
+                              {getAccountDetailsByIdData?.payment_method}{" "}
+                              TRANSFER
+                            </span>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
+                  ) : (
+                    <DepositesPaymentStatus
+                      getAccountDetailsByIdData={getAccountDetailsByIdData}
+                    />
+                  )}
                 </div>
               </div>
             </div>

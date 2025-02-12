@@ -1,9 +1,9 @@
-import React, {useState} from "react";
-import {Link} from "react-router-dom";
-import {CreateSubscribeSendMail} from "../../utils";
-import {toast} from "react-hot-toast";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { CreateSubscribeSendMail } from "../../utils";
+import { toast } from "react-hot-toast";
 
-export default function Footer({props}) {
+export default function Footer({ props }) {
   const [mail, setMail] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -429,7 +429,7 @@ export default function Footer({props}) {
                           Dispute Resolution
                         </Link>
                       </li>
-                      <li>
+                      {/* <li>
                         {" "}
                         <Link
                           className="a"
@@ -438,7 +438,7 @@ export default function Footer({props}) {
                         >
                           Fairness &amp; RNG Testing
                         </Link>
-                      </li>
+                      </li> */}
                       <li>
                         {" "}
                         <Link
@@ -466,71 +466,16 @@ export default function Footer({props}) {
                     <div
                     // className="col-lg-4 d-flex justify-content-end"
                     >
-                      <ul className="list-unstyled list-group list-group-horizontal ul-cards">
-                        <li>
-                          <a href="#" title="American Express">
-                            <img
-                              src="assets/images/cards/american-express.png"
-                              className="img-fluid"
-                            />
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" title="Maestro">
-                            <img
-                              src="assets/images/cards/maestro.png"
-                              className="img-fluid"
-                            />
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" title="Visa Electron">
-                            <img
-                              src="assets/images/cards/visa-electron.png"
-                              className="img-fluid"
-                            />
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" title="Visa">
-                            <img
-                              src="assets/images/cards/visa-two.png"
-                              className="img-fluid"
-                            />
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" title="Visa">
-                            <img
-                              src="assets/images/cards/visa.png"
-                              className="img-fluid"
-                            />
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#" title="World Pay">
-                            <img
-                              src="assets/images/cards/world-pay.png"
-                              className="img-fluid"
-                            />
-                          </a>
-                        </li>
-                      </ul>
                       <div
-                        style={{fontSize: "13px", textAlign: "justify"}}
-                        className="text-justify py-4 px-2"
+                        style={{ fontSize: "13px", textAlign: "justify" }}
+                        className="text-justify px-2"
                       >
-                        kuberwins.com is operated by Rockford Holdings B.V.
-                        registered under No. 161827 at Zuikertuintjeweg Z/N
-                        (Zuikertuin Tower), Willemstad, Curaçao. This website is
-                        licensed and regulated by Curaçao eGaming, license No.
-                        1668/JAZ.
-                        <br /> In order to register for this website, the user
-                        is required to accept the General Terms and Conditions.
-                        In the event the{" "}
+                        In order to register for this website, the user is
+                        required to accept the General Terms and Conditions. In
+                        the event the{" "}
                         <Link
                           to={"/general-terms-and-conditions"}
-                          style={{color: "inherit"}}
+                          style={{ color: "inherit" }}
                         >
                           General Terms and Conditions
                         </Link>{" "}
@@ -538,19 +483,6 @@ export default function Footer({props}) {
                         using the products and services before the said update
                         shall become effective, which is a minimum of two weeks
                         after it has been announced.
-                      </div>
-                      <div className="d-flex justify-content-between align-items-center ms-1 px-1">
-                        <div className="">
-                          <p style={{fontSize: "13px"}}>Certified by:</p>
-                        </div>
-                        <div className="">
-                          <a href="https://www.itechlabs.com/certificates/RockfordHoldings/RNG_Certificate_UK_RockfordHoldings_21Jul23.pdf">
-                            <img
-                              style={{height: "84px", width: "186px"}}
-                              src="assets/img/itechlabs_logo.jpg"
-                            />
-                          </a>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -605,9 +537,9 @@ export default function Footer({props}) {
               </div>
               <div className="col-lg-4 py-4 d-flex justify-content-center">
                 <img
-                  src={"assets/images/yOURlogo-footer.png"}
+                  src={process.env.REACT_APP_LOGO}
                   className="img-fluid"
-                  style={{width: 185}}
+                  style={{ width: 185 }}
                   alt=""
                 />
               </div>

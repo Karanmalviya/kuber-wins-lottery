@@ -1,20 +1,20 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import {useForm} from "react-hook-form";
-import {useAuth} from "../../utils/auth";
-import {FormSchema} from "../schema/FormSchema";
-import {BsFillEyeFill, BsFillEyeSlashFill} from "react-icons/bs";
-import {useState} from "react";
+import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useAuth } from "../../utils/auth";
+import { FormSchema } from "../schema/FormSchema";
+import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
+import { useState } from "react";
 
-const LoginPage = ({props}) => {
+const LoginPage = ({ props }) => {
   const auth = useAuth();
-  const {id, password} = FormSchema;
+  const { id, password } = FormSchema;
   const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
     handleSubmit,
-    formState: {errors, isValid},
+    formState: { errors, isValid },
   } = useForm({
     mode: "onChange",
     defaultValues: {
@@ -36,28 +36,28 @@ const LoginPage = ({props}) => {
     <>
       <title>Login - Kuber Wins</title>
 
-      <section className="sec-login" style={{backgroundColor: "#f5f6ff"}}>
+      <section className="sec-login" style={{ backgroundColor: "#f5f6ff" }}>
         <div className="container">
           <div
             className="row d-flex align-items-center justify-content-center"
-            style={{height: "100vh"}}
+            style={{ height: "100vh" }}
           >
             <div className="col-lg-10">
-              <div className="row">
-                <div className="col-lg-4 col-md-4 d-none d-lg-block d-flex justify-content-center align-items-center pe-0">
+              <div className="row d-flex justify-content-center">
+                {/* <div className="col-lg-4 col-md-4 d-none d-lg-block d-flex justify-content-center align-items-center pe-0">
                   <img
                     src="assets/images/login-left-bg_withname.png"
                     className="img-fluid"
                     alt=""
                   />
-                </div>
-                <div className="col-lg-8 col-md-8 bg-white d-flex align-items-center">
+                </div> */}
+                <div className="col-lg-12 col-md-12 bg-white d-flex align-items-center justify-content-center">
                   <div className="px-5 pb-4 pt-3">
                     <h4 className="mb-4">
                       Welcome To&nbsp;
                       <i>
-                        <span style={{color: "#EE015F"}}>KUBER</span>{" "}
-                        <span style={{color: "#4E5FED"}}> WINS</span>
+                        <span style={{ color: "#EE015F" }}>KUBER</span>{" "}
+                        <span style={{ color: "#4E5FED" }}> WINS</span>
                       </i>
                     </h4>
                     <form onSubmit={handleSubmit(onFormSubmit)}>
@@ -69,7 +69,7 @@ const LoginPage = ({props}) => {
                             placeholder="Email Id"
                             {...register(id.key, id.options)}
                             id={id.key}
-                            style={{display: "unset"}}
+                            style={{ display: "unset" }}
                           />
                           <div
                             className="error-msg"
@@ -81,14 +81,14 @@ const LoginPage = ({props}) => {
                         </div>
                         <div className="col-lg-6 col-md-6 mb-2">
                           <label>Password</label>{" "}
-                          <div style={{position: "relative"}}>
+                          <div style={{ position: "relative" }}>
                             <input
                               type={showPassword ? "text" : "password"}
                               className="form-control"
                               placeholder="Password"
                               {...register(password.key, password.options)}
                               id={password.key}
-                              style={{display: "unset"}}
+                              style={{ display: "unset" }}
                             />
                             {showPassword ? (
                               <BsFillEyeFill

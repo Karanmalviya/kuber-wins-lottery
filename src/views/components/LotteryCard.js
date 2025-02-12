@@ -109,7 +109,7 @@ export default function LotteryCard({ props }) {
                     />
                     <Icon icon={"bxs:badge-dollar"} style={{ fontSize: 40 }} />
                     <h2 className="p-rs">
-                      ${(+props?.ticketPrice)?.toLocaleString()}
+                      Rs.{(+props?.ticketPrice)?.toLocaleString()}
                     </h2>
                   </div>
                   <div className="col-lg-4 col-sm col-4">

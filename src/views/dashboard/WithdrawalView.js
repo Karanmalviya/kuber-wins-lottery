@@ -157,7 +157,7 @@ export default function WithdrawalView() {
                                   </td>
                                   <td>
                                     <div style={{float: "left"}}>
-                                      ${(+item?.Amount).toLocaleString()}
+                                      Rs.{(+item?.Amount).toLocaleString()}
                                     </div>
                                   </td>
                                 </tr>{" "}
@@ -176,7 +176,7 @@ export default function WithdrawalView() {
                                   <td>
                                     {" "}
                                     <div style={{float: "left"}}>
-                                      ${users?.balance?.toLocaleString()}
+                                      Rs.{users?.balance?.toLocaleString()}
                                     </div>
                                   </td>
                                 </tr>{" "}

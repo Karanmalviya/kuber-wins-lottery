@@ -105,7 +105,7 @@ export default function Payment() {
                     <hr className="payment-line" />
                   </div>
                   <h5 className="fw-bolder mt-4">
-                    ${data?.wallet?.toLocaleString()}
+                  Rs.{data?.wallet?.toLocaleString()}
                   </h5>
                   <p className="text-secondary">Available Wallet Amount</p>
 
@@ -161,7 +161,7 @@ export default function Payment() {
                     <hr className="payment-line" />
                   </div>
                   <h5 className="fw-bolder mt-4">
-                    ${data?.wallet?.toLocaleString()}
+                  Rs.{data?.wallet?.toLocaleString()}
                   </h5>
                   <p className="text-secondary">Available Wallet Amount</p>
 

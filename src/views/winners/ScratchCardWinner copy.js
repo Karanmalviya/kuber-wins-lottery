@@ -339,7 +339,7 @@ export default function ScratchCardWinner() {
                                         </>
                                       )}
                                       <td>
-                                        ${item?.won_amount?.toLocaleString()}
+                                      Rs.{item?.won_amount?.toLocaleString()}
                                       </td>
 
                                       <td>

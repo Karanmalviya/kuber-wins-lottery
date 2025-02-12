@@ -121,17 +121,17 @@ export default function RegistrationPage({props}) {
             className="row d-flex align-items-center justify-content-center"
             style={{height: "100vh"}}
           >
-            <div className="col-lg-11">
+            <div className="col-lg-12">
               <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
                 <div className="row">
-                  <div
+                  {/* <div
                     className="col-lg-4 col-md-4 d-none d-lg-block pe-0 lgn-img"
                     style={{
                       backgroundImage:
                         "url(assets/images/login-left-bg_withname.png)",
                     }}
-                  ></div>
-                  <div className="col-lg-8 col-md-8 bg-white">
+                  ></div> */}
+                  <div className="col-lg-12 col-md-12 bg-white">
                     <div className="px-5 pb-4 pt-3">
                       <h4 className="mb-4">Register</h4>
                       <div className="row">

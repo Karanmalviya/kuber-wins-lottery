@@ -104,7 +104,7 @@ export default function WithdrawalHistoryPage({props}) {
                                             : item?.tansactionId
                                           : "Pending"}
                                       </td>
-                                      <td>${item?.Amount?.toLocaleString()}</td>
+                                      <td>Rs.{item?.Amount?.toLocaleString()}</td>
 
                                       <td className="text-capitalize">
                                         {new Date(

@@ -390,8 +390,8 @@ export default function Winner({props}) {
                                               "DD/MM/YYYY, HH:mm:ss"
                                             )}
                                           </td>
-                                          <td>USD</td>
-                                          <td>${item?.price}</td>
+                                          <td>RS</td>
+                                          <td>Rs.{item?.price}</td>
                                           <td>
                                             {item?.User?.fname}{" "}
                                             {item?.User?.lname}
