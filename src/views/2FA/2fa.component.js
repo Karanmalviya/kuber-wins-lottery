@@ -25,7 +25,6 @@ export default function TwofaPage(props) {
   useEffect(() => {
     if (formattedData?.id) fetchAdminData(formattedData?.id);
   }, [formattedData?.id]);
-  console.log(admin);
   useEffect(() => {
     if (otp.length === 6) {
       const handle2Fa = async () => {
@@ -52,7 +51,6 @@ export default function TwofaPage(props) {
           ) {
             localStorage.setItem("isVerifiedPassword", encrypt("true"));
             const isVerified = localStorage.getItem("isVerifiedPassword");
-            console.log(encrypt("true"), isVerified, decrypt(isVerified));
             if (decrypt(isVerified) === "true") {
               navigate("/change-password");
             }

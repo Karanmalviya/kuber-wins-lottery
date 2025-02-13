@@ -131,7 +131,6 @@ export const RoutePath = () => {
     }
   }, [subAdminById, adminDataById]);
 
-  // console.log(selected);
 
   const isVerifiedForChangePassword =
     localStorage.getItem("isVerifiedPassword");
@@ -149,9 +148,7 @@ export const RoutePath = () => {
       return <ChangePasswordPageContainer />;
     }
   };
-  // console.log(isRequired2FA(selected.role, selected.twofa_verification));
 
-  console.log(isVerifiedForChangePassword);
   return (
     <Routes>
       <Route exact path="/login" element={<LoginPageContainer />} />

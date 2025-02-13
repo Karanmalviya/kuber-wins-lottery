@@ -37,7 +37,7 @@ export default function LotteryRewardsLogPage(props) {
   const {fetchAllLotteryRewards, count, isLoading, lotteryRewardsAll} = props;
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
-  console.log(lotteryRewardsAll);
+
   useEffect(() => {
     fetchAllLotteryRewards({
       page: page,

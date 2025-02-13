@@ -465,7 +465,6 @@ export default function AddLotteryPhasePage(props) {
                                 });
                               } else {
                                 if (!isValidSchedule) {
-                                  console.log("gggggggggggg");
                                   toast.error(
                                     `Schedule is not allowed to be empty`,
                                     {

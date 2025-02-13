@@ -36,12 +36,6 @@ export default function ChangePasswordPage(props) {
     return errorss;
   };
 
-  // useEffect(() => {
-  //   if (admin.role === "admin") {
-  //     navigate("/profile");
-  //   }
-  // }, [adminData]);
-  // console.log(adminData);
 
   return (
     <main>

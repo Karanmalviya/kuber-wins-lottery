@@ -127,7 +127,6 @@ export default function AllUserDetailPage(props) {
   const selectRegion = (val) => {
     setRegion(val);
   };
-  console.log(transactionById);
 
   return (
     <>
