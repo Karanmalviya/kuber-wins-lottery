@@ -262,7 +262,7 @@ export default function TicketDetailPage({ props }) {
     }
   };
 
-  const isShowFrequency = ticket?.gamePhases?.find(
+  const isShowFrequency = buyTicket?.gamePhases?.find(
     (game) => game.status === 1 && game.showStatus === 1
   );
 
