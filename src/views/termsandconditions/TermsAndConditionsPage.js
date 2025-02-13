@@ -12,7 +12,6 @@ export default function TermsAndConditionsPage({props}) {
     var elementHTML = document.querySelector("#termsAndCondition");
     doc.html(elementHTML, {
       callback: function (doc) {
-        console.log(doc);
         doc.save(moment().format("DDMMYYYYHHmmss") + ".pdf");
         setIsLoad(false);
       },

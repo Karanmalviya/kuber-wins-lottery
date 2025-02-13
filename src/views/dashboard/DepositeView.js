@@ -155,10 +155,8 @@ export default function DepositesView() {
       handleCommission();
       navigate("/deposit");
     }
-    console.log("res", res);
   };
 
-  console.log(getAccountDetailsByIdData);
 
   return (
     <>

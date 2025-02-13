@@ -54,8 +54,6 @@ export default function CommissionPage() {
     dispatch(fetchLotteryRewards({userId}));
   }, [userId]);
 
-  console.log(lotteryRewardsData);
-
   useEffect(() => {
     const referUserMap = new Map(referUser.map((user) => [user.id, user]));
     const otherCommissionMap = new Map(

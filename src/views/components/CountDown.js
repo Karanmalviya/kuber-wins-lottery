@@ -42,11 +42,17 @@ export default function CountDown({ props }) {
     convertUTCToLocalDateTime(props.dateTime),
     props.frequency
   );
-  if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
-    setTimeout(() => {
-      window.location.reload();
-    }, 80);
-  }
+
+  useEffect(() => {
+    if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
+      const timeout = setTimeout(() => {
+        window.location.reload();
+      }, 80);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [days, hours, minutes, seconds]);
+
   return props?.type === "ticket" ? (
     <div className="btn-timer d-flex justify-content-center">
       <span>

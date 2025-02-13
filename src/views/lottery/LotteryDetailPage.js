@@ -91,7 +91,6 @@ export default function LotteryDetailPage({ props }) {
     };
   }, [dispatch, userId, id]);
 
-  console.log(ticket?.gamePhases);
 
   useEffect(() => {
     dispatch(fetchLotteryNumber({ id, ticketQuantity }));
@@ -433,7 +432,7 @@ export default function LotteryDetailPage({ props }) {
   const isShowFrequency = ticket?.gamePhases?.find(
     (game) => game.status === 1 && game.showStatus === 1
   );
-  console.log(isShowFrequency);
+
   return (
     <div style={{ backgroundColor: "#f5f6ff" }}>
       {loading && <LoadingSpinner />}

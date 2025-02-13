@@ -175,7 +175,6 @@ export default function SelfExclusion({props}) {
   }, [contactData.Period]);
 
   function isCustomSelectionValid(startDate, endDate) {
-    console.log(startDate, endDate);
     startDate = new Date(startDate);
     endDate = new Date(endDate);
     const durationMs = endDate - startDate;

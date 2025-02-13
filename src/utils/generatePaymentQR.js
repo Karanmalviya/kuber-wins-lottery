@@ -6,14 +6,9 @@ const generateURL = ({amount, name, upi}) => {
 
 export async function upiQr(query) {
   const {amount, name, upi} = query;
-  console.log(amount, name, upi);
   if (!amount || !name || !upi) {
     return null;
   }
-  
-  //   if (isNaN(amount)) {
-  //     throw new Error("Amount must be a valid number");
-  //   }
 
   const url = generateURL({amount, name, upi});
 

@@ -262,7 +262,10 @@ export default function TicketDetailPage({ props }) {
     }
   };
 
-  console.log(buyTickets);
+  const isShowFrequency = ticket?.gamePhases?.find(
+    (game) => game.status === 1 && game.showStatus === 1
+  );
+
   return (
     <div style={{ backgroundColor: "#f5f6ff" }}>
       <title>Dashboard - Kuber Wins</title>
@@ -336,7 +339,8 @@ export default function TicketDetailPage({ props }) {
             <h6 className="mb-0">
               Minimum Prize Pool:{" "}
               <span className="text-success h4">
-              Rs.{(+buyTicket?.gameInformation?.minPrizePool).toLocaleString()}
+                Rs.
+                {(+buyTicket?.gameInformation?.minPrizePool).toLocaleString()}
               </span>
             </h6>
           </div>
@@ -361,7 +365,7 @@ export default function TicketDetailPage({ props }) {
                       </h6>
 
                       <h3 className="text-success">
-                      Rs.{buyTicket?.User?.balance?.toLocaleString()}
+                        Rs.{buyTicket?.User?.balance?.toLocaleString()}
                       </h3>
                     </div>
                     <div className="col-lg-2 col-md-2 col-sm col-6">
@@ -375,7 +379,7 @@ export default function TicketDetailPage({ props }) {
                     <div className="col-lg-2 col-md-2 col-sm col-6">
                       <h6>Ticket Price :</h6>
                       <h3 className="text-dark fw-bold">
-                      Rs.
+                        Rs.
                         {(+buyTicket?.gameInformation
                           ?.ticketPrice).toLocaleString()}
                         <span className="fw-light">/Ticket</span>
@@ -402,7 +406,7 @@ export default function TicketDetailPage({ props }) {
                     <div className="col-lg-2 col-md-2 col-sm col-6">
                       <h6>Total Won :</h6>
                       <h3 className="text-dark fw-bold">
-                      Rs.{totalWon.toLocaleString()}
+                        Rs.{totalWon.toLocaleString()}
                       </h3>
                     </div>
                   </div>
@@ -448,7 +452,7 @@ export default function TicketDetailPage({ props }) {
                                         )}
                                       </td>
                                       <td>
-                                      Rs.
+                                        Rs.
                                         {restTicketWonPrize ? (
                                           <AbbrNumber
                                             props={{
@@ -512,7 +516,7 @@ export default function TicketDetailPage({ props }) {
                           alt=""
                         />
                         <h5 className="m-0 ps-2 fw-bold">
-                        Rs.{buyTotal?.totalTicketsPrice?.toLocaleString()}
+                          Rs.{buyTotal?.totalTicketsPrice?.toLocaleString()}
                         </h5>
                       </div>
                     </div>
@@ -529,7 +533,7 @@ export default function TicketDetailPage({ props }) {
                   <ul className="nav nav-pills" id="myTab" role="tablist">
                     <li className="nav-item" role="presentation">
                       <button
-                        className="nav-link"
+                        className="nav-link active"
                         id="home-tab"
                         data-bs-toggle="tab"
                         data-bs-target="#home"
@@ -541,26 +545,28 @@ export default function TicketDetailPage({ props }) {
                         Instructions
                       </button>
                     </li>
-                    <li className="nav-item" role="presentation">
-                      <button
-                        className="nav-link active"
-                        id="profile-tab"
-                        data-bs-toggle="tab"
-                        data-bs-target="#profile"
-                        type="button"
-                        role="tab"
-                        aria-controls="profile"
-                        aria-selected="false"
-                      >
-                        Win Bonuses
-                      </button>
-                    </li>
+                    {isShowFrequency && Object.keys(isShowFrequency).length && (
+                      <li className="nav-item" role="presentation">
+                        <button
+                          className="nav-link"
+                          id="profile-tab"
+                          data-bs-toggle="tab"
+                          data-bs-target="#profile"
+                          type="button"
+                          role="tab"
+                          aria-controls="profile"
+                          aria-selected="false"
+                        >
+                          Win Bonuses
+                        </button>
+                      </li>
+                    )}
                   </ul>
                 </div>
                 <div className="card-body pt-0 pb-3 px-0">
                   <div className="tab-content" id="myTabContent">
                     <div
-                      className="tab-pane fade"
+                      className="tab-pane fade show active"
                       id="home"
                       role="tabpanel"
                       aria-labelledby="home-tab"
@@ -573,7 +579,7 @@ export default function TicketDetailPage({ props }) {
                       ></div>
                     </div>
                     <div
-                      className="tab-pane fade show active"
+                      className="tab-pane fade"
                       id="profile"
                       role="tabpanel"
                       aria-labelledby="profile-tab"
@@ -607,7 +613,7 @@ export default function TicketDetailPage({ props }) {
                                     {data?.odds_of_win}%
                                   </div>
                                   <div className="col-lg-4 col-md-4 col-sm col-4 text-center fw-bold">
-                                  Rs.
+                                    Rs.
                                     {data.table
                                       .reduce(
                                         (acc, item) => acc + +item.prize,

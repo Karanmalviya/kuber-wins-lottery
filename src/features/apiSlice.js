@@ -540,7 +540,6 @@ export const updateDeposit = createAsyncThunk(
 export const createDeposit = createAsyncThunk(
   "api/createDeposit",
   async (body, thunkAPI) => {
-    console.log(body);
     try {
       const response = await createDepositApi(body);
       return response.data;

@@ -84,7 +84,7 @@ export default function ScratchCardDetailPage() {
   const AllPurchasedScratchCard = useSelector(
     (state) => state.api.AllPurchasedScratchCard
   );
-  console.log(scratchCardById);
+
   useEffect(() => {
     window.scrollTo(0, 0);
     if (Object.keys(scratchCardById).length) {
@@ -361,9 +361,7 @@ export default function ScratchCardDetailPage() {
   };
 
   const handleLoginToContinue = () => {
-    // alert.show("Login to continue");
   };
-  // console.log(scratchCardData);
   function convertUTCToLocal(utcTimeStr) {
     const utcTime = moment.utc(utcTimeStr, "HH:mm");
     const localTime = utcTime.local();
