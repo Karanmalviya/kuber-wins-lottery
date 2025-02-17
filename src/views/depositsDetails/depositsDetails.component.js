@@ -68,6 +68,8 @@ export default function DepositDetailsPage(props) {
     }
   }, [isSaved]);
 
+  console.log(depositsById);
+
   return (
     <>
       <ToastContainer />
@@ -90,13 +92,13 @@ export default function DepositDetailsPage(props) {
           <Col lg={9} md={9} sm={12} className="mainContantWidth">
             <main id="main" className="main">
               <div className="pagetitle">
-                <h1>WithDrawals</h1>
+                <h1>Deposits</h1>
                 <nav>
                   <ol className="breadcrumb">
                     <li className="breadcrumb-item">
                       <a href="index.html">Home</a>
                     </li>
-                    <li className="breadcrumb-item active">WithDrawals</li>
+                    <li className="breadcrumb-item active">Deposits</li>
                   </ol>
                 </nav>
               </div>
@@ -106,7 +108,7 @@ export default function DepositDetailsPage(props) {
                   <Col lg={12}>
                     <Card className="card">
                       <Card.Body className="card-body">
-                        <h5 className="card-title">WithDrawal Details</h5>
+                        <h5 className="card-title">Deposits Details</h5>
 
                         <div className="table-responsive">
                           <Table
@@ -163,20 +165,22 @@ export default function DepositDetailsPage(props) {
                               <tr>
                                 <td>Payment Method :</td>
                                 <td>
-                                  {depositsById?.payment_method ??
-                                    "Payment is pending"}
+                                  {depositsById?.payment_method
+                                    ? depositsById?.payment_method + " Transfer"
+                                    : "Payment is pending"}
                                 </td>
                               </tr>
+
                               <tr>
                                 <td>Status :</td>
-                                {depositsById?.status === 0 && (
+                                {/* {depositsById?.status === 0 && (
                                   <td>
                                     <span className="badge rounded-pill bg-primary">
                                       Pending
                                     </span>
                                   </td>
-                                )}
-                                {depositsById?.status === 1 && (
+                                )} */}
+                                {depositsById?.status === 0 && (
                                   <td>
                                     <button
                                       className="btn btn-outline-success mx-1 rounded-pill btn-sm"
@@ -216,6 +220,29 @@ export default function DepositDetailsPage(props) {
                                     </span>
                                   </td>
                                 )}
+                              </tr>
+                              <tr>
+                                <td>Screenshot :</td>
+                                <td>
+                                  {depositsById?.image ? (
+                                    <a
+                                      href={depositsById?.image}
+                                      target="_blank"
+                                    >
+                                      <img
+                                        src={depositsById?.image}
+                                        className="img-fluid"
+                                        style={{
+                                          borderRadius: "0px",
+                                          width: "auto",
+                                          height: "400px",
+                                        }}
+                                      />
+                                    </a>
+                                  ) : (
+                                    "Not Uploaded"
+                                  )}
+                                </td>
                               </tr>
                             </tbody>
                           </Table>
