@@ -91,7 +91,6 @@ export default function LotteryDetailPage({ props }) {
     };
   }, [dispatch, userId, id]);
 
-
   useEffect(() => {
     dispatch(fetchLotteryNumber({ id, ticketQuantity }));
   }, [id, ticketQuantity]);
@@ -913,7 +912,11 @@ export default function LotteryDetailPage({ props }) {
                 Pay With Coinbase
               </button> */}
             </div>
-            <span id="err" className="text-danger"></span>
+            {buy?.balance <= ticket?.ticketPrice && (
+              <div id="err" className="text-danger pt-2">
+                Insufficient balance to buy this ticket
+              </div>
+            )}
           </div>
         </Modal.Footer>
       </Modal>
