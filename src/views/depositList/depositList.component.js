@@ -168,7 +168,7 @@ export default function DepositList(props) {
                             </DropdownButton>{" "}
                             &nbsp;entries
                           </h6>
-                          <p>
+                          {/* <p>
                             Search : &nbsp;
                             <Form>
                               <Form.Group>
@@ -180,7 +180,7 @@ export default function DepositList(props) {
                                 />
                               </Form.Group>
                             </Form>
-                          </p>
+                          </p> */}
                         </div>
                         <div className="table-responsive">
                           <Table
@@ -251,7 +251,7 @@ export default function DepositList(props) {
                                           </p>
                                         </div>
                                       </td>
-                                      <td> {row?.amount}</td>
+                                      <td>Rs.{row?.amount}</td>
                                       <td>
                                         {row?.payment_method
                                           ? row?.payment_method?.toUpperCase() + " Transfer"
