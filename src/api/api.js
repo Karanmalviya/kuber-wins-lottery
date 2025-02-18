@@ -904,7 +904,9 @@ export const fetchDepositsApi = async (data) => {
     .get(
       `${path.apiUrl}/api/user/userDeposit/${data.id}?page=${
         data?.page ?? ""
-      }&pageSize=${data?.pageSize ?? ""}&search=${data?.search ?? ""}
+      }&pageSize=${data?.pageSize ?? ""}&search=${
+        data?.search ?? ""
+      }&orderType=DESC&orderBy=updatedAt
 `
     )
     .then((res) => {
