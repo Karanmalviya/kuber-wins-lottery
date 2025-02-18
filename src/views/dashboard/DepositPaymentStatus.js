@@ -52,8 +52,12 @@ export default function DepositesPaymentStatus({ getAccountDetailsByIdData }) {
           </div>
           <div className="mt-2 d-flex">
             <div className="fw-bold">Screenshot</div>&nbsp;:{" "}
-            <a target="_blank" href={getAccountDetailsByIdData?.image}>
-              [View]
+            <a
+              target="_blank"
+              href={getAccountDetailsByIdData?.image}
+              className="btn btn-info inf-rounded btn-sm px-3 pt-sm ms-2"
+            >
+              View
             </a>
           </div>
         </div>

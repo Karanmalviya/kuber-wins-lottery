@@ -35,6 +35,7 @@ import { useRef } from "react";
 import "../../styles/input.css";
 import { AiFillPlusCircle, AiFillMinusCircle } from "react-icons/ai";
 import TermAndConditionDialog from "../components/TermAndConditionDialog";
+import toast from "react-hot-toast";
 
 export default function LotteryDetailPage({ props }) {
   const termsAndConditonRef = useRef();
@@ -191,6 +192,7 @@ export default function LotteryDetailPage({ props }) {
             handleCommission(totalPrice);
           }
           if (PayWalletRes === "Success") {
+            dispatch(fetchUser(userId));
             setLoading(false);
             const queryParams = `type=lottery&transaction_id=${transactionid}&status=success&amount=${totalPrice}`;
             navigate(`/payment/${queryParams}`, {
@@ -204,21 +206,24 @@ export default function LotteryDetailPage({ props }) {
           }
         }
       } catch (error) {
-        setAlertMessage({
-          title: "Lottery ticket reach out of limit",
-          message: error.response.data.message,
-        });
-        setShowModal(true);
+        // setAlertMessage({
+        //   title: "Lottery ticket reach out of limit",
+        //   message: error.response.data.message,
+        // });
+        toast.error(
+          <div>
+            <div>Lottery ticket reach out of limit</div>
+            <div>{error.response.data.message}</div>
+          </div>,
+          { id: "clipboard" }
+        );
+
+        // setShowModal(true);
         setLoading(false);
       }
     } else {
       setLoading(false);
-      setAlertMessage({
-        title: "Insufficient balance",
-        message: "Insufficient Wallet Balance",
-      });
-      setShowModal(true);
-      document.getElementById("err").innerText = "Insufficient balance";
+      toast.error("Insufficient balance", { id: "clipboard" });
     }
   };
   let count = 0;

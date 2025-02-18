@@ -17,6 +17,7 @@ import TermAndConditionDialog from "../components/TermAndConditionDialog";
 import { Modal } from "react-bootstrap";
 import { createDepositApi } from "../../api/api";
 import { Pagination } from "@mui/material";
+import toast from "react-hot-toast";
 
 export default function DepositesPage({ props }) {
   const termsAndConditonRef = useRef();
@@ -58,6 +59,8 @@ export default function DepositesPage({ props }) {
         navigate(
           `/deposit/${encrypt(res?.data?.id.toString()).replace(/=+$/, "")}`
         );
+      } else {
+        toast.error(res?.message);
       }
     }
   };
@@ -131,8 +134,10 @@ export default function DepositesPage({ props }) {
                                     <td>{idx + 1}</td>
                                     <td>Rs.{item?.amount}</td>
                                     <td>
-                                      {item?.payment_method?.toUpperCase() +
-                                        " Transfer" ?? "Not done"}
+                                      {item?.payment_method
+                                        ? item?.payment_method?.toUpperCase() +
+                                          " Transfer"
+                                        : "Not done"}
                                     </td>
                                     <td className="text-capitalize">
                                       {new Date(
