@@ -161,7 +161,7 @@ export const fetchDeposits = (data) => {
     dispatch(fetchDepositsInit());
     axios
       .get(
-        `${baseUrl}/user_deposit?page=${data?.page}&pageSize=${data?.pageSize}&orderType=DESC`
+        `${baseUrl}/user_deposit?page=${data?.page}&pageSize=${data?.pageSize}&orderType=DESC&orderBy=updatedAt`
       )
       .then((response) => {
         dispatch(fetchDepositsSuccess(response.data.data));

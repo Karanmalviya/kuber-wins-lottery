@@ -173,14 +173,14 @@ export default function DepositDetailsPage(props) {
 
                               <tr>
                                 <td>Status :</td>
-                                {/* {depositsById?.status === 0 && (
+                                {depositsById?.status === 0 && (
                                   <td>
                                     <span className="badge rounded-pill bg-primary">
-                                      Pending
+                                      Payment is pending from user side
                                     </span>
                                   </td>
-                                )} */}
-                                {depositsById?.status === 0 && (
+                                )}
+                                {depositsById?.status === 1 && (
                                   <td>
                                     <button
                                       className="btn btn-outline-success mx-1 rounded-pill btn-sm"

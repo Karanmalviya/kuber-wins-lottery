@@ -253,8 +253,9 @@ export default function DepositList(props) {
                                       </td>
                                       <td> {row?.amount}</td>
                                       <td>
-                                        {" "}
-                                        {row?.payment_method ?? "Not done"}
+                                        {row?.payment_method
+                                          ? row?.payment_method?.toUpperCase() + " Transfer"
+                                          : "Not done"}
                                       </td>
                                       <td>{status(row?.status)}</td>
                                       <td>
