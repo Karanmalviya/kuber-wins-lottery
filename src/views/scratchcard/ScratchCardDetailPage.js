@@ -1,11 +1,11 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Footer from "../footer/Footer";
 import Navbar from "../navbar/Navbar";
-import {decrypt} from "../../utils/encryptdecrypt";
-import {Link, useNavigate, useParams} from "react-router-dom";
-import {buyScratchCard, coinbasePayment} from "../../utils/index";
+import { decrypt } from "../../utils/encryptdecrypt";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { buyScratchCard, coinbasePayment } from "../../utils/index";
 import $ from "jquery";
-import {walletPayment} from "../../utils/index";
+import { walletPayment } from "../../utils/index";
 import LoadingSpinner from "../components/LoadingSpinner";
 import "swiper/css";
 import "swiper/css/autoplay";
@@ -15,13 +15,13 @@ import "swiper/less/pagination";
 import "swiper/css/scrollbar";
 import ScratchCoutDown from "./ScratchCoutDown";
 import HtmlToFormattedText from "../../utils/htmltoFormattedText";
-import {useAuth} from "../../utils/auth";
+import { useAuth } from "../../utils/auth";
 import Skeleton from "@mui/material/Skeleton";
-import {AiOutlineMinusCircle, AiOutlinePlusCircle} from "react-icons/ai";
+import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import CustomModalAlert from "../../utils/CustomModalAlert";
-import {generateTransactionId} from "../../utils/generateTransactionId";
+import { generateTransactionId } from "../../utils/generateTransactionId";
 import moment from "moment";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   clearScratchCardData,
   fetchAllPurchasedScratchCard,
@@ -30,7 +30,7 @@ import {
   fetchUser,
 } from "../../features/apiSlice";
 import LoadingBar from "react-top-loading-bar";
-import {Modal} from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import TermAndConditionDialog from "../components/TermAndConditionDialog";
 
 export default function ScratchCardDetailPage() {
@@ -40,7 +40,7 @@ export default function ScratchCardDetailPage() {
   const refLoading = useRef(false);
   const users = useAuth();
   const navigate = useNavigate();
-  const {id} = useParams();
+  const { id } = useParams();
   const userId = localStorage.getItem("userId");
   const scratch_card_id = decrypt(id);
   const [scratchCardData, setScratchCardsData] = useState([]);
@@ -125,7 +125,7 @@ export default function ScratchCardDetailPage() {
 
   const openModal = () => {
     $("body").addClass("modal-open");
-    $("body").css({overflow: "hidden", "padding-right": "15px"});
+    $("body").css({ overflow: "hidden", "padding-right": "15px" });
     $("#buy-now-modal").addClass("show");
     $("#buy-now-modal").css("display", "block");
     $("#buy-now-modal-bg").addClass("modal-backdrop-1 fade show");
@@ -179,7 +179,7 @@ export default function ScratchCardDetailPage() {
         description: `${multiDraw} Scratches of ${scratchCardData.card_name.toString()} Scratch Card are purchased`,
         transactionType: "Card_Purchase",
       },
-      {Authorization: `Bearer ${localStorage.getItem("accessToken")}`},
+      { Authorization: `Bearer ${localStorage.getItem("accessToken")}` },
       userId
     );
     if (res.message === "Success") {
@@ -202,6 +202,7 @@ export default function ScratchCardDetailPage() {
     };
     const res = await buyScratchCard(body);
     if (res.message === "Success") {
+      dispatch(fetchUser(userId));
       setLoading(false);
       // closeModal();
       setShow(false);
@@ -360,8 +361,7 @@ export default function ScratchCardDetailPage() {
     window.location.href = url;
   };
 
-  const handleLoginToContinue = () => {
-  };
+  const handleLoginToContinue = () => {};
   function convertUTCToLocal(utcTimeStr) {
     const utcTime = moment.utc(utcTimeStr, "HH:mm");
     const localTime = utcTime.local();
@@ -435,17 +435,17 @@ export default function ScratchCardDetailPage() {
       <title>{scratchCardData.card_name} - Kuber Wins</title>
       <LoadingBar ref={ref} color="rgb(245, 246, 255)" />
 
-      <Navbar props={{mainPage: "scratchcard", subPage: "details"}} />
+      <Navbar props={{ mainPage: "scratchcard", subPage: "details" }} />
       <section className="sec-scratch-cards-details bg-white pb-4">
         <div className="container">
           <div className="row pt-5 mb-4">
-            <div className="col-lg-6 mb-4" style={{userSelect: "none"}}>
+            <div className="col-lg-6 mb-4" style={{ userSelect: "none" }}>
               {scratchCardData?.image ? (
                 <>
                   <div className="card card-img">
                     <p
                       className="p-label-lotto text-capitalize"
-                      style={{overflow: "visible"}}
+                      style={{ overflow: "visible" }}
                     >
                       {scratchCardData?.card_type?.replace("-", " ")}
                     </p>
@@ -475,7 +475,7 @@ export default function ScratchCardDetailPage() {
                   ) : (
                     <div
                       className="row  time-row mb-lg-5"
-                      style={{marginBottom: "40px"}}
+                      style={{ marginBottom: "40px" }}
                     />
                   )}
 
@@ -500,7 +500,7 @@ export default function ScratchCardDetailPage() {
               <h5 className="actual-p mb-4">
                 Price :{" "}
                 <span>
-                Rs.{scratchCardData?.ticketPrize?.toLocaleString()}/Play
+                  Rs.{scratchCardData?.ticketPrize?.toLocaleString()}/Play
                 </span>
               </h5>
               <div className="card multiple-crd col-lg-12 mb-3">
@@ -530,7 +530,7 @@ export default function ScratchCardDetailPage() {
                           <div className="d-flex justify-content-center">
                             <div
                               className="d-flex mulitDraw"
-                              style={{width: "160px"}}
+                              style={{ width: "160px" }}
                             >
                               <AiOutlineMinusCircle
                                 className="multiDraw-icon"
@@ -573,7 +573,7 @@ export default function ScratchCardDetailPage() {
                             <div
                               className="text-danger text-enter"
                               id="multiDraw-error"
-                              style={{fontSize: "13px"}}
+                              style={{ fontSize: "13px" }}
                             >
                               {errorMessage}
                             </div>
@@ -647,7 +647,7 @@ export default function ScratchCardDetailPage() {
                   <h6 className="mt-4 mb-1">
                     Total Price :{" "}
                     <span className="fw-bold price-d">
-                    Rs.{grandTotal?.toLocaleString()}
+                      Rs.{grandTotal?.toLocaleString()}
                     </span>
                   </h6>
                   <p
@@ -742,7 +742,7 @@ export default function ScratchCardDetailPage() {
             </span>
           </div>
         </Modal.Body>
-        <Modal.Footer className="d-inline" style={{lineHeight: "9px"}}>
+        <Modal.Footer className="d-inline" style={{ lineHeight: "9px" }}>
           <div className="mb-3">
             <span className="">
               Total Draws :{" "}
@@ -751,7 +751,7 @@ export default function ScratchCardDetailPage() {
             <span className="float-end">
               Total Amount :{" "}
               <span className="fw-bold text-black">
-              Rs.{grandTotal?.toLocaleString()}
+                Rs.{grandTotal?.toLocaleString()}
               </span>
             </span>
           </div>
