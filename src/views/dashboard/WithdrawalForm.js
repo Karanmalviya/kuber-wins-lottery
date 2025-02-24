@@ -88,7 +88,7 @@ export default function WithdrawalForm({ props }) {
   );
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
 
     if (
       (!withdrawas?.Account_Holder_Name || accountDetails.Amount == "") &&
@@ -176,7 +176,10 @@ export default function WithdrawalForm({ props }) {
       email: user.email,
       code: verifyCode,
     });
-    if (response.message === "Authentication successful for Kuber Wins Game") {
+    if (
+      response.message === "Authentication successful for LifeTime Lotto Game"
+    ) {
+      handleSubmit();
       toast.success("Verified Successfully", {
         duration: 3000,
         id: "clipboard",

@@ -1288,3 +1288,8 @@ body.react-confirm-alert-body-element {
   /* padding-left: -25px !important;
   padding-right: -25px !important; */
 }
+.upi-btn {
+  background-color: #ebebeb !important ;
+  color: #000 !important;
+  border: 1px solid #00a3ff !important;
+}

@@ -17,6 +17,7 @@ import { decrypt } from "../../utils/encryptdecrypt";
 import { updateDepositApi } from "../../api/api";
 import { commissionTransaction, CreateCommissionLog } from "../../utils";
 import DepositesPaymentStatus from "./DepositPaymentStatus";
+import copy from "copy-to-clipboard";
 
 export default function DepositesView() {
   const navigate = useNavigate();
@@ -24,6 +25,7 @@ export default function DepositesView() {
   const userId = localStorage.getItem("userId");
   const [referredData, setReferredData] = useState("");
   const [referByValue, setReferByValue] = useState("");
+  const [isCopied, setIsCopied] = useState("");
   const [percent, setPercent] = useState(null);
   const [level, setLevel] = useState([]);
   const [transactionCount, setTransactionCount] = useState(0);
@@ -156,8 +158,6 @@ export default function DepositesView() {
       navigate("/deposit");
     }
   };
-
-
   return (
     <>
       <title>Deposites - Kuber Wins</title>
@@ -207,19 +207,64 @@ export default function DepositesView() {
                             {canvas ? (
                               <div
                                 ref={(node) => {
-                                  if (node && canvas) {
+                                  if (node && canvas?.canvas) {
                                     node.innerHTML = "";
-                                    node.appendChild(canvas);
+                                    node.appendChild(canvas?.canvas);
                                   }
                                 }}
                               />
                             ) : (
                               <p>Loading QR code...</p>
                             )}
+                            <a
+                              download
+                              href={canvas?.canvas?.toDataURL(canvas?.canvas)}
+                              className="btn btn-info inf-rounded btn-sm px-3 ms-2"
+                            >
+                              Download QR
+                            </a>
                           </div>{" "}
-                          <div className="">UPI ID : {depositData?.upi_id}</div>{" "}
-                          Scan the QR code from any UPI app to complete the
-                          payment.
+                          <div className="">
+                            UPI ID : {depositData?.upi_id}{" "}
+                            <img
+                              src={
+                                "assets/images/material-symbols_file-copy-outline.png"
+                              }
+                              onClick={() => {
+                                copy(depositData?.upi_id);
+                                setIsCopied("Copied");
+                                setTimeout(() => {
+                                  setIsCopied("");
+                                }, 2000);
+                              }}
+                              className="img-fluid"
+                              alt=""
+                              style={{ cursor: "pointer", height: "16px" }}
+                            />
+                            {isCopied}
+                          </div>{" "}
+                          <span style={{ fontSize: "13px" }}>
+                            Scan the QR code from any UPI app to complete the
+                            payment.
+                          </span>
+                          <div
+                            style={{ fontSize: "13px" }}
+                            className="d-block d-sm d-lg-none d-md-none"
+                          >
+                            OR <br /> Click "Pay by UPI" button to make payment
+                            directly from any UPI App.
+                            <a
+                              href={canvas?.url}
+                              className="btn inf-rounded btn-sm px-3 ms-2 upi-btn"
+                            >
+                              Pay by{" "}
+                              <img
+                                src="./assets/images/upi-logo.png"
+                                className="img-fluid"
+                                style={{ height: "18px" }}
+                              />
+                            </a>
+                          </div>
                         </div>
                       </div>
                       <div className="row px-4  pb-2">
@@ -267,7 +312,10 @@ export default function DepositesView() {
                                   })
                                 }
                               />
-                              Upload the screenshot of the payment you have done
+                              <span style={{ fontSize: "13px" }}>
+                                Upload the screenshot of the payment you have
+                                done
+                              </span>
                             </div>
                             <div className="col-12 py-2 text-center">
                               <button className="btn btn-primary" type="submit">
