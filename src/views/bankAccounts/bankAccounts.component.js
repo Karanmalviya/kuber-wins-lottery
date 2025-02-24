@@ -16,8 +16,13 @@ import ScrollToTop from "react-scroll-to-top";
 export default function BankAccountsPage(props) {
   const [openSidebar, setOpenSidebar] = useState(false);
   const navigate = useNavigate();
-  const { isLoading, bankAccounts, fetchBankAccount, updateBankAccount } =
-    props;
+  const {
+    isLoading,
+    bankAccounts,
+    fetchBankAccount,
+    updateBankAccount,
+    isSaved,
+  } = props;
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const [search, setSearch] = useState("");
@@ -29,7 +34,7 @@ export default function BankAccountsPage(props) {
       pageSize: limit,
       search: search.trim(),
     });
-  }, [page, limit, search, isUpdate]);
+  }, [page, limit, search, isSaved]);
 
   const definePage = (p) => {
     setPage(p);

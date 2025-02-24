@@ -86,9 +86,6 @@ export const updateBankAccount = (data) => {
             theme: "light",
           });
           dispatch(updateBankAccountSuccess(response.data));
-          setTimeout(() => {
-            fetchBankAccount({});
-          }, 1000);
         })
         .catch(function (error) {
           toast(error.response.data.message, {
