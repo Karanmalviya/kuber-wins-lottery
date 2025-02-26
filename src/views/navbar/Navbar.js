@@ -164,7 +164,7 @@ export default function Navbar({ props }) {
                   <h5 className="text-light mt-1 d-flex align-items-center">
                     <img
                       src={
-                        "assets/images/material-symbols_account-balance-wallet-old.png"
+                        "/assets/images/material-symbols_account-balance-wallet-old.png"
                       }
                       className="img-fluid"
                       style={{ filter: "brightness(0) invert(1)" }}

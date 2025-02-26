@@ -1,30 +1,26 @@
-import React, {useRef, useState} from "react";
+import React, { useRef, useState } from "react";
 import Footer from "../footer/Footer";
 import Navbar from "../navbar/Navbar";
-import {useNavigate, useParams} from "react-router-dom";
-import {useEffect} from "react";
-import {decrypt} from "../../utils/encryptdecrypt";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { decrypt } from "../../utils/encryptdecrypt";
 import AbbrNumber from "../components/AbbrNumber";
 import HtmlToFormattedText from "../../utils/htmltoFormattedText";
 import ScratchCardScratcher from "./ScratchCardScratcher";
 import Tooltip from "@mui/material/Tooltip";
 import $ from "jquery";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   clearScratchCardData,
-  clearScratchCardNumber,
-  clearScratchCardNumberData,
   fetchScratchCardNumberData,
   fetchScratchCardNumbers,
   fetchScratchCardsById,
   fetchUser,
-  playAllScratchCards,
 } from "../../features/apiSlice";
 import LoadingBar from "react-top-loading-bar";
-import TouchDeviceScratch from "./TouchDeviceScratch";
-import {playAllScratchCard} from "../../api/api";
+import { playAllScratchCard } from "../../api/api";
 import LoadingSpinner from "../components/LoadingSpinner";
-import {Backdrop} from "@mui/material";
+import { Backdrop } from "@mui/material";
 
 export default function ScratchCardPlay() {
   const childRef = useRef(null);
@@ -32,7 +28,7 @@ export default function ScratchCardPlay() {
   const refLoading = useRef(false);
   const ref = useRef();
   const dispatch = useDispatch();
-  const {id} = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
   const userId = localStorage.getItem("userId");
   const scratch_card_id = decrypt(id);
@@ -155,11 +151,6 @@ export default function ScratchCardPlay() {
           playAllWin: playAllWin.length,
         })
       );
-
-      // return () => {
-      //   dispatch(clearScratchCardNumberData());
-      //   // dispatch(clearScratchCardData());
-      // };
     }
   }, [scratchCardNumber, scratchCardData]);
 
@@ -171,7 +162,7 @@ export default function ScratchCardPlay() {
         .replace(/[^\w\s-]/g, "")
         .replace(/[\s_-]+/g, "-")
         .replace(/^-+|-+$/g, "")}/${id}`,
-      {state: {playAllData: {}, type: scratchCardData.card_type}}
+      { state: { playAllData: {}, type: scratchCardData.card_type } }
     );
   };
 
@@ -179,10 +170,6 @@ export default function ScratchCardPlay() {
     window.scrollTo(0, 0);
     dispatch(fetchUser(userId));
     dispatch(fetchScratchCardsById(scratch_card_id));
-    return () => {
-      // dispatch(clearScratchCardData());
-      // dispatch(clearScratchCardNumber());
-    };
   }, [dispatch, userId, scratch_card_id]);
 
   useEffect(() => {
@@ -203,7 +190,7 @@ export default function ScratchCardPlay() {
         return parsedData?.[0].schedule;
       } catch (error) {}
     };
-    setFrequencySchedule({frequency: frequency(), schedule: schedule()});
+    setFrequencySchedule({ frequency: frequency(), schedule: schedule() });
   }, [scratchCardData]);
 
   const allDataLoaded = scratchCardByIdLoading && scratchCardNumberLoading;
@@ -233,10 +220,10 @@ export default function ScratchCardPlay() {
           .replace(/[\s_-]+/g, "-")
           .replace(/^-+|-+$/g, "");
         const path = `/scratch-cards-buy/${cardName}/${id}`;
-        const state = {playAllData, type: scratchCardData.card_type};
+        const state = { playAllData, type: scratchCardData.card_type };
         setPlayAllLoading(true);
         setLoading(false);
-        return navigate(path, {state});
+        return navigate(path, { state });
       }
     }
 
@@ -244,11 +231,6 @@ export default function ScratchCardPlay() {
   };
 
   const [show, setShow] = useState(false);
-
-  const handleTouchDeviceScratch = () => {
-    setIsMobileDevice(true);
-    return <TouchDeviceScratch show={show} />;
-  };
 
   const openModal = () => {
     $("body").addClass("modal-open");
@@ -298,10 +280,10 @@ export default function ScratchCardPlay() {
     <div>
       {loading && <LoadingSpinner />}
       <title>{scratchCardData.card_name} - Kuber Wins</title>
-      <Navbar props={{mainPage: "scratchcard", subPage: "details"}} />
+      <Navbar props={{ mainPage: "scratchcard", subPage: "details" }} />
       <LoadingBar ref={ref} color="rgb(245, 246, 255)" />
 
-      {isMobileDevice && <Backdrop open={true} sx={{zIndex: 99}} />}
+      {isMobileDevice && <Backdrop open={true} sx={{ zIndex: 99 }} />}
       <section
         className={`sec-scratch-cards-details scratch-cards-scratch bg-white pb-4 ${
           isMobileDevice && `bg-backdrop bg-disable`
@@ -311,7 +293,7 @@ export default function ScratchCardPlay() {
           <div className="row pt-5 mb-5 ">
             <div
               className={`col-lg-6 col-md-12 pb-3 `}
-              style={{userSelect: "none", zIndex: 99, position: "relative"}}
+              style={{ userSelect: "none", zIndex: 99, position: "relative" }}
             >
               {isMobileDevice && (
                 <span
@@ -321,7 +303,7 @@ export default function ScratchCardPlay() {
                   <i className="fa fa-times " />
                 </span>
               )}
-              <div style={{height: "400px"}}>
+              <div style={{ height: "400px" }}>
                 <div>
                   {startPlay ? (
                     <ScratchCardScratcher
@@ -342,7 +324,7 @@ export default function ScratchCardPlay() {
                     <div className="card card-img">
                       <p
                         className="p-label-lotto text-capitalize"
-                        style={{overflow: "visible"}}
+                        style={{ overflow: "visible" }}
                       >
                         {scratchCardData?.card_type?.replace("-", " ")}
                       </p>
@@ -351,7 +333,7 @@ export default function ScratchCardPlay() {
                         loading="lazy"
                         alt="images"
                         className="img-fluid"
-                        src="../assets/images/imgpsh_fullsize_anim-12.png"
+                        src="./assets/images/imgpsh_fullsize_anim-12.png"
                         style={{
                           position: "absolute",
                           width: "135%",
@@ -372,7 +354,7 @@ export default function ScratchCardPlay() {
                   <div
                     className={`card-footer`}
                     style={{
-                      backgroundImage: 'url("../assets/img/footer.png")',
+                      backgroundImage: 'url("./assets/img/footer.png")',
                       position: "relative",
                       top: "34px",
                     }}
@@ -392,8 +374,8 @@ export default function ScratchCardPlay() {
                             "N/A")}
                       {scratchMessage && (
                         <img
-                          src="../assets/img/scratch-line.svg"
-                          style={{height: "23px", width: "60px"}}
+                          src="./assets/img/scratch-line.svg"
+                          style={{ height: "23px", width: "60px" }}
                         />
                       )}
                     </h5>
@@ -440,7 +422,7 @@ export default function ScratchCardPlay() {
                 className="mt-3"
                 style={
                   scratchCardData?.card_type === "single-scratch"
-                    ? {visibility: "hidden"}
+                    ? { visibility: "hidden" }
                     : {}
                 }
               >
@@ -456,7 +438,7 @@ export default function ScratchCardPlay() {
                 <div className="col-6 text-start">
                   <div className="pb-0 mb-1">
                     <img
-                      src="../assets/images/ph_trophy-fill.png"
+                      src="./assets/images/ph_trophy-fill.png"
                       className="img-fluid me-2"
                     />{" "}
                     Won{" "}
@@ -680,14 +662,6 @@ export default function ScratchCardPlay() {
             </div>
           </div>
         </div>
-        {/* Mobile Scrtach */}
-        {/* {isMobileDevice && (
-          <TouchDeviceScratch
-            ref={mobileChildRef}
-            props={isMobileDevice}
-            play={play}
-          />
-        )} */}
       </section>
 
       <Footer props={""} />

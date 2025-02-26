@@ -4,7 +4,6 @@ import Navbar from "../navbar/Navbar";
 import { decrypt } from "../../utils/encryptdecrypt";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { buyScratchCard, coinbasePayment } from "../../utils/index";
-import $ from "jquery";
 import { walletPayment } from "../../utils/index";
 import LoadingSpinner from "../components/LoadingSpinner";
 import "swiper/css";
@@ -114,23 +113,6 @@ export default function ScratchCardDetailPage() {
     }
   }, [id, scratchCardData]);
 
-  const closeModal = () => {
-    $("body").removeClass("modal-open");
-    $("body").removeAttr("style");
-    $("#buy-now-modal").removeClass("show");
-    $("#buy-now-modal").removeAttr("style");
-    $("#buy-now-modal-bg").removeClass("modal-backdrop fade show");
-    document.getElementById("err").innerText = "";
-  };
-
-  const openModal = () => {
-    $("body").addClass("modal-open");
-    $("body").css({ overflow: "hidden", "padding-right": "15px" });
-    $("#buy-now-modal").addClass("show");
-    $("#buy-now-modal").css("display", "block");
-    $("#buy-now-modal-bg").addClass("modal-backdrop-1 fade show");
-  };
-
   const filteredSold = scratchCardsSold.filter(
     (item) => item.UserId == +userId && item.scratchCardId == +scratch_card_id
   );
@@ -204,7 +186,6 @@ export default function ScratchCardDetailPage() {
     if (res.message === "Success") {
       dispatch(fetchUser(userId));
       setLoading(false);
-      // closeModal();
       setShow(false);
       navigate(
         `/payment/${`type=scratchcard&transaction_id=${transactionId}&status=success&amount=${grandTotal}`}`,
@@ -452,7 +433,7 @@ export default function ScratchCardDetailPage() {
                     <img
                       draggable={false}
                       className="img-fluid"
-                      src="../assets/images/imgpsh_fullsize_anim-12.png"
+                      src="./assets/images/imgpsh_fullsize_anim-12.png"
                       style={{
                         position: "absolute",
                         width: "135%",
@@ -481,7 +462,8 @@ export default function ScratchCardDetailPage() {
 
                   <div className="card-footer scratch-card-shadow-play">
                     <h5>
-                      Top Prize : ${scratchCardData?.topPrize?.toLocaleString()}
+                      Top Prize : Rs.
+                      {scratchCardData?.topPrize?.toLocaleString()}
                     </h5>
                   </div>
                 </>

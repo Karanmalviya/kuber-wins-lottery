@@ -5,7 +5,7 @@ import CountDown from "./CountDown";
 import { encrypt } from "../../utils/encryptdecrypt";
 
 export default function LotteryCard({ props }) {
-  const defaultImage = "../assets/images/scratch-cards/scratch-cards-5.jpg";
+  const defaultImage = "./assets/images/scratch-cards/scratch-cards-5.jpg";
   let daily = [];
   let monthly = [];
   let weekly = [];
@@ -61,14 +61,14 @@ export default function LotteryCard({ props }) {
               height="228px !important"
             />
             <img
-              src="../assets/images/Union (2).png"
+              src="./assets/images/Union (2).png"
               className="img-fluid ticket-punch"
               alt={props?.gameName}
               width="155px"
               height="250px"
             />
             <img
-              src="../assets/images/circle-Union.png"
+              src="./assets/images/circle-Union.png"
               className="img-fluid ticket-circle"
               alt={props?.gameName}
               width="155px"

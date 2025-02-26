@@ -23,7 +23,7 @@ export default function ScratchCard({ props }) {
         src={
           props.image
             ? props.image
-            : "../assets/images/scratch-cards/scratch-cards-1.jpg"
+            : "./assets/images/scratch-cards/scratch-cards-1.jpg"
         }
         alt=""
         loading="lazy"

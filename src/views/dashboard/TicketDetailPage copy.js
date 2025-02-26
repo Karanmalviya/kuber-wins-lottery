@@ -1,9 +1,9 @@
-import React, {useState, useEffect, useRef} from "react";
-import {Link, useParams} from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { Link, useParams } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import CountDown from "../components/CountDown";
-import {decrypt, encrypt} from "../../utils/encryptdecrypt";
+import { decrypt, encrypt } from "../../utils/encryptdecrypt";
 import AbbrNumber from "../components/AbbrNumber";
 import {
   fetchBuyLotteryTicket,
@@ -11,13 +11,13 @@ import {
   fetchUserBuyLottery,
   fetchUserLotteryWinner,
 } from "../../features/apiSlice";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LoadingBar from "react-top-loading-bar";
 
-export default function TicketDetailPage({props}) {
+export default function TicketDetailPage({ props }) {
   const ref = useRef();
   const dispatch = useDispatch();
-  const {id: ticketId, number: ticketNumber} = useParams();
+  const { id: ticketId, number: ticketNumber } = useParams();
   const [activeTicket, setActiveTicket] = useState({});
   const [buyTickets, setBuyTickets] = useState([]);
   const [buyTicket, setBuyTicket] = useState({});
@@ -59,7 +59,7 @@ export default function TicketDetailPage({props}) {
   useEffect(() => {
     window.scrollTo(0, 0);
     if (Object.keys(buyLotteryTicketById).length) {
-      const {lotteryId} = buyLotteryTicketById;
+      const { lotteryId } = buyLotteryTicketById;
       dispatch(fetchLotteryTicketDetails(lotteryId));
       setLotteryId(lotteryId);
     }
@@ -70,7 +70,7 @@ export default function TicketDetailPage({props}) {
       setBuyTicket(buyLotteryTicketById);
     }
     if (Object.keys(lotteryTicketDetails).length) {
-      const {maxNumberTickets, sold} = lotteryTicketDetails;
+      const { maxNumberTickets, sold } = lotteryTicketDetails;
       setTotalGenTickets(+maxNumberTickets);
       setAvailableTickets(+maxNumberTickets - sold);
     }
@@ -184,11 +184,11 @@ export default function TicketDetailPage({props}) {
   }, [buyLotteryTicketByIdLoading]);
 
   return (
-    <div style={{backgroundColor: "#f5f6ff"}}>
+    <div style={{ backgroundColor: "#f5f6ff" }}>
       <title>Dashboard - Kuber Wins</title>
       <LoadingBar ref={ref} color={color} id="bar" />
 
-      <Navbar props={{mainPage: "dashboard", subPage: "ticketDetail"}} />
+      <Navbar props={{ mainPage: "dashboard", subPage: "ticketDetail" }} />
       <section className="sec-ticket-dtls mb-5 mt-5 pb-5">
         <div className="container">
           <div className="row d-flex justify-content-center align-items-center">
@@ -197,7 +197,7 @@ export default function TicketDetailPage({props}) {
                 className="card crd-img-dtls border-0 bg-transparent"
                 style={{
                   backgroundImage:
-                    "url('../../../assets/images/imgpsh_fullsize_anim-14.jpg')",
+                    "url('./assets/images/imgpsh_fullsize_anim-14.jpg')",
                 }}
               >
                 <div className="card-body p-0 text-center">
@@ -212,7 +212,7 @@ export default function TicketDetailPage({props}) {
                       <div className="col-lg-8">
                         <p
                           className="text-white"
-                          style={{textAlign: "left", marginBottom: 0}}
+                          style={{ textAlign: "left", marginBottom: 0 }}
                         >
                           {buyTicket?.gameInformation?.nextDraw === 0
                             ? "Draw Starts "
@@ -247,7 +247,7 @@ export default function TicketDetailPage({props}) {
             <h6 className="mb-0">
               Minimum Prize Pool:{" "}
               <span className="text-success h4">
-              Rs.{buyTicket?.gameInformation?.minPrizePool}
+                Rs.{buyTicket?.gameInformation?.minPrizePool}
               </span>
             </h6>
           </div>
@@ -264,7 +264,7 @@ export default function TicketDetailPage({props}) {
                     <div className="col-lg-2 col-md-2 col-sm col-6">
                       <h6>
                         <img
-                          src="../../../assets/images/material-symbols_account-balance-wallet-2.png"
+                          src="./assets/images/material-symbols_account-balance-wallet-2.png"
                           className="img-fluid pe-2"
                           alt=""
                         />
@@ -272,7 +272,7 @@ export default function TicketDetailPage({props}) {
                       </h6>
 
                       <h3 className="text-success">
-                      Rs.{buyTicket?.User?.balance?.toLocaleString()}
+                        Rs.{buyTicket?.User?.balance?.toLocaleString()}
                       </h3>
                     </div>
                     <div className="col-lg-2 col-md-2 col-sm col-6">
@@ -286,7 +286,7 @@ export default function TicketDetailPage({props}) {
                     <div className="col-lg-2 col-md-2 col-sm col-6">
                       <h6>Ticket Price :</h6>
                       <h3 className="text-dark fw-bold">
-                      Rs.
+                        Rs.
                         {buyTicket?.gameInformation?.ticketPrice?.toLocaleString()}{" "}
                         <span className="fw-light">/Ticket</span>
                       </h3>
@@ -310,7 +310,7 @@ export default function TicketDetailPage({props}) {
                     <div className="col-lg-2 col-md-2 col-sm col-6">
                       <h6>Total Won :</h6>
                       <h3 className="text-dark fw-bold">
-                      Rs.{totalWon.toLocaleString()}
+                        Rs.{totalWon.toLocaleString()}
                       </h3>
                     </div>
                   </div>
@@ -326,7 +326,7 @@ export default function TicketDetailPage({props}) {
                                 className="col-lg-3 col-md-2 col-sm col-3 img-cnt"
                                 style={{
                                   backgroundImage:
-                                    "url('../../../assets/images/imgpsh_fullsize_anim-5.png')",
+                                    "url('./assets/images/imgpsh_fullsize_anim-5.png')",
                                 }}
                               >
                                 <div className="text-center mt-5">
@@ -341,7 +341,7 @@ export default function TicketDetailPage({props}) {
                                   <h6 className="ps-1">
                                     Price :{" "}
                                     <span className="fw-bold price-d">
-                                    Rs.{activeTicket?.ticketPrice}
+                                      Rs.{activeTicket?.ticketPrice}
                                     </span>
                                   </h6>
                                 </div>
@@ -364,7 +364,7 @@ export default function TicketDetailPage({props}) {
                                     <h6 className="">
                                       Total Won : <br />{" "}
                                       <span className="fw-bold highlighted-text">
-                                      Rs.
+                                        Rs.
                                         {activeTicketWonPrize ? (
                                           <AbbrNumber
                                             props={{
@@ -406,7 +406,7 @@ export default function TicketDetailPage({props}) {
                                         className="col-lg-3 col-md-2 col-sm col-3 img-cnt"
                                         style={{
                                           backgroundImage:
-                                            "url('../../../assets/images/imgpsh_fullsize_anim-5.png')",
+                                            "url('./assets/images/imgpsh_fullsize_anim-5.png')",
                                         }}
                                       >
                                         <div className="text-center mt-5">
@@ -430,7 +430,7 @@ export default function TicketDetailPage({props}) {
                                           <h6 className="ps-1">
                                             Price :{" "}
                                             <span className="fw-bold price-d">
-                                            Rs.{item?.ticketPrice}
+                                              Rs.{item?.ticketPrice}
                                             </span>
                                           </h6>
                                           {/* <h6>Last Won : <span className="fw-bold price-d">$250</span></h6> */}
@@ -457,7 +457,7 @@ export default function TicketDetailPage({props}) {
                                             <h6 className="">
                                               Total Won : <br />{" "}
                                               <span className="fw-bold highlighted-text">
-                                              Rs.
+                                                Rs.
                                                 {restTicketWonPrize ? (
                                                   <AbbrNumber
                                                     props={{
@@ -493,7 +493,7 @@ export default function TicketDetailPage({props}) {
                       <h6>Total Tickets :</h6>
                       <div className="d-flex align-items-center">
                         <img
-                          src="../../../assets/images/fa-solid_ticket-alt.png"
+                          src="./assets/images/fa-solid_ticket-alt.png"
                           className="img-fluid"
                           width="30"
                           alt=""
@@ -507,13 +507,13 @@ export default function TicketDetailPage({props}) {
                       <h6>Total Price :</h6>
                       <div className="d-flex align-items-center">
                         <img
-                          src="../../../assets/images/fa6-solid_money-bill-1.png"
+                          src="./assets/images/fa6-solid_money-bill-1.png"
                           className="img-fluid"
                           width="30"
                           alt=""
                         />
                         <h5 className="m-0 ps-2 fw-bold">
-                        Rs.{buyTotal?.totalTicketsPrice}
+                          Rs.{buyTotal?.totalTicketsPrice}
                         </h5>
                       </div>
                     </div>
@@ -581,7 +581,7 @@ export default function TicketDetailPage({props}) {
                     >
                       <div
                         className="row m-0 pt-2 pb-1"
-                        style={{background: "#F5F5F5"}}
+                        style={{ background: "#F5F5F5" }}
                       >
                         <div className="col-lg-4 col-md-4 col-sm col-4 text-center">
                           <h6>Frequency</h6>
@@ -620,7 +620,7 @@ export default function TicketDetailPage({props}) {
                                 {data?.winners}
                               </div>
                               <div className="col-lg-4 col-md-4 col-sm col-4 text-center fw-bold">
-                              Rs.{data?.prize}/winner
+                                Rs.{data?.prize}/winner
                               </div>
                             </div>
                           ))
@@ -635,7 +635,7 @@ export default function TicketDetailPage({props}) {
                                 {data?.winners}
                               </div>
                               <div className="col-lg-4 col-md-4 col-sm col-4 text-center fw-bold">
-                              Rs.{data?.prize}/winner
+                                Rs.{data?.prize}/winner
                               </div>
                             </div>
                           ))

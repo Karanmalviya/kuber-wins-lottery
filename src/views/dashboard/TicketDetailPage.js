@@ -287,7 +287,7 @@ export default function TicketDetailPage({ props }) {
                       }
                     : {
                         backgroundImage:
-                          "url('../assets/images/imgpsh_fullsize_anim-14.jpg')",
+                          "url('./assets/images/imgpsh_fullsize_anim-14.jpg')",
                       }
                 }
               >
@@ -357,7 +357,7 @@ export default function TicketDetailPage({ props }) {
                     <div className="col-lg-2 col-md-2 col-sm col-6">
                       <h6>
                         <img
-                          src="../../../assets/images/material-symbols_account-balance-wallet-2.png"
+                          src="./assets/images/material-symbols_account-balance-wallet-2.png"
                           className="img-fluid pe-2"
                           alt=""
                         />
@@ -496,7 +496,7 @@ export default function TicketDetailPage({ props }) {
                       <h6>Total Tickets :</h6>
                       <div className="d-flex align-items-center">
                         <img
-                          src="../../../assets/images/fa-solid_ticket-alt.png"
+                          src="./assets/images/fa-solid_ticket-alt.png"
                           className="img-fluid"
                           width="30"
                           alt=""
@@ -510,7 +510,7 @@ export default function TicketDetailPage({ props }) {
                       <h6>Total Price :</h6>
                       <div className="d-flex align-items-center">
                         <img
-                          src="../../../assets/images/fa6-solid_money-bill-1.png"
+                          src="./assets/images/fa6-solid_money-bill-1.png"
                           className="img-fluid"
                           width="30"
                           alt=""

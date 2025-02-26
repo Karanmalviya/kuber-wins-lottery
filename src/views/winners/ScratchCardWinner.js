@@ -1,15 +1,15 @@
-import React, {useState, useEffect, useLayoutEffect, useRef} from "react";
-import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
-import {decrypt} from "../../utils/encryptdecrypt";
-import {useDispatch, useSelector} from "react-redux";
-import {fetchScratchCardWinners} from "../../features/apiSlice";
+import { decrypt } from "../../utils/encryptdecrypt";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchScratchCardWinners } from "../../features/apiSlice";
 import moment from "moment";
 import MiniLoader from "../components/MiniLoader";
 
 export default function ScratchCardWinner() {
-  const {id} = useParams();
+  const { id } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -81,9 +81,9 @@ export default function ScratchCardWinner() {
   };
 
   return (
-    <div style={{backgroundColor: "#f5f6ff"}}>
+    <div style={{ backgroundColor: "#f5f6ff" }}>
       <title>Winners - Kuber Wins</title>
-      <Navbar props={{mainPage: "winners", subPage: ""}} />
+      <Navbar props={{ mainPage: "winners", subPage: "" }} />
       <section className="sec-ticket-dtls mb-lg-5 mt-5 pb-5">
         <div className="container">
           <div className="row d-flex justify-content-center align-items-center">
@@ -91,7 +91,7 @@ export default function ScratchCardWinner() {
               <div
                 className="card crd-img-dtls border-0"
                 style={{
-                  background: `url(../assets/images/imgpsh_fullsize_anim-14.jpg) no-repeat center center / cover`,
+                  background: `url(./assets/images/imgpsh_fullsize_anim-14.jpg) no-repeat center center / cover`,
                 }}
               >
                 <div className="card-body p-0 text-center">
@@ -243,7 +243,7 @@ export default function ScratchCardWinner() {
                   >
                     <div
                       className="panel-heading mb-3"
-                      style={{textAlign: "center", fontWeight: "bold"}}
+                      style={{ textAlign: "center", fontWeight: "bold" }}
                     >
                       {wonItem?.card_name}
                     </div>
@@ -252,7 +252,7 @@ export default function ScratchCardWinner() {
                         <table className="table table-striped">
                           <thead>
                             <tr>
-                              <th style={{borderTopLeftRadius: 15}}>S.No.</th>
+                              <th style={{ borderTopLeftRadius: 15 }}>S.No.</th>
                               <th>Scratch Card Name</th>
                               <th>Scratch Card Type</th>
                               <th> Name</th>
@@ -264,7 +264,7 @@ export default function ScratchCardWinner() {
                               )}
                               <th>Win Bonus</th>
                               {/* <th>Post Balance</th> */}
-                              <th style={{borderTopRightRadius: 15}}>
+                              <th style={{ borderTopRightRadius: 15 }}>
                                 Date & time
                               </th>
                             </tr>
@@ -306,7 +306,7 @@ export default function ScratchCardWinner() {
                                         </>
                                       )}
                                       <td>
-                                      Rs.{item?.won_amount?.toLocaleString()}
+                                        Rs.{item?.won_amount?.toLocaleString()}
                                       </td>
 
                                       <td>
@@ -325,7 +325,7 @@ export default function ScratchCardWinner() {
                             {wonItem?.wons?.length > 3 &&
                             expandedId !== index ? (
                               <tr>
-                                <td colSpan="9" style={{textAlign: "left"}}>
+                                <td colSpan="9" style={{ textAlign: "left" }}>
                                   <Link
                                     to={"#"}
                                     onClick={() => {
@@ -338,7 +338,7 @@ export default function ScratchCardWinner() {
                               </tr>
                             ) : wonItem?.wons?.length > 10 ? (
                               <tr>
-                                <td colSpan="9" style={{textAlign: "left"}}>
+                                <td colSpan="9" style={{ textAlign: "left" }}>
                                   <Link
                                     to={
                                       "/winners-scratch-card-list"

@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import {Link, useLocation} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import moment from "moment";
@@ -13,10 +13,10 @@ export default function ScratchCardWinnerList() {
   }, [location]);
 
   return (
-    <div style={{backgroundColor: "#f5f6ff"}}>
+    <div style={{ backgroundColor: "#f5f6ff" }}>
       <title>Winners - Kuber Wins</title>
 
-      <Navbar props={{mainPage: "winners", subPage: ""}} />
+      <Navbar props={{ mainPage: "winners", subPage: "" }} />
 
       <section className="sec-ticket-dtls mb-2 mt-5 pb-5">
         <div className="container">
@@ -25,7 +25,7 @@ export default function ScratchCardWinnerList() {
               <div
                 className="card crd-img-dtls border-0"
                 style={{
-                  background: `url(../assets/images/imgpsh_fullsize_anim-14.jpg) no-repeat center center / cover`,
+                  background: `url(./assets/images/imgpsh_fullsize_anim-14.jpg) no-repeat center center / cover`,
                 }}
               >
                 <div className="card-body p-0 text-center">
@@ -52,7 +52,7 @@ export default function ScratchCardWinnerList() {
               >
                 <div
                   className="panel-heading mb-3"
-                  style={{textAlign: "center", fontWeight: "bold"}}
+                  style={{ textAlign: "center", fontWeight: "bold" }}
                 >
                   {wonItem?.card_name}
                 </div>
@@ -61,7 +61,7 @@ export default function ScratchCardWinnerList() {
                     <table className="table table-striped">
                       <thead>
                         <tr>
-                          <th style={{borderTopLeftRadius: 15}}>S.No.</th>
+                          <th style={{ borderTopLeftRadius: 15 }}>S.No.</th>
                           <th>Scratch Card Name</th>
                           <th>Scratch Card Type</th>
                           <th> Name</th>
@@ -73,7 +73,7 @@ export default function ScratchCardWinnerList() {
                           )}
                           <th>Win Bonus</th>
                           {/* <th>Post Balance</th> */}
-                          <th style={{borderTopRightRadius: 15}}>
+                          <th style={{ borderTopRightRadius: 15 }}>
                             Date & time
                           </th>
                         </tr>

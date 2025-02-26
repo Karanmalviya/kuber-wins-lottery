@@ -1,15 +1,15 @@
-import React, {useRef, useState} from "react";
+import React, { useRef, useState } from "react";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import Sidebar from "../navbar/Sidebar";
-import {useDispatch, useSelector} from "react-redux";
-import {fetchUser, register2fa} from "../../features/apiSlice";
-import {useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUser, register2fa } from "../../features/apiSlice";
+import { useEffect } from "react";
 import copy from "copy-to-clipboard";
-import {toast} from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import MiniLoader from "../components/MiniLoader";
 
-export default function AuthenticationPage({props}) {
+export default function AuthenticationPage({ props }) {
   const ref = useRef();
   const dispatch = useDispatch();
   const [authenticationData, setAuthenticationData] = useState({});
@@ -48,7 +48,7 @@ export default function AuthenticationPage({props}) {
         const image = new Image();
         image.src = authenticationData.data_url;
         const overlay = new Image();
-        overlay.src = "../assets/images/favicon.png";
+        overlay.src = "./assets/images/favicon.png";
         image.onload = function () {
           canvas.width = image.width;
           canvas.height = image.height;
@@ -103,7 +103,7 @@ export default function AuthenticationPage({props}) {
     <>
       <title>2 Factor Authentication - Kuber Wins</title>
 
-      <Navbar props={{mainPage: "dashboard", subPage: ""}} />
+      <Navbar props={{ mainPage: "dashboard", subPage: "" }} />
 
       <section className="sec-dashbaord">
         <div className="container-fluid">
@@ -133,7 +133,7 @@ export default function AuthenticationPage({props}) {
                           />
                           <div
                             className="input-group-append"
-                            style={{cursor: "pointer"}}
+                            style={{ cursor: "pointer" }}
                             onClick={() => {
                               copy(authenticationData?.userSecretKey);
                               toast.success(`copied `, {
@@ -151,7 +151,7 @@ export default function AuthenticationPage({props}) {
                           </div>
                         </div>
                       </div>
-                      <div style={{useSelector: "none"}}>
+                      <div style={{ useSelector: "none" }}>
                         {authenticationData.data_url !== undefined ? (
                           <>
                             <canvas ref={ref} width={212} height={212} />

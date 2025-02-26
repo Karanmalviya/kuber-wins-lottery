@@ -6,12 +6,12 @@ import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 
-export default function AboutPage({props}) {
+export default function AboutPage({ props }) {
   return (
-    <div style={{backgroundColor: "#f5f6ff"}}>
+    <div style={{ backgroundColor: "#f5f6ff" }}>
       <title>About Us - Kuber Wins</title>
 
-      <Navbar props={{mainPage: "about", subPage: ""}} />
+      <Navbar props={{ mainPage: "about", subPage: "" }} />
 
       <div>
         <section className="container py-lg-5">
@@ -19,7 +19,7 @@ export default function AboutPage({props}) {
             <div className="col-lg-6 py-lg-5">
               <h3 className="mb-0 sec-heading fs-3">
                 About{" "}
-                <em className="text-uppercase" style={{color: "#4e5fed"}}>
+                <em className="text-uppercase" style={{ color: "#4e5fed" }}>
                   Kuber Wins
                 </em>
               </h3>
@@ -41,12 +41,12 @@ export default function AboutPage({props}) {
             <div className="col-lg-1" />
             <div className="col-lg-5 mt-2">
               <img
-                src="../assets/images/lottery-about.jpg"
+                src="./assets/images/lottery-about.jpg"
                 alt="lottery-about"
                 width="100%"
                 height="100%"
                 className="rounded-2 "
-                style={{border: "2px solid #FFEF9D"}}
+                style={{ border: "2px solid #FFEF9D" }}
               />
             </div>
           </div>
@@ -59,7 +59,7 @@ export default function AboutPage({props}) {
             <div className="col-lg-4 mb-3">
               <div
                 className="withdrawal-card"
-                style={{backgroundColor: "#fff"}}
+                style={{ backgroundColor: "#fff" }}
               >
                 <div className="card-header">
                   <img
@@ -97,7 +97,7 @@ export default function AboutPage({props}) {
             <div className="col-lg-4 mb-3">
               <div
                 className="withdrawal-card"
-                style={{backgroundColor: "#fff"}}
+                style={{ backgroundColor: "#fff" }}
               >
                 <div className="card-header">
                   <img
@@ -135,19 +135,19 @@ export default function AboutPage({props}) {
             <div className="col-lg-4 mb-3">
               <div
                 className="withdrawal-card"
-                style={{backgroundColor: "#fff"}}
+                style={{ backgroundColor: "#fff" }}
               >
                 <div className="card-header">
                   <img
-                    src="../assets/images/card-header.png"
+                    src="./assets/images/card-header.png"
                     alt="card-header"
                     className="card-header-img"
                   />
                   <div className="header-content">
                     <img
                       draggable="false"
-                      style={{userSelect: "none"}}
-                      src="../assets/images/withdraw.png"
+                      style={{ userSelect: "none" }}
+                      src="./assets/images/withdraw.png"
                       alt="withdraw"
                       className="border-0 "
                     />

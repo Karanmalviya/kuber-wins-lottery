@@ -1,10 +1,10 @@
-import React, {useLayoutEffect} from "react";
+import React, { useLayoutEffect } from "react";
 import Footer from "../footer/Footer";
 import Navbar from "../navbar/Navbar";
-import {useState} from "react";
-import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
-import {useEffect} from "react";
-import {decrypt} from "../../utils/encryptdecrypt";
+import { useState } from "react";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { decrypt } from "../../utils/encryptdecrypt";
 import AbbrNumber from "../components/AbbrNumber";
 import HtmlToFormattedText from "../../utils/htmltoFormattedText";
 import ScratchCoutDown from "./ScratchCoutDown";
@@ -14,17 +14,17 @@ import {
   fetchScratchCardsById,
   fetchUser,
 } from "../../features/apiSlice";
-import {useDispatch, useSelector} from "react-redux";
-import {useRef} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useRef } from "react";
 import LoadingBar from "react-top-loading-bar";
-import {Tooltip} from "@mui/material";
+import { Tooltip } from "@mui/material";
 
 export default function ScratchCardBuyMore() {
   const location = useLocation();
   const dispatch = useDispatch();
   const refLoading = useRef(false);
   const ref = useRef();
-  const {id} = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
   const userId = localStorage.getItem("userId");
   const scratch_card_id = decrypt(id);
@@ -123,7 +123,7 @@ export default function ScratchCardBuyMore() {
         return parsedData?.[0].schedule;
       } catch (error) {}
     };
-    setFrequencySchedule({frequency: frequency(), schedule: schedule()});
+    setFrequencySchedule({ frequency: frequency(), schedule: schedule() });
   }, [scratchCardData]);
 
   const allDataLoaded = scratchCardByIdLoading && scratchCardNumberLoading;
@@ -147,7 +147,7 @@ export default function ScratchCardBuyMore() {
     <>
       <title>{scratchCardData.card_name} - Kuber Wins</title>
       <LoadingBar ref={ref} color="rgb(245, 246, 255)" />
-      <Navbar props={{mainPage: "scratchcard", subPage: "details"}} />
+      <Navbar props={{ mainPage: "scratchcard", subPage: "details" }} />
       <section className="sec-scratch-cards-details scratch-cards-scratch bg-white pb-4">
         <div className="container">
           <div className="row d-flex justify-content-center align-item-center pt-5 mb-4">
@@ -167,7 +167,7 @@ export default function ScratchCardBuyMore() {
                           <div className="col-12 ">
                             <div
                               className=" ticket-cardd"
-                              style={{backgroundColor: "transparent"}}
+                              style={{ backgroundColor: "transparent" }}
                             >
                               <div
                                 className=" ticket-cardd card-body text-center"
@@ -204,7 +204,7 @@ export default function ScratchCardBuyMore() {
                                         })
                                       }
                                       className="text-dark"
-                                      style={{cursor: "pointer"}}
+                                      style={{ cursor: "pointer" }}
                                     >
                                       Click Here
                                     </a>{" "}
@@ -224,13 +224,13 @@ export default function ScratchCardBuyMore() {
                 <div className="card card-img">
                   <p
                     className="p-label-lotto text-capitalize"
-                    style={{overflow: "visible"}}
+                    style={{ overflow: "visible" }}
                   >
                     {scratchCardData?.card_type?.replace("-", " ")}
                   </p>
                   <img
                     className="img-fluid"
-                    src="../assets/images/imgpsh_fullsize_anim-12.png"
+                    src="./assets/images/imgpsh_fullsize_anim-12.png"
                     draggable={false}
                     style={{
                       position: "absolute",
@@ -296,7 +296,7 @@ export default function ScratchCardBuyMore() {
               <h6
                 style={
                   scratchCardData?.card_type === "single-scratch"
-                    ? {visibility: "hidden"}
+                    ? { visibility: "hidden" }
                     : {}
                 }
               >
@@ -312,7 +312,7 @@ export default function ScratchCardBuyMore() {
                 <div className="col-lg-6 col-md-6 col-sm-6 text-start">
                   <p className="pb-0 mb-3">
                     <img
-                      src="../assets/images/ph_trophy-fill.png"
+                      src="./assets/images/ph_trophy-fill.png"
                       className="img-fluid me-2"
                     />{" "}
                     Won{" "}
@@ -320,7 +320,7 @@ export default function ScratchCardBuyMore() {
                       placement="top"
                       title={`Rs.${scratchCardTotalWon?.won?.toLocaleString()}`}
                     >
-                      $
+                      Rs.
                       <AbbrNumber
                         props={{
                           number: Number(scratchCardTotalWon?.won),
@@ -333,7 +333,7 @@ export default function ScratchCardBuyMore() {
                 <div className="col-lg-6 col-md-6  col-sm-6 text-end wallet-colmn">
                   <p className="justify-content-end pb-0 mb-3">
                     <img
-                      src="../assets/images/material-symbols_account-balance-wallet.png"
+                      src="./assets/images/material-symbols_account-balance-wallet.png"
                       className="img-fluid me-2"
                     />{" "}
                     Wallet{" "}
@@ -341,7 +341,7 @@ export default function ScratchCardBuyMore() {
                       placement="top"
                       title={`Rs.${user?.balance?.toLocaleString()}`}
                     >
-                      $
+                      Rs.
                       <AbbrNumber
                         props={{
                           number: Number(user?.balance),

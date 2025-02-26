@@ -124,7 +124,7 @@ const ScratchCardScratcher = forwardRef(
           scratchCardId: +scratch_card_id,
           description: `Win from ${
             scratchedCardDetail?.card_name
-          } of ${scratchedCard?.prize?.toString()}`,
+          } of Rs.${scratchedCard?.prize?.toString()}`,
         });
         if (resWin) {
           refresh();
@@ -255,7 +255,7 @@ const ScratchCardScratcher = forwardRef(
                   scratchedCardDetail.image2 !== "null" &&
                   scratchedCardDetail.image2 !== null
                     ? scratchedCardDetail.image2
-                    : "../assets/img/bg-card-img.png"
+                    : "./assets/img/bg-card-img.png"
                 })`,
               }}
             >
@@ -296,7 +296,7 @@ const ScratchCardScratcher = forwardRef(
                                   : scratchedCardDetail.fontColor,
                               background:
                                 isHighlighted && highlightedGreen
-                                  ? 'url("../assets/img/nn-2.png")'
+                                  ? 'url("./assets/img/nn-2.png")'
                                   : scratchedCardDetail.circle_bg,
                               backgroundRepeat: "no-repeat",
                             }}
@@ -318,7 +318,7 @@ const ScratchCardScratcher = forwardRef(
                                       }
                                 }
                               >
-                                $&nbsp;
+                                Rs.&nbsp;
                                 {Number.isInteger(item)
                                   ? item.toLocaleString()
                                   : item.toFixed(2)}
@@ -339,7 +339,7 @@ const ScratchCardScratcher = forwardRef(
                       : `${scratchedCardDetail?.unmatchedMessage}`}
                   </p>
                   <img
-                    src="../assets/img/lose.svg"
+                    src="./assets/img/lose.svg"
                     style={{ height: "70px", width: "70px" }}
                   />
                 </div>
@@ -368,7 +368,7 @@ const ScratchCardScratcher = forwardRef(
                 scratchedCardDetail.image1 !== "null" &&
                 scratchedCardDetail.image1 !== null
                   ? scratchedCardDetail.image1
-                  : "../assets/img/scratch-cards-scratch.png"
+                  : "./assets/img/scratch-cards-scratch.png"
               }
               finishPercent={70}
               fadeOutOnComplete
@@ -382,7 +382,7 @@ const ScratchCardScratcher = forwardRef(
                     scratchedCardDetail.image2 !== "null" &&
                     scratchedCardDetail.image2 !== null
                       ? scratchedCardDetail.image2
-                      : "../assets/img/bg-card-img.png"
+                      : "./assets/img/bg-card-img.png"
                   })`,
                 }}
               >
@@ -423,7 +423,7 @@ const ScratchCardScratcher = forwardRef(
                                     : scratchedCardDetail.fontColor,
                                 background:
                                   isHighlighted && highlightedGreen
-                                    ? 'url("../assets/img/nn-2.png")'
+                                    ? 'url("./assets/img/nn-2.png")'
                                     : scratchedCardDetail.circle_bg,
                                 backgroundRepeat: "no-repeat",
                               }}
@@ -445,7 +445,7 @@ const ScratchCardScratcher = forwardRef(
                                         }
                                   }
                                 >
-                                  $&nbsp;
+                                  Rs.&nbsp;
                                   {Number.isInteger(item)
                                     ? item.toLocaleString()
                                     : item.toFixed(2)}
@@ -466,7 +466,7 @@ const ScratchCardScratcher = forwardRef(
                         : `${scratchedCardDetail?.unmatchedMessage}`}
                     </p>
                     <img
-                      src="../assets/img/lose.svg"
+                      src="./assets/img/lose.svg"
                       style={{ height: "70px", width: "70px" }}
                     />
                   </div>

@@ -20,7 +20,7 @@ export default function Slider({ props }) {
         return (
           <div key={index} className="item slider-item">
             {/* <img
-              src="../assets/images/banner-card-bg.png"
+              src="./assets/images/banner-card-bg.png"
               className="item slider-item"
             /> */}
             <div className="slider-item-container">

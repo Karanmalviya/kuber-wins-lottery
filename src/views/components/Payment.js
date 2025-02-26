@@ -91,7 +91,7 @@ export default function Payment() {
               <div>
                 <div className="text-center">
                   {/* <img
-                  src="../assets/images/success.gif"
+                  src="./assets/images/success.gif"
                   style={{ height: "100px", width: "100px" }}
                 /> */}
 
@@ -147,7 +147,7 @@ export default function Payment() {
               <div>
                 <div className="text-center">
                   <img
-                    src="../assets/images/error.png"
+                    src="./assets/images/error.png"
                     style={{ height: "100px", width: "100px" }}
                   />
 
