@@ -203,18 +203,50 @@ export default function AddBankAccountPage(props) {
                                 Account Number
                                 <span className="text-danger">*</span>
                               </Form.Label>
+                              {/* <Form.Control
+                                required
+                                type="number"
+                                value={selected.account_number}
+                                onChange={(e) => {
+                                  if (selected?.account_number?.length <= 20) {
+                                    setSelected({
+                                      ...selected,
+                                      account_number: e.target.value,
+                                    });
+                                  }
+                                }}
+                                className="form-control "
+                              /> */}
                               <Form.Control
                                 required
                                 type="number"
                                 value={selected.account_number}
-                                onChange={(e) =>
-                                  setSelected({
-                                    ...selected,
-                                    account_number: e.target.value,
-                                  })
-                                }
-                                className="form-control "
-                              />
+                                onChange={(e) => {
+                                  const inputValue = e.target.value;
+                                  if (
+                                    /^\d*$/.test(inputValue) &&
+                                    inputValue.length <= 20
+                                  ) {
+                                    setSelected({
+                                      ...selected,
+                                      account_number: inputValue,
+                                    });
+                                  }
+                                }}
+                                className="form-control"
+                                min="0"
+                                onKeyDown={(e) => {
+                                  if (
+                                    !/[0-9]/.test(e.key) &&
+                                    e.key !== "Backspace" &&
+                                    e.key !== "Delete" &&
+                                    e.key !== "ArrowLeft" &&
+                                    e.key !== "ArrowRight"
+                                  ) {
+                                    e.preventDefault();
+                                  }
+                                }}
+                              />{" "}
                             </Col>
                             <Col
                               lg={6}
