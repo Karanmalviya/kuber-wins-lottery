@@ -10,8 +10,8 @@ import { Toaster } from "react-hot-toast";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
-    {/* <HashRouter basename="/"> */}
+  // <BrowserRouter>
+  <HashRouter basename="/">
     <React.StrictMode>
       <StyledEngineProvider injectFirst>
         <Provider store={store}>
@@ -20,5 +20,5 @@ root.render(
         </Provider>
       </StyledEngineProvider>
     </React.StrictMode>
-  </BrowserRouter>
+  </HashRouter>
 );
