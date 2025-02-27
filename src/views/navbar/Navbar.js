@@ -34,6 +34,7 @@ export default function Navbar({ props }) {
             <h5
               className="text-light mt-1 d-flex align-items-center d-lg-none d-md-none d-sm-block"
               onClick={() => navigate("/deposit")}
+              style={{ cursor: "pointer" }}
             >
               <img
                 src={
@@ -189,6 +190,7 @@ export default function Navbar({ props }) {
                   <h5
                     className="text-light mt-1 d-flex align-items-center"
                     onClick={() => navigate("/deposit")}
+                    style={{ cursor: "pointer" }}
                   >
                     <img
                       src={
