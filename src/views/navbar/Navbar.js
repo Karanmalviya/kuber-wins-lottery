@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../utils/auth";
 import { useSelector } from "react-redux";
 import { BsPerson, BsGear, BsBoxArrowRight } from "react-icons/bs";
@@ -7,6 +7,7 @@ import AbbrNumber from "../components/AbbrNumber";
 
 export default function Navbar({ props }) {
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
   const userDetail = useSelector((state) => state.api.user);
 
   return (
@@ -30,7 +31,10 @@ export default function Navbar({ props }) {
           </div>
 
           {user?.isLoggedIn && (
-            <h5 className="text-light mt-1 d-flex align-items-center d-lg-none d-md-none d-sm-block">
+            <h5
+              className="text-light mt-1 d-flex align-items-center d-lg-none d-md-none d-sm-block"
+              onClick={() => navigate("/deposit")}
+            >
               <img
                 src={
                   "/assets/images/material-symbols_account-balance-wallet-old.png"
@@ -182,7 +186,10 @@ export default function Navbar({ props }) {
                 </>
               ) : (
                 <div className="d-flex ">
-                  <h5 className="text-light mt-1 d-flex align-items-center">
+                  <h5
+                    className="text-light mt-1 d-flex align-items-center"
+                    onClick={() => navigate("/deposit")}
+                  >
                     <img
                       src={
                         "/assets/images/material-symbols_account-balance-wallet-old.png"
