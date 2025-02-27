@@ -759,6 +759,12 @@ export default function ScratchCardDetailPage() {
             </button> */}
           </div>
           <span id="err" className="text-danger"></span>
+          {/* {buy?.balance <= ticket?.ticketPrice && (
+            <div id="err" className="text-danger pt-2">
+              Insufficient balance to buy this ticket
+              <Link className="btn btn-sm btn-primary">Deposit Now</Link>
+            </div>
+          )} */}
         </Modal.Footer>
       </Modal>
       {/* React BootStrap alert */}
