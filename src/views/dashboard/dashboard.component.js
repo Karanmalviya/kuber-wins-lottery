@@ -412,9 +412,7 @@ export default function DashboardPage({
         scratchcard.map(async (object) => {
           try {
             const response = await axios
-              .get(
-                `http://159.223.51.198:5500/api/transaction/count/${object.id}`
-              )
+              .get(`https://kuberwins.com/api/transaction/count/${object.id}`)
               .then((res) => {
                 return res.data;
               })

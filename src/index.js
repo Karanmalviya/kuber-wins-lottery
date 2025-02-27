@@ -4,9 +4,9 @@ import "./index.css";
 import App from "./app/App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import {StyledEngineProvider} from "@mui/material/styles";
-import {HashRouter} from "react-router-dom";
-import {ToastContainer} from "react-toastify";
+import { StyledEngineProvider } from "@mui/material/styles";
+import { BrowserRouter } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -14,9 +14,9 @@ root.render(
   <React.StrictMode>
     <StyledEngineProvider injectFirst>
       <ToastContainer />
-      <HashRouter basename="/">
+      <BrowserRouter basename="/admin">
         <App />
-      </HashRouter>
+      </BrowserRouter>
     </StyledEngineProvider>
   </React.StrictMode>
 );

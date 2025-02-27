@@ -1,10 +1,9 @@
 import * as actionTypes from "./lotteryActionType";
 import axios from "axios";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const baseUrl =
-  process.env.REACT_APP_API_URL || "http://159.223.51.198:5500/api";
+const baseUrl = process.env.REACT_APP_API_URL || "https://kuberwins.com/api";
 
 export const createlottery = (data) => {
   // const headers = { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }};
@@ -58,7 +57,7 @@ export const createlotteryFailure = (data) => ({
 });
 export const createlotterySuccess = (data) => ({
   type: actionTypes.CREATE_LOTTERY_SUCCESS,
-  payload: {data},
+  payload: { data },
 });
 
 export const updatelottery = (data) => {
@@ -125,7 +124,7 @@ export const updatelotteryFailure = (data) => ({
 });
 export const updatelotterySuccess = (data) => ({
   type: actionTypes.UPDATE_LOTTERY_SUCCESS,
-  payload: {data},
+  payload: { data },
 });
 
 export const deletelottery = (data) => {
@@ -174,14 +173,14 @@ export const deletelotteryFailure = (data) => ({
 });
 export const deletelotterySuccess = (data) => ({
   type: actionTypes.DELETE_LOTTERY_SUCCESS,
-  payload: {data},
+  payload: { data },
 });
 
 export const fetchlottery = (data) => {
   return (dispatch) => {
     dispatch(fetchlotteryInit());
     axios
-      .get(`${baseUrl}/gameinfo`, {params: data})
+      .get(`${baseUrl}/gameinfo`, { params: data })
       .then((response) => {
         dispatch(fetchlotterySuccess(response.data.data));
       })
@@ -199,7 +198,7 @@ export const fetchlotteryFailure = (data) => ({
 });
 export const fetchlotterySuccess = (data) => ({
   type: actionTypes.FETCH_LOTTERY_SUCCESS,
-  payload: {data},
+  payload: { data },
 });
 
 export const fetchlotteryEdit = (id) => {
@@ -224,7 +223,7 @@ export const fetchlotteryEditFailure = (data) => ({
 });
 export const fetchlotteryEditSuccess = (data) => ({
   type: actionTypes.FETCH_LOTTERY_EDIT_SUCCESS,
-  payload: {data},
+  payload: { data },
 });
 
 export const fetchGameReport = (id) => {
@@ -249,7 +248,7 @@ export const fetchGameReportFailure = (data) => ({
 });
 export const fetchGameReportSuccess = (data) => ({
   type: actionTypes.FETCH_GAME_REPORT_SUCCESS,
-  payload: {data},
+  payload: { data },
 });
 
 export const fetchManualDrawUsers = (id) => {
@@ -274,7 +273,7 @@ export const fetchManualDrawUsersFailure = (data) => ({
 });
 export const fetchManualDrawUsersSuccess = (data) => ({
   type: actionTypes.FETCH_MANUAL_DRAW_USER_SUCCESS,
-  payload: {data},
+  payload: { data },
 });
 
 export const fetchManualDrawTickets = (data) => {
@@ -304,7 +303,7 @@ export const fetchManualDrawTicketsFailure = (data) => ({
 });
 export const fetchManualDrawTicketsSuccess = (data) => ({
   type: actionTypes.FETCH_MANUAL_DRAW_TICKET_SUCCESS,
-  payload: {data},
+  payload: { data },
 });
 
 export const fetchManualDrawHistory = (data) => {
@@ -335,12 +334,12 @@ export const fetchManualDrawHistoryFailure = (data) => ({
 });
 export const fetchManualDrawHistorySuccess = (data) => ({
   type: actionTypes.FETCH_MANUAL_DRAW_HISTORY_SUCCESS,
-  payload: {data},
+  payload: { data },
 });
 
 export const updateManualDraw = (data) => {
   const headers = {
-    headers: {Authorization: `Bearer ${localStorage.getItem("token")}`},
+    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
   };
 
   return (dispatch) => {
@@ -384,5 +383,5 @@ export const updateManualDrawFailure = (data) => ({
 });
 export const updateManualDrawSuccess = (data) => ({
   type: actionTypes.UPDATE_MANUAL_DRAW_SUCCESS,
-  payload: {data},
+  payload: { data },
 });

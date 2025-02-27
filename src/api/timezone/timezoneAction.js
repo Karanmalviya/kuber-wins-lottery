@@ -3,8 +3,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // import { baseUrl } from "./../../config";
-const baseUrl =
-  process.env.REACT_APP_API_URL || "http://159.223.51.198:5500/api";
+const baseUrl = process.env.REACT_APP_API_URL || "https://kuberwins.com/api";
 
 export const createTimezone = (data) => {
   return (dispatch) => {
