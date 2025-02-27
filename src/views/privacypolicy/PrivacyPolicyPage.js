@@ -3,13 +3,13 @@ import React from "react";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 
-export default function PrivacyPolicyPage({props}) {
+export default function PrivacyPolicyPage({ props }) {
   return (
     <>
       <Navbar props={"privacy-policy"} />
 
       <div>
-        <section style={{background: "#f5f5f5"}} className="sec-second">
+        <section style={{ background: "#f5f5f5" }} className="sec-second">
           <div className="container">
             <h2 className="mt-4 sec-heading">PRIVACY POLICY</h2>
           </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import Sidebar from "../navbar/Sidebar";
@@ -23,6 +23,7 @@ import { Pagination } from "@mui/material";
 import moment from "moment";
 
 export default function DashboardPage({ props }) {
+  const location = useLocation();
   const [buyTickets, setBuyTickets] = useState([]);
   const [userWinners, setUserWinners] = useState([]);
   const [userDeposits, setUserDeposits] = useState([]);
@@ -37,7 +38,6 @@ export default function DashboardPage({ props }) {
   const [latestScratchCard, setLatestScratchCard] = useState([]);
   const [scratchCardName, setScratchCardName] = useState("");
   const [selectedScratchCard, setSelectedScratchCard] = useState([]);
-  const [sortedLottery, setSortedLottery] = useState([]);
 
   const copyToClipboard = (text) => {
     copy(text);
@@ -46,7 +46,7 @@ export default function DashboardPage({ props }) {
       id: "clipboard",
     });
   };
-
+  console.log(location);
   useEffect(() => {
     if (userId) {
       dispatch(fetchUserLotteryWinner(userId));
@@ -148,7 +148,9 @@ export default function DashboardPage({ props }) {
     if (users) {
       const { protocol, hostname, port } = window.location;
       const emailPrefix = users.email?.split("@")[0];
-      const referenceLink = `${protocol}//${hostname}:${port}/#/reference/${emailPrefix}`;
+      const referenceLink = `${protocol}//${hostname}${
+        port ? +":" + port : ""
+      }/reference/${emailPrefix}`;
       setReferenceLink(referenceLink);
     }
   }, [users]);

@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { userRegisteration, userLogin } from "./index";
 import { toast } from "react-hot-toast";
+import { resendVerificationMail } from "../api/api";
 
 const AuthContext = createContext(null);
 
@@ -19,11 +20,35 @@ export const AuthProvider = ({ children }) => {
     return { isLoggedIn: false };
   });
 
-  const showMessage = (message, success) => {
-    toast[success ? "success" : "error"](message, {
-      duration: 3000,
-      id: "clipboard",
-    });
+  const showMessage = (message, success, email, promise) => {
+    if (promise) {
+      toast.promise(resendVerificationMail({ email }), {
+        loading: "Sending...",
+        success: "Verification email sent to " + email,
+        error: "Failed to send verification email.",
+      });
+      return;
+    }
+    toast[success ? "success" : "error"](
+      <div className="d-flex align-items-center">
+        {message}{" "}
+        {email && (
+          <button
+            className="btn btn-sm"
+            onClick={() => {
+              toast.dismiss();
+              showMessage("", "", email, true);
+            }}
+          >
+            resend
+          </button>
+        )}
+      </div>,
+      {
+        duration: 3000,
+        id: "clipboard",
+      }
+    );
   };
 
   const handleLogin = async (body) => {
@@ -43,6 +68,10 @@ export const AuthProvider = ({ children }) => {
         navigate("/");
         showMessage(res.message, res.message === "Success");
       } else {
+        if (res.message === "Please verify your email before logging in") {
+          showMessage(res.message, false, body.username, false);
+          return;
+        }
         showMessage(res.message, false);
       }
     } catch (err) {

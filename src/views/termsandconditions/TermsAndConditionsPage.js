@@ -1,10 +1,10 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import moment from "moment";
 import jsPDF from "jspdf";
 import LoadingSpinner from "../components/LoadingSpinner";
-export default function TermsAndConditionsPage({props}) {
+export default function TermsAndConditionsPage({ props }) {
   const [isLoad, setIsLoad] = useState(false);
   const handleDownLoadPDF = () => {
     setIsLoad(true);
@@ -45,14 +45,14 @@ export default function TermsAndConditionsPage({props}) {
       <Navbar props={"general-terms-and-conditions"} />
 
       <div id="termsAndCondition" className="mt-3">
-        <section style={{background: "#f5f5f5"}} className="sec-second">
+        <section style={{ background: "#f5f5f5" }} className="sec-second">
           <div className="container d-flex justify-content-between align-items-center ">
             <h2 className=" sec-heading">
               GENERAL&nbsp;TERMS &amp; CONDITIONS
             </h2>
             <button
               className="btn btn-sm"
-              style={{width: "80px"}}
+              style={{ width: "80px" }}
               onClick={handleDownLoadPDF}
             >
               Download
@@ -127,7 +127,7 @@ export default function TermsAndConditionsPage({props}) {
           </div>
         </section>
         <section
-          style={{background: "#f5f5f5"}}
+          style={{ background: "#f5f5f5" }}
           className="sec-second pb-4 pt-4  terms-content"
         >
           <div className="container">
@@ -382,7 +382,7 @@ export default function TermsAndConditionsPage({props}) {
           </div>
         </section>
         <section
-          style={{background: "#f5f5f5"}}
+          style={{ background: "#f5f5f5" }}
           className="sec-second pb-4 pt-4  terms-content"
         >
           <div className="container">
@@ -541,7 +541,7 @@ export default function TermsAndConditionsPage({props}) {
           </div>
         </section>
         <section
-          style={{background: "#f5f5f5"}}
+          style={{ background: "#f5f5f5" }}
           className="sec-second pb-4 pt-4"
         >
           <div className="container  terms-content">
@@ -610,8 +610,8 @@ export default function TermsAndConditionsPage({props}) {
             <p>7.3 Fair Use</p>
             <p>
               7.3.1 The Website and Rockford Holdings products may only be used
-              for the purposes of buying kuber wins lottery tickets, placing bets
-              and wagers on events and/or gaming products.
+              for the purposes of buying kuber wins lottery tickets, placing
+              bets and wagers on events and/or gaming products.
             </p>
             <p>
               7.3.2 You must not use the Website for the benefit of a third
@@ -866,7 +866,7 @@ export default function TermsAndConditionsPage({props}) {
           </div>
         </section>
         <section
-          style={{background: "#f5f5f5"}}
+          style={{ background: "#f5f5f5" }}
           className="sec-second pb-4 pt-4  terms-content"
         >
           <div className="container">
@@ -1036,7 +1036,7 @@ export default function TermsAndConditionsPage({props}) {
           </div>
         </section>
         <section
-          style={{background: "#f5f5f5"}}
+          style={{ background: "#f5f5f5" }}
           className="sec-second pb-4 pt-4  terms-content"
         >
           <div className="container">
@@ -1136,7 +1136,7 @@ export default function TermsAndConditionsPage({props}) {
           </div>
         </section>
         <section
-          style={{background: "#f5f5f5"}}
+          style={{ background: "#f5f5f5" }}
           className="sec-second pb-4 pt-4  terms-content"
         >
           <div className="container">
@@ -1275,7 +1275,7 @@ export default function TermsAndConditionsPage({props}) {
           </div>
         </section>
         <section
-          style={{background: "#f5f5f5"}}
+          style={{ background: "#f5f5f5" }}
           className="sec-second pb-4 pt-4  terms-content"
         >
           <div className="container">

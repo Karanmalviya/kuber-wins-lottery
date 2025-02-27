@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../utils/auth";
 import { useSelector } from "react-redux";
 import { BsPerson, BsGear, BsBoxArrowRight } from "react-icons/bs";
+import AbbrNumber from "../components/AbbrNumber";
 
 export default function Navbar({ props }) {
   const { user, logout } = useAuth();
@@ -27,6 +28,26 @@ export default function Navbar({ props }) {
               />
             </Link>
           </div>
+
+          {user?.isLoggedIn && (
+            <h5 className="text-light mt-1 d-flex align-items-center d-lg-none d-md-none d-sm-block">
+              <img
+                src={
+                  "/assets/images/material-symbols_account-balance-wallet-old.png"
+                }
+                className="img-fluid"
+                style={{ filter: "brightness(0) invert(1)" }}
+                alt=""
+              />
+              Rs.
+              <AbbrNumber
+                props={{
+                  number: userDetail?.balance ?? 0,
+                  decPlaces: 2,
+                }}
+              />
+            </h5>
+          )}
           <button
             className="navbar-toggler border-0 text-white"
             type="button"
@@ -170,7 +191,13 @@ export default function Navbar({ props }) {
                       style={{ filter: "brightness(0) invert(1)" }}
                       alt=""
                     />
-                    Rs.{userDetail?.balance?.toLocaleString()}
+                    Rs.
+                    <AbbrNumber
+                      props={{
+                        number: userDetail?.balance ?? 0,
+                        decPlaces: 2,
+                      }}
+                    />
                   </h5>
                   <div className="dropdown me-1">
                     <button

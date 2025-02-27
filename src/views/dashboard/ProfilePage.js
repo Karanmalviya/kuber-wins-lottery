@@ -1,14 +1,14 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import Sidebar from "../navbar/Sidebar";
-import {updateUserDetail, otpVerification, sendOTP} from "../../utils/index";
+import { updateUserDetail, otpVerification, sendOTP } from "../../utils/index";
 import ProgressBar from "@ramonak/react-progress-bar";
 import toast from "react-hot-toast";
-import {useDispatch, useSelector} from "react-redux";
-import {fetchCountries, fetchState, fetchUser} from "../../features/apiSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCountries, fetchState, fetchUser } from "../../features/apiSlice";
 
-export default function ProfilePage({props}) {
+export default function ProfilePage({ props }) {
   const dispatch = useDispatch();
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
@@ -80,14 +80,14 @@ export default function ProfilePage({props}) {
         setCities(
           selectedState.Cities.length
             ? selectedState.Cities
-            : [{cityName: selectedState.stateName}]
+            : [{ cityName: selectedState.stateName }]
         );
       }
     }
   }, [dispatch, formData.state, states]);
 
   const handleInputChange = (event) => {
-    const {name, value} = event.target;
+    const { name, value } = event.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -109,7 +109,7 @@ export default function ProfilePage({props}) {
     };
     const response = updateUserDetail(
       body,
-      {"Content-Type": "application/json"},
+      { "Content-Type": "application/json" },
       userId
     );
     toast.promise(Promise.resolve(response), {
@@ -122,7 +122,11 @@ export default function ProfilePage({props}) {
       var formdata = new FormData();
       formdata.append("email", formData.email);
       formdata.append("image", image[0], image[0].name);
-      updateUserDetail(formdata, {"Content-Type": "application/json"}, userId);
+      updateUserDetail(
+        formdata,
+        { "Content-Type": "application/json" },
+        userId
+      );
     }
   };
 
@@ -198,9 +202,9 @@ export default function ProfilePage({props}) {
     <>
       <title>Profile - Kuber Wins</title>
 
-      <Navbar props={{mainPage: "dashboard", subPage: ""}} />
+      <Navbar props={{ mainPage: "dashboard", subPage: "" }} />
 
-      <section className="sec-dashbaord" style={{backgroundColor: "#f5f6ff"}}>
+      <section className="sec-dashbaord" style={{ backgroundColor: "#f5f6ff" }}>
         <div className="container-fluid">
           <div className="row">
             <Sidebar props={"profile"} />
@@ -329,7 +333,7 @@ export default function ProfilePage({props}) {
                               }`}
                             >
                               <input
-                                style={{width: "120px", height: "20px"}}
+                                style={{ width: "120px", height: "20px" }}
                                 className="form-control me-1"
                                 value={otp}
                                 type="number"
@@ -356,7 +360,7 @@ export default function ProfilePage({props}) {
                                         email: formData.email,
                                         mobileNo: formData.mobileNo,
                                       },
-                                      {"Content-Type": "application/json"},
+                                      { "Content-Type": "application/json" },
                                       userId
                                     );
                                   }

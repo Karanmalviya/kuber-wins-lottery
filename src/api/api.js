@@ -934,3 +934,16 @@ export const fetchLotteryRewardsApi = async (data) => {
     });
   return response;
 };
+
+export const resendVerificationMail = async (body) => {
+  const response = await axios
+    .post(`${path.apiUrl}/user/resendVerification`, body)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      return err?.response?.data;
+    });
+
+  return response;
+};
