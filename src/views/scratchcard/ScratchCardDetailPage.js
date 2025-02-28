@@ -757,13 +757,18 @@ export default function ScratchCardDetailPage() {
               Pay With Coinbase
             </button> */}
           </div>
-          <span id="err" className="text-danger"></span>
-          {/* {buy?.balance <= ticket?.ticketPrice && (
-            <div id="err" className="text-danger pt-2">
-              Insufficient balance to buy this ticket
-              <Link className="btn btn-sm btn-primary">Deposit Now</Link>
+          {user?.balance <= calculateDiscount?.amountAfterDiscount && (
+            <div className="mt-1">
+              <div id="err" className="text-danger pt-2">
+                Insufficient balance to buy this ticket
+              </div>
+              <div className="p-0 m-0 mt-2">
+                <Link className="btn btn-sm btn-primary" to="/deposit">
+                  Deposit Now
+                </Link>
+              </div>
             </div>
-          )} */}
+          )}
         </Modal.Footer>
       </Modal>
       {/* React BootStrap alert */}

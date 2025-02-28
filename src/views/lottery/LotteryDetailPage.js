@@ -918,14 +918,6 @@ export default function LotteryDetailPage({ props }) {
               </button> */}
             </div>
             {buy?.balance <= ticket?.ticketPrice && (
-              // <div className="d-flex justify-content-between mt-1">
-              //   <div id="err" className="text-danger pt-2">
-              //     Insufficient balance to buy this ticket
-              //   </div>
-              //   <div className="p-0 m-0">
-              //     <Link className="btn btn-sm btn-primary">Deposit Now</Link>
-              //   </div>
-              // </div>
               <div className="mt-1">
                 <div id="err" className="text-danger pt-2">
                   Insufficient balance to buy this ticket
