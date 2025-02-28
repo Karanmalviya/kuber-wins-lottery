@@ -131,7 +131,6 @@ export const RoutePath = () => {
     }
   }, [subAdminById, adminDataById]);
 
-
   const isVerifiedForChangePassword =
     localStorage.getItem("isVerifiedPassword");
   const isRequired2FA = (role, isVerifed) => {
