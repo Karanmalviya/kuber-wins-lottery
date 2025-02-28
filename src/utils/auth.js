@@ -23,20 +23,20 @@ export const AuthProvider = ({ children }) => {
   const showMessage = (message, success, email, promise) => {
     if (promise) {
       toast.promise(resendVerificationMail({ email }), {
-        loading: "Sending...",
+        loading: "Verification email is Sending to " + email + "...",
         success: "Verification email sent to " + email,
         error: "Failed to send verification email.",
       });
       return;
     }
-    toast[success ? "success" : "error"](
+    let id = toast[success ? "success" : "error"](
       <div className="d-flex align-items-center">
         {message}{" "}
         {email && (
           <button
-            className="btn btn-sm"
+            className="btn btn-sm btn-primary"
             onClick={() => {
-              toast.dismiss();
+              toast.dismiss(id);
               showMessage("", "", email, true);
             }}
           >

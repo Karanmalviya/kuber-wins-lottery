@@ -259,7 +259,7 @@ export default function DepositesView() {
                             >
                               Pay by{" "}
                               <img
-                                src="./assets/images/upi-logo.png"
+                                src="../assets/images/upi-logo.png"
                                 className="img-fluid"
                                 style={{ height: "18px" }}
                               />

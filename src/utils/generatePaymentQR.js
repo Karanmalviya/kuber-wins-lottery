@@ -3,7 +3,7 @@ import QRCode from "qrcode";
 const generateURL = ({ amount, name, upi }) => {
   return `upi://pay?pa=${upi}&pn=${name}&tn=${`${encodeURI(
     `Payment for Kuber Wins of ${amount}`
-  )}`}&am=${amount}&cu=INR`;
+  )}`}&am=${amount}&cu=INR&orgid=000000`;
 };
 
 export async function upiQr(query) {

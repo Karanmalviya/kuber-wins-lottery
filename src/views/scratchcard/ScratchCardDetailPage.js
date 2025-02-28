@@ -52,7 +52,6 @@ export default function ScratchCardDetailPage() {
   const [frequencySchedule, setFrequencySchedule] = useState([]);
   const [discount, setDiscount] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
-  const [isBuyAble, setIsBuyAble] = useState(false);
   const [calculateDiscount, setCalculateDiscount] = useState({
     discountPercent: 0,
   });

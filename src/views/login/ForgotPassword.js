@@ -75,16 +75,16 @@ export default function ForgotPasswordPage({props}) {
             className="row d-flex align-items-center justify-content-center"
             style={{height: "100vh"}}
           >
-            <div className="col-lg-10">
+            <div className="col-lg-6">
               <div className="row">
-                <div className="col-lg-4 col-md-4 d-none d-lg-block d-flex justify-content-center align-items-center pe-0">
+                {/* <div className="col-lg-4 col-md-4 d-none d-lg-block d-flex justify-content-center align-items-center pe-0">
                   <img
                     src="assets/images/login-left-bg_withname.png"
                     className="img-fluid"
                     alt=""
                   />
-                </div>
-                <div className="col-lg-8 col-md-8 bg-white">
+                </div> */}
+                <div className="col-lg-12 col-md-12 bg-white">
                   <div className="px-5 pb-4 pt-3">
                     <h4 className="mb-4">
                       Welcome To&nbsp;

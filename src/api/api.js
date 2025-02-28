@@ -936,14 +936,13 @@ export const fetchLotteryRewardsApi = async (data) => {
 };
 
 export const resendVerificationMail = async (body) => {
-  const response = await axios
-    .post(`${path.apiUrl}/user/resendVerification`, body)
-    .then((res) => {
-      return res.data;
-    })
-    .catch((err) => {
-      return err?.response?.data;
-    });
-
-  return response;
+  try {
+    const { data } = await axios.post(
+      `${path.apiUrl}/api/user/resendVerification`,
+      body
+    );
+    return data;
+  } catch (error) {
+    throw error?.response?.data || new Error("Unknown error occurred");
+  }
 };
