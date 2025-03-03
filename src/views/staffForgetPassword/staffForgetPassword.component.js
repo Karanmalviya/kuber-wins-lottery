@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
-import logologin from "./../../assets/img/logologin.png";
+import logologin from "./../../assets/img/LifetimeLottoLOGO.png";
 import { ToastContainer } from "react-toastify";
 import Loader from "../../component/Loader";
 

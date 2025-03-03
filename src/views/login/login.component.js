@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react";
-import {Link, useNavigate} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 // react bootstrap start
-import {Container, Row, Col} from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -11,13 +11,13 @@ import Button from "react-bootstrap/Button";
 // local images import end
 import logologin from "./../../assets/img/LifetimeLottoLOGO.png";
 // local images import start
-import {ToastContainer} from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 export default function LoginPage(props) {
   const navigate = useNavigate();
   const [loginType, setLoginType] = useState(false);
-  const {isLoading, isLoggedIn, userLogin, loggedUser, staffLogin} = props;
-  const [values, setValues] = useState({username: "", password: ""});
+  const { isLoading, isLoggedIn, userLogin, loggedUser, staffLogin } = props;
+  const [values, setValues] = useState({ username: "", password: "" });
   const [staffvalues, setStaffValues] = useState({
     username: "",
     password: "",
@@ -65,7 +65,7 @@ export default function LoginPage(props) {
                 <div className="d-flex justify-content-center py-4">
                   {/* <a href="index.html" className="logo d-flex align-items-center w-auto"> */}
                   <a href="/" className="logo d-flex align-items-center w-auto">
-                    <img src={logologin} alt="" style={{maxHeight: "52px"}} />
+                    <img src={logologin} alt="" style={{ maxHeight: "52px" }} />
                   </a>
                 </div>
 
@@ -84,7 +84,7 @@ export default function LoginPage(props) {
                           className={
                             "btn px-3 py-1 nav-link active btn-sm w-50"
                           }
-                          style={{border: "1px solid"}}
+                          style={{ border: "1px solid" }}
                           id="pills-deposit-commission-tab"
                           data-bs-toggle="pill"
                           data-bs-target="#pills-deposit-commission"
@@ -96,7 +96,7 @@ export default function LoginPage(props) {
                         {/* </div> */}
                         {/* <div className="nav-item" role="presentation"> */}
                         <button
-                          style={{border: "1px solid"}}
+                          style={{ border: "1px solid" }}
                           className={"btn px-3 py-1 nav-link btn-sm w-50"}
                           id="pills-lottery-commission-tab"
                           data-bs-toggle="pill"
@@ -203,7 +203,7 @@ export default function LoginPage(props) {
                                 <Form.Label
                                   className="form-check-label"
                                   for="rememberMe"
-                                  style={{fontSize: "14px"}}
+                                  style={{ fontSize: "14px" }}
                                 >
                                   Remember me
                                 </Form.Label>
@@ -214,11 +214,11 @@ export default function LoginPage(props) {
                                 <Form.Label
                                   className="form-check-label"
                                   for="rememberMe"
-                                  style={{fontSize: "14px"}}
+                                  style={{ fontSize: "14px" }}
                                 >
                                   <Link
                                     to={"/forget-password"}
-                                    state={{isAdmin: false}}
+                                    state={{ isAdmin: false }}
                                   >
                                     Forget Password
                                   </Link>
@@ -254,8 +254,9 @@ export default function LoginPage(props) {
                           class="row g-3 needs-validation"
                           onSubmit={(e) => {
                             e.preventDefault();
-                            userLogin(values);
                             setErrors(validate(values));
+                            // userLogin(values);
+                            window.location.reload();
                           }}
                         >
                           <div class="col-12">
@@ -327,7 +328,7 @@ export default function LoginPage(props) {
                                 <Form.Label
                                   className="form-check-label"
                                   for="rememberMe"
-                                  style={{fontSize: "14px"}}
+                                  style={{ fontSize: "14px" }}
                                 >
                                   Remember me
                                 </Form.Label>
@@ -338,11 +339,11 @@ export default function LoginPage(props) {
                                 <Form.Label
                                   className="form-check-label"
                                   for="rememberMe"
-                                  style={{fontSize: "14px"}}
+                                  style={{ fontSize: "14px" }}
                                 >
                                   <Link
                                     to={"/forget-password"}
-                                    state={{isAdmin: true}}
+                                    state={{ isAdmin: true }}
                                   >
                                     Forget Password
                                   </Link>
