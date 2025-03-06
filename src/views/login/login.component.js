@@ -255,8 +255,7 @@ export default function LoginPage(props) {
                           onSubmit={(e) => {
                             e.preventDefault();
                             setErrors(validate(values));
-                            // userLogin(values);
-                            window.location.reload();
+                            userLogin(values);
                           }}
                         >
                           <div class="col-12">

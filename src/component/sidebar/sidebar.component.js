@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {Link, useLocation} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 // import React bootstrap icons start
 import {
@@ -173,6 +173,42 @@ export default function SidebarPage(props) {
                 >
                   <BsCircle className="smallCircle" />
                   <span>Referrals Lottery Rewards</span>
+                </Link>
+              </li>
+            </ul>
+          </li>
+
+          <li
+            className="nav-item"
+            hidden={admin.role === "admin" ? false : true}
+          >
+            <a
+              className={
+                "nav-link collapsed" + (menu === "/banners" ? "active" : "")
+              }
+              data-bs-target="#Frontend-nav"
+              data-bs-toggle="collapse"
+              href="#"
+            >
+              <BsMenuButtonWide className="sidebarLeftIcons" />
+              <span>Manage Frontend</span>
+              <i className="bi bi-chevron-down ms-auto " />
+            </a>
+            <ul
+              id="Frontend-nav"
+              data-bs-parent="#sidebar-nav"
+              className={
+                "nav-content collapse " +
+                (menu === "/banners" ? "show" : "hidden")
+              }
+            >
+              <li>
+                <Link
+                  to="/banners"
+                  className={menu === "/banners" ? "active" : ""}
+                >
+                  <BsCircle className="smallCircle" />
+                  <span>Banners</span>
                 </Link>
               </li>
             </ul>
