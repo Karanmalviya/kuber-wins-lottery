@@ -31,6 +31,7 @@ import {
   fetchWinnerTickets,
 } from "../../features/apiSlice";
 import Timer from "../components/Timer";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
   const dispatch = useDispatch();
@@ -117,6 +118,44 @@ export default function HomePage() {
         <div className="container">
           <div className="col-lg-12">
             <Slider />
+            <div className="container sec-banner-text">
+              <div className="text-center">
+                <h4 className="mb-4">
+                  <i>
+                    <span
+                      style={{
+                        color: "#EE015F",
+                      }}
+                    >
+                      Play Kuber Wins,
+                    </span>{" "}
+                    <span
+                      style={{
+                        color: "#4E5FED",
+                      }}
+                    >
+                      {" "}
+                      Where your Ticket Never Expert
+                    </span>
+                  </i>
+                </h4>
+              </div>
+              <div className="row px-lg-5 mx-lg-2">
+                <div className="col-lg-10 col-md-10">
+                  Join Kuber Wins and enjoy endless chances to win-your ticket
+                  never expires! Play now and experience nonstop excitement with
+                  every game!{" "}
+                </div>
+                <div className="col-lg-2 col-md-2 text-lg-end text-md-end text-center">
+                  <Link
+                    to="/registration"
+                    className="btn btn-default bg-dark text-light px-4"
+                  >
+                    Join Now
+                  </Link>
+                </div>{" "}
+              </div>
+            </div>
           </div>
           <div className="row d-flex justify-content-center mt-3">
             <div className="col-lg-3 col-md-4 col-10 col-sm px-lg-0 card curr-timer">

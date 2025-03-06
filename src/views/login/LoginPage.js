@@ -36,7 +36,7 @@ const LoginPage = ({ props }) => {
     <>
       <title>Login - Kuber Wins</title>
 
-      <section className="sec-login" style={{ backgroundColor: "#f5f6ff" }}>
+      <section className="sec-banner-text" style={{ backgroundColor: "#f5f6ff" }}>
         <div className="container">
           <div
             className="row d-flex align-items-center justify-content-center"

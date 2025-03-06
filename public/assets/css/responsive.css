@@ -1,5 +1,9 @@
 /* // Extra small devices (portrait phones, less than 576px) */
 @media (min-width: 275.98px) {
+  .sec-banner-text h4 {
+    font-size: 20px !important;
+    margin-top: 5px !important;
+  }
   .sec-slider .slider-item {
     height: 133px;
   }
@@ -76,6 +80,10 @@
 }
 /* // Extra small devices (portrait phones, less than 576px) */
 @media (min-width: 375.98px) {
+  .sec-banner-text h4 {
+    font-size: 20px !important;
+    margin-top: 5px !important;
+  }
   .sec-slider .slider-item {
     height: 133px;
   }
@@ -151,6 +159,10 @@
 }
 /* // Extra small devices (portrait phones, less than 576px) */
 @media (min-width: 575.98px) {
+  .sec-banner-text h4 {
+    font-size: 20px !important;
+    margin-top: 5px !important;
+  }
   .sec-slider .slider-item {
     height: 390px;
   }
@@ -228,6 +240,9 @@
 
 /* // Small devices (landscape phones, less than 768px) */
 @media (min-width: 767.98px) {
+  .sec-banner-text h4 {
+    font-size: 40.04px !important;
+  }
   .sec-slider .slider-item {
     height: 390px;
   }
@@ -304,6 +319,9 @@
 
 /* // Medium devices (tablets, less than 992px) */
 @media (min-width: 991.98px) {
+  .sec-banner-text h4 {
+    font-size: 40.04px !important;
+  }
   .sec-slider .slider-item {
     height: 390px;
   }
@@ -380,6 +398,9 @@
 
 /* // Large devices (desktops, less than 1200px) */
 @media (min-width: 1199.98px) {
+  .sec-banner-text h4 {
+    font-size: 40.04px !important;
+  }
   .sec-slider .slider-item {
     height: 390px;
   }
@@ -454,6 +475,9 @@
   }
 }
 @media (min-width: 1440px) {
+  .sec-banner-text h4 {
+    font-size: 40.04px !important;
+  }
   .sec-slider .slider-item {
     height: 390px;
   }
