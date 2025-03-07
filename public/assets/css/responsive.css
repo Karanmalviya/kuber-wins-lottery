@@ -1,11 +1,16 @@
 /* // Extra small devices (portrait phones, less than 576px) */
 @media (min-width: 275.98px) {
   .sec-banner-text h4 {
-    font-size: 20px !important;
+    font-size: 19px !important;
     margin-top: 5px !important;
+    margin-bottom: 3px !important;
+  }
+  .sec-banner-text p {
+    font-size: 14px !important;
+    text-align: center !important;
   }
   .sec-slider .slider-item {
-    height: 133px;
+    height: 126px;
   }
   .sec-second .card h4 {
     font-size: 17px;
@@ -81,11 +86,16 @@
 /* // Extra small devices (portrait phones, less than 576px) */
 @media (min-width: 375.98px) {
   .sec-banner-text h4 {
-    font-size: 20px !important;
+    font-size: 19px !important;
     margin-top: 5px !important;
+    margin-bottom: 3px !important;
+  }
+  .sec-banner-text p {
+    font-size: 14px !important;
+    text-align: center !important;
   }
   .sec-slider .slider-item {
-    height: 133px;
+    height: 126px;
   }
   .sec-second .card h4 {
     font-size: 17px;
@@ -162,6 +172,10 @@
   .sec-banner-text h4 {
     font-size: 20px !important;
     margin-top: 5px !important;
+  }
+  .sec-banner-text p {
+    font-size: 18px !important;
+    text-align: center !important;
   }
   .sec-slider .slider-item {
     height: 390px;
@@ -243,6 +257,10 @@
   .sec-banner-text h4 {
     font-size: 40.04px !important;
   }
+  .sec-banner-text p {
+    font-size: 18px !important;
+    text-align: left !important;
+  }
   .sec-slider .slider-item {
     height: 390px;
   }
@@ -321,6 +339,10 @@
 @media (min-width: 991.98px) {
   .sec-banner-text h4 {
     font-size: 40.04px !important;
+  }
+  .sec-banner-text p {
+    font-size: 18px !important;
+    text-align: left !important;
   }
   .sec-slider .slider-item {
     height: 390px;
@@ -401,8 +423,12 @@
   .sec-banner-text h4 {
     font-size: 40.04px !important;
   }
+  .sec-banner-text p {
+    font-size: 18px !important;
+    text-align: left !important;
+  }
   .sec-slider .slider-item {
-    height: 390px;
+    height: 361px;
   }
   .sec-second .card h4 {
     font-size: 24px;
@@ -478,8 +504,12 @@
   .sec-banner-text h4 {
     font-size: 40.04px !important;
   }
+  .sec-banner-text p {
+    font-size: 18px !important;
+    text-align: left !important;
+  }
   .sec-slider .slider-item {
-    height: 390px;
+    height: 361px;
   }
   .sec-second .card h4 {
     font-size: 24px;

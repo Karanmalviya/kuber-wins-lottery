@@ -118,7 +118,7 @@ export default function HomePage() {
         <div className="container">
           <div className="col-lg-12">
             <Slider />
-            <div className="container sec-banner-text">
+            <div className="container sec-banner-text mt-4">
               <div className="text-center">
                 <h4 className="mb-4">
                   <i>
@@ -135,21 +135,23 @@ export default function HomePage() {
                       }}
                     >
                       {" "}
-                      Where your Ticket Never Expert
+                      Where your Ticket Never Expire
                     </span>
                   </i>
                 </h4>
               </div>
-              <div className="row px-lg-5 mx-lg-2">
-                <div className="col-lg-10 col-md-10">
-                  Join Kuber Wins and enjoy endless chances to win-your ticket
-                  never expires! Play now and experience nonstop excitement with
-                  every game!{" "}
+              <div className="row px-lg-5 mx-lg-2 mt-3">
+                <div className="col-lg-9 col-md-10">
+                  <p className="text-start">
+                    Join Kuber Wins and enjoy endless chances to win-your ticket
+                    never expires! Play now and experience nonstop excitement
+                    with every game!{" "}
+                  </p>
                 </div>
-                <div className="col-lg-2 col-md-2 text-lg-end text-md-end text-center">
+                <div className="col-lg-3 col-md-2 text-lg-end text-md-end text-center">
                   <Link
                     to="/registration"
-                    className="btn btn-default bg-dark text-light px-4"
+                    className="btn btn-default bg-dark text-light w-100"
                   >
                     Join Now
                   </Link>

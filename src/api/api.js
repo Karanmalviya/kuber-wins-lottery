@@ -946,3 +946,18 @@ export const resendVerificationMail = async (body) => {
     throw error?.response?.data || new Error("Unknown error occurred");
   }
 };
+export const fetchBannersApi = async (data) => {
+  const response = await axios
+    .get(
+      `${path.apiUrl}/api/banner?page=${data?.page ?? ""}&pageSize=${
+        data?.pageSize ?? ""
+      }`
+    )
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
+  return response;
+};

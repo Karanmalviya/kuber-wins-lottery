@@ -6,6 +6,7 @@ import {
   commissionTransaction,
   createDepositApi,
   fetchAccountDetailsByIdApi,
+  fetchBannersApi,
   fetchDepositsApi,
   fetchLotteryRewardsApi,
   fetchWithdrawalById,
@@ -585,6 +586,18 @@ export const fetchLotteryRewards = createAsyncThunk(
   }
 );
 
+export const fetchBanners = createAsyncThunk(
+  "api/fetchBanners",
+  async (data, thunkAPI) => {
+    try {
+      const response = await fetchBannersApi(data);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response);
+    }
+  }
+);
+
 const apiSlice = createSlice({
   name: "api",
   initialState: {
@@ -776,6 +789,10 @@ const apiSlice = createSlice({
     lotteryRewardsData: [],
     lotteryRewardsLoading: false,
     lotteryRewardsError: null,
+
+    bannersData: [],
+    bannersLoading: false,
+    bannersError: null,
   },
   reducers: {
     clearScratchCardData: (state) => {
@@ -1400,6 +1417,19 @@ const apiSlice = createSlice({
         state.lotteryRewardsError = action.payload;
       });
 
+    builder
+      .addCase(fetchBanners.pending, (state) => {
+        state.bannersLoading = true;
+        state.bannersError = null;
+      })
+      .addCase(fetchBanners.fulfilled, (state, action) => {
+        state.bannersLoading = false;
+        state.bannersData = action.payload;
+      })
+      .addCase(fetchBanners.rejected, (state, action) => {
+        state.bannersLoading = false;
+        state.bannersError = action.payload;
+      });
     // Handle other cases...
   },
 });
