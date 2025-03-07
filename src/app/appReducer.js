@@ -19,6 +19,7 @@ import { referalUserReducer as referalUserPage } from "../api/referal/referalpha
 import { staffReducer as staffPage } from "../api/staff/staffReducer";
 import { TwofaReducer as twofaPage } from "../api/2FA/2faReducer";
 import { bankAccountReducer as bankAccountPage } from "../api/bankAccount/bankAccountReducer";
+import { bannerReducer as bannerPage } from "../api/banners/bannerReducer";
 
 const appReducer = combineReducers({
   userPage,
@@ -40,6 +41,7 @@ const appReducer = combineReducers({
   staffPage,
   twofaPage,
   bankAccountPage,
+  bannerPage,
 });
 
 export default appReducer;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { HeaderPageContainer } from "../../component/header/header.container";
 import { SidebarPageContainer } from "../../component/sidebar/sidebar.container";
@@ -11,105 +11,40 @@ import Table from "react-bootstrap/Table";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Loader from "../../component/Loader";
-import axios from "axios";
 import ScrollToTop from "react-scroll-to-top";
 
 export default function BannersPage(props) {
   const [openSidebar, setOpenSidebar] = useState(false);
-  const adminData = localStorage.getItem("user");
-  const admin = adminData && JSON.parse(adminData);
   const navigate = useNavigate();
-  const {
-    fetchScratchCard,
-    updateScratchCard,
-    scratchcard,
-    isLoading,
-    subAdminById,
-    fetchSubAdminById,
-  } = props;
+  const { isLoading, fetchBanners, banners, isSaved } = props;
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [filteredScratchCard, setFilteredScratchCard] = useState([]);
-  const [statusChange, setStatusChange] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetchScratchCard();
-    admin.role === "sub-admin" && fetchSubAdminById(admin.id);
-  }, [statusChange]);
+    fetchBanners({
+      page: page,
+      pageSize: limit,
+      search: search.trim(),
+    });
+  }, [page, limit, search, isSaved]);
 
-  const definePage = (pageNumber) => {
-    setCurrentPage(pageNumber);
+  const definePage = (p) => {
+    setPage(p);
   };
-  const startIndex = (currentPage - 1) * limit;
-  const endIndex = startIndex + limit;
 
-  const filterByRole = scratchcard?.filter((item) =>
-    admin.role === "sub-admin"
-      ? item.roleId === admin.id || item.roleId === 0
-      : item
-  );
+  const defineLimit = (l) => {
+    setLimit(l);
+    setPage(1);
+  };
 
-  const currentScratchCard = filterByRole.slice(startIndex, endIndex);
-  const card_count = currentScratchCard.length;
+  const defineSearch = (s) => {
+    setSearch(s);
+    setPage(1);
+  };
 
-  useEffect(() => {
-    const fetchingCard = async () => {
-      const updatedArray = await Promise.all(
-        currentScratchCard.map(async (object) => {
-          try {
-            const response = await axios
-              .get(`https://kuberwins.com/api/transaction/count/${object.id}`)
-              .then((res) => {
-                return res.data;
-              })
-              .catch((err) => {
-                return err.response.data;
-              });
-            const cardWonCount = response?.count?.Card_WonCount;
-            return { ...object, totalPayout: cardWonCount };
-          } catch (error) {
-            return object;
-          }
-        })
-      );
-      if (searchTerm === "") {
-        setFilteredScratchCard(updatedArray);
-      } else {
-        const filtered = updatedArray.filter((card) =>
-          card.card_name.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-        setFilteredScratchCard(filtered);
-      }
-    };
-    fetchingCard();
-  }, [searchTerm, scratchcard, currentPage, limit, statusChange]);
-
-  useEffect(() => {
-    const fetchingCard = async () => {
-      const updatedArray = await Promise.all(
-        filteredScratchCard.map(async (object) => {
-          try {
-            const response = await axios
-              .get(`https://kuberwins.com/api/transaction/count/${object.id}`)
-              .then((res) => {
-                return res.data;
-              })
-              .catch((err) => {
-                return err.response.data;
-              });
-            const cardWonCount = response?.count?.Card_WonCount;
-            return { ...object, totalPayout: cardWonCount };
-          } catch (error) {
-            return object;
-          }
-        })
-      );
-    };
-    fetchingCard();
-  }, [filteredScratchCard]);
-
+  const count = banners?.totalRecords || 0;
+  console.log(banners);
   return (
     <>
       <Loader loading={isLoading} />
@@ -131,26 +66,168 @@ export default function BannersPage(props) {
           <Col lg={9} md={9} sm={12} className="mainContantWidth">
             <main id="main" className="main">
               <div className="pagetitle">
-                <h1>Manage Frontend</h1>
+                <h1>Bank Accounts</h1>
                 <nav>
                   <ol className="breadcrumb">
                     <li className="breadcrumb-item">
-                      <Link href="/">Home</Link>
+                      <a href="index.html">Home</a>
                     </li>
-                    <li className="breadcrumb-item active">Manage Frontend</li>
-                    <li className="breadcrumb-item active">Banners</li>
+                    <li className="breadcrumb-item active">Bank Accounts</li>
                   </ol>
                 </nav>
               </div>
-              {/* <!-- End Page Title --> */}
-
               <section className="section">
                 <Row className="row">
                   <Col lg={12}>
                     <Card className="card">
                       <Card.Body className="card-body">
-                        <h5 className="card-title">Banners</h5>
-                       
+                        <h5 className="card-title">
+                          All Bank Accounts
+                          <Link
+                            to="/add-banner"
+                            className="btn btn-outline-dark btn-sm float-end"
+                          >
+                            Add New
+                          </Link>
+                        </h5>
+                        <div className="showentriesDiv">
+                          <h6>
+                            Show &nbsp;{" "}
+                            <DropdownButton
+                              variant="outline-dark"
+                              id="dropdown-basic-button"
+                              title="10"
+                            >
+                              <Dropdown.Item
+                                variant
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  defineLimit(10);
+                                }}
+                              >
+                                10
+                              </Dropdown.Item>
+                              <Dropdown.Item
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  defineLimit(25);
+                                }}
+                              >
+                                25
+                              </Dropdown.Item>
+                              <Dropdown.Item
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  defineLimit(50);
+                                }}
+                              >
+                                50
+                              </Dropdown.Item>
+                              <Dropdown.Item
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  defineLimit(100);
+                                }}
+                              >
+                                100
+                              </Dropdown.Item>
+                            </DropdownButton>{" "}
+                            &nbsp;entries
+                          </h6>
+                        </div>
+
+                        <div className="table-responsive">
+                          <Table
+                            id="basic-6"
+                            className="display tbl-ltr lotteriesTable"
+                          >
+                            <thead className="lotteriesTableHead">
+                              <tr className="tableTd">
+                                <th>
+                                  S.N. <BsArrowDownUp className="updownArrow" />
+                                </th>
+
+                                <th>
+                                  Banner{" "}
+                                  <BsArrowDownUp className="updownArrow" />
+                                </th>
+                                <th>
+                                  Order{" "}
+                                  <BsArrowDownUp className="updownArrow" />
+                                </th>
+                                <th>
+                                  Action{" "}
+                                  <BsArrowDownUp className="updownArrow" />
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {banners?.data &&
+                                Array.isArray(banners?.data) &&
+                                banners?.data.map((row, i) => {
+                                  return (
+                                    <tr key={row.id} className="tableTd">
+                                      <td>{i + 1}</td>
+                                      <td>
+                                        <img
+                                          alt=""
+                                          src={row?.banner}
+                                          className="img-fluid lotteriesImg"
+                                        />
+                                      </td>{" "}
+                                      <td>{row?.order}</td>{" "}
+                                      <td>
+                                        <Link
+                                          to={`/banner/${row.id}`}
+                                          className="btn btn-outline-primary mx-1 rounded-pill btn-sm"
+                                        >
+                                          Edit
+                                        </Link>
+                                      </td>
+                                    </tr>
+                                  );
+                                })}
+                            </tbody>
+                          </Table>
+                        </div>
+                        <div className="tableBottomEntries">
+                          <h6>
+                            Showing {(page - 1) * limit + 1} to{" "}
+                            {count > page * limit ? page * limit : count} of{" "}
+                            {count} entries
+                          </h6>
+                          <p>
+                            <span
+                              style={page > 1 ? { cursor: "pointer" } : {}}
+                              onClick={() => {
+                                if (page > 1) {
+                                  definePage(page - 1);
+                                }
+                              }}
+                            >
+                              Previous
+                            </span>
+                            &nbsp;&nbsp;
+                            <Button variant="outline-dark">{page}</Button>{" "}
+                            &nbsp;&nbsp;
+                            <span
+                              style={
+                                count > page * limit
+                                  ? { cursor: "pointer" }
+                                  : {}
+                              }
+                              onClick={() => {
+                                if (count > page * limit) {
+                                  definePage(page + 1);
+                                }
+                              }}
+                            >
+                              Next
+                            </span>
+                            &nbsp;&nbsp;
+                          </p>
+                        </div>
+                        {/* <!-- End Default Table Example --> */}
                       </Card.Body>
                     </Card>
                   </Col>

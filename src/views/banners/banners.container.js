@@ -1,31 +1,17 @@
-import ScratchListPage from "./banners.component";
 import { connect } from "react-redux";
-import {
-  fetchScratchCard,
-  deleteScratchCard,
-  updateScratchCard,
-  deleteScratchCardTableTableRandom,
-  deleteScratchCardTableTable,
-} from "../../api/scratchcard/scratchcardAction";
-import { fetchSubAdminById } from "../../api/staff/stafftAction";
+import { fetchBanners } from "../../api/banners/bannerAction";
 import BannersPage from "./banners.component";
 
 const mapDispatchToProps = {
-  fetchScratchCard,
-  deleteScratchCard,
-  updateScratchCard,
-  deleteScratchCardTableTable,
-  deleteScratchCardTableTableRandom,
-  fetchSubAdminById,
+  fetchBanners,
 };
 
 const mapStateToProps = (state) => ({
-  isError: state.scratchcardPage.isError,
-  isLoading: state.scratchcardPage.isLoading,
-  scratchcard: state.scratchcardPage.scratchcard,
-  isSaved: state.scratchcardPage.isSaved,
-  count: state.scratchcardPage.count,
-  subAdminById: state.staffPage.subAdminById,
+  isError: state.bannerPage.isError,
+  isLoading: state.bannerPage.isLoading,
+  banners: state.bannerPage.banners,
+  isSaved: state.bannerPage.isSaved,
+  count: state.bannerPage.count,
 });
 
 export const BannersPageContainer = connect(

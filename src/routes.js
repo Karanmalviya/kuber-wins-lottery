@@ -68,6 +68,7 @@ import { LotteryRewardsLogPageContainer } from "./views/lotteryRewardsLog/lotter
 import { ManualLotteriesPageContainer } from "./views/manualLotteries/manualLotteries.container";
 import { ManualLotteriesHistoryPageContainer } from "./views/manualLotteriesHistory/manualLotteriesHistory.container";
 import { BannersPageContainer } from "./views/banners/banners.container";
+import { AddBannerPageContainer } from "./views/addBanner/addBanner.container";
 
 const emptyData = {
   firstName: "",
@@ -1167,6 +1168,24 @@ export const RoutePath = () => {
         element={
           <ProtectedRoute permission={true}>
             <BannersPageContainer />
+          </ProtectedRoute>
+        }
+      />{" "}
+      <Route
+        exact
+        path="/add-banner"
+        element={
+          <ProtectedRoute permission={true}>
+            <AddBannerPageContainer />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        exact
+        path="/banner/:id"
+        element={
+          <ProtectedRoute permission={true}>
+            <AddBannerPageContainer />
           </ProtectedRoute>
         }
       />
