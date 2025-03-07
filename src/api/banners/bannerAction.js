@@ -32,7 +32,7 @@ export const createBanner = (data) => {
         // }, 3000);
       })
       .catch(function (error) {
-        toast(error.response.data.message, {
+        toast(error.response.data.message === "{\"name\":\"MulterError\",\"message\":\"File too large\",\"code\":\"LIMIT_FILE_SIZE\",\"field\":\"file\",\"storageErrors\":[]}" ? "Banner Size must be 2mb or less": error.response.data.message, {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,

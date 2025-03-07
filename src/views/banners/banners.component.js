@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { HeaderPageContainer } from "../../component/header/header.container";
-import { SidebarPageContainer } from "../../component/sidebar/sidebar.container";
-import { FooterPageContainer } from "../../component/footer/footer.container";
-import { Container, Row, Col, Button } from "react-bootstrap";
-import { BsArrowDownUp } from "react-icons/bs";
+import React, {useState, useEffect} from "react";
+import {Link, useNavigate} from "react-router-dom";
+import {HeaderPageContainer} from "../../component/header/header.container";
+import {SidebarPageContainer} from "../../component/sidebar/sidebar.container";
+import {FooterPageContainer} from "../../component/footer/footer.container";
+import {Container, Row, Col, Button} from "react-bootstrap";
+import {BsArrowDownUp} from "react-icons/bs";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import Table from "react-bootstrap/Table";
@@ -16,7 +16,7 @@ import ScrollToTop from "react-scroll-to-top";
 export default function BannersPage(props) {
   const [openSidebar, setOpenSidebar] = useState(false);
   const navigate = useNavigate();
-  const { isLoading, fetchBanners, banners, isSaved } = props;
+  const {isLoading, fetchBanners, banners, isSaved} = props;
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const [search, setSearch] = useState("");
@@ -44,7 +44,6 @@ export default function BannersPage(props) {
   };
 
   const count = banners?.totalRecords || 0;
-  console.log(banners);
   return (
     <>
       <Loader loading={isLoading} />
@@ -66,13 +65,13 @@ export default function BannersPage(props) {
           <Col lg={9} md={9} sm={12} className="mainContantWidth">
             <main id="main" className="main">
               <div className="pagetitle">
-                <h1>Bank Accounts</h1>
+                <h1>Banners</h1>
                 <nav>
                   <ol className="breadcrumb">
                     <li className="breadcrumb-item">
-                      <a href="index.html">Home</a>
+                      <Link href="/">Home</Link>
                     </li>
-                    <li className="breadcrumb-item active">Bank Accounts</li>
+                    <li className="breadcrumb-item active">Banners</li>
                   </ol>
                 </nav>
               </div>
@@ -82,7 +81,7 @@ export default function BannersPage(props) {
                     <Card className="card">
                       <Card.Body className="card-body">
                         <h5 className="card-title">
-                          All Bank Accounts
+                          Banners
                           <Link
                             to="/add-banner"
                             className="btn btn-outline-dark btn-sm float-end"
@@ -198,7 +197,7 @@ export default function BannersPage(props) {
                           </h6>
                           <p>
                             <span
-                              style={page > 1 ? { cursor: "pointer" } : {}}
+                              style={page > 1 ? {cursor: "pointer"} : {}}
                               onClick={() => {
                                 if (page > 1) {
                                   definePage(page - 1);
@@ -212,9 +211,7 @@ export default function BannersPage(props) {
                             &nbsp;&nbsp;
                             <span
                               style={
-                                count > page * limit
-                                  ? { cursor: "pointer" }
-                                  : {}
+                                count > page * limit ? {cursor: "pointer"} : {}
                               }
                               onClick={() => {
                                 if (count > page * limit) {
