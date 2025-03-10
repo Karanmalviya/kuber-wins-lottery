@@ -41,7 +41,6 @@ export default function Navbar({ props }) {
                   "/assets/images/material-symbols_account-balance-wallet-old.png"
                 }
                 className="img-fluid"
-                style={{ filter: "brightness(0) invert(1)" }}
                 alt=""
               />
               Rs.
@@ -70,49 +69,76 @@ export default function Navbar({ props }) {
           >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
+                {" "}
                 <Link
                   className={
-                    props.mainPage === "home" ? "nav-link active" : "nav-link"
+                    (props.mainPage === "home"
+                      ? "nav-link active"
+                      : "nav-link") + " d-flex align-items-center"
                   }
                   aria-current="page"
                   to={"/"}
                 >
+                  {" "}
+                  <img
+                    src={"/assets/images/home.png"}
+                    className="img-fluid me-1"
+                    alt=""
+                  />
                   Home
                 </Link>
               </li>
               <li className="nav-item">
                 <Link
                   className={
-                    props.mainPage === "lotteries"
+                    (props.mainPage === "lotteries"
                       ? "nav-link active"
-                      : "nav-link"
+                      : "nav-link") + " d-flex align-items-center"
                   }
                   to={"/lotteries"}
                 >
+                  {" "}
+                  <img
+                    src={"/assets/images/lottery.png"}
+                    className="img-fluid me-1"
+                    alt=""
+                  />
                   Lotteries
                 </Link>
               </li>
               <li className="nav-item">
                 <Link
                   className={
-                    props.mainPage === "scratchcard"
+                    (props.mainPage === "scratchcard"
                       ? "nav-link active"
-                      : "nav-link"
+                      : "nav-link") + " d-flex align-items-center"
                   }
                   to={"/scratch-cards"}
                 >
+                  {" "}
+                  <img
+                    src={"/assets/images/scratch.png"}
+                    className="img-fluid me-1"
+                    alt=""
+                  />
                   Scratchers
                 </Link>
               </li>
               <li className="nav-item">
                 <Link
                   className={
-                    props.mainPage === "winners"
+                    (props.mainPage === "winners"
                       ? "nav-link active"
-                      : "nav-link"
+                      : "nav-link") + " d-flex align-items-center"
                   }
                   to={"/winners"}
                 >
+                  {" "}
+                  <img
+                    src={"/assets/images/winner.png"}
+                    className="img-fluid me-1"
+                    alt=""
+                  />
                   Winners
                 </Link>
               </li>
@@ -120,15 +146,21 @@ export default function Navbar({ props }) {
                 <li className="nav-item">
                   <Link
                     className={
-                      props.mainPage === "dashboard" ||
+                      (props.mainPage === "dashboard" ||
                       props.mainPage === "deposit" ||
                       props.mainPage === "transactions" ||
                       props.mainPage === "ticketlist"
                         ? "nav-link active"
-                        : "nav-link"
+                        : "nav-link") + " d-flex align-items-center"
                     }
                     to={"/dashboard"}
                   >
+                    {" "}
+                    <img
+                      src={"/assets/images/dashboard.png"}
+                      className="img-fluid me-1"
+                      alt=""
+                    />
                     Dashboard
                   </Link>
                 </li>
@@ -197,7 +229,6 @@ export default function Navbar({ props }) {
                         "/assets/images/material-symbols_account-balance-wallet-old.png"
                       }
                       className="img-fluid"
-                      style={{ filter: "brightness(0) invert(1)" }}
                       alt=""
                     />
                     Rs.
@@ -239,7 +270,10 @@ export default function Navbar({ props }) {
                           height={"40px"}
                           src={userDetail?.image}
                           className="rounded-circle me-2"
-                          style={{ border: "2px solid #fff" }}
+                          style={{
+                            border: "2px solid #fff",
+                            objectFit: "cover",
+                          }}
                         />
                       )}
                       {userDetail?.fname}

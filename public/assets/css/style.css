@@ -8,19 +8,23 @@ body {
 }
 
 .navbar-light {
-  background: #4e5fed !important;
+  background: linear-gradient(
+    179.39deg,
+    #32155f -9.48%,
+    #4b1969 95.13%
+  ) !important;
   padding: 10px 0px;
 }
 
 .navbar-light .navbar-nav .nav-link.active,
 .navbar-light .navbar-nav .show > .nav-link {
   color: #fff;
-  background: #394bdf;
+  background: linear-gradient(
+    179.39deg,
+    #32155f -9.48%,
+    #4b1969 95.13%
+  ); /*fdfdf */
 }
-
-/* .nav-link.active {
-  color: #394bdf !important;
-} */
 
 .navbar-light .navbar-nav .nav-link:focus,
 .navbar-light .navbar-nav .nav-link:hover {
@@ -29,20 +33,24 @@ body {
 
 .navbar-light .navbar-nav .nav-link {
   color: #fffffff0;
-  border-radius: 8px;
-  padding: 6px 20px;
+  border-radius: 8px; /*fdfdf */
+  /* padding: 6px 20px; */
   margin: 10px 2px;
 }
 .navbar-light .nav-link:hover {
-  background: #394bdf;
+  background: linear-gradient(
+    179.39deg,
+    #32155f -9.48%,
+    #4b1969 95.13%
+  ); /*fdfdf */
 }
 
 .btn {
   border-radius: 8px;
 }
 .btn-danger {
-  background: #ee005e;
-  border-color: #ee005e;
+  background: #f73bb1;
+  border-color: #f73bb1;
 }
 
 @media (min-width: 992px) {
@@ -99,7 +107,7 @@ body {
 }
 
 .sec-first .card-body .crd-icon {
-  background: #ee005e;
+  background: #f73bb1;
   border-radius: 50%;
   height: 75px;
   width: 75px;
@@ -171,8 +179,8 @@ body {
 }
 
 .btn-info {
-  background: #00a3ff;
-  border-color: #00a3ff;
+  background: #f73bb1;
+  border-color: #f73bb1;
   border-radius: 8px;
   position: relative;
   top: 0px;
@@ -180,8 +188,8 @@ body {
 .btn-info:hover {
   top: -2px;
   transition: 0.2s ease-in !important;
-  background: #00a3ff;
-  border-color: #00a3ff;
+  background: #f73bb1;
+  border-color: #f73bb1;
   box-shadow: 0px 3.79888px 3.79888px rgb(0 0 0 / 10%);
 }
 
@@ -208,7 +216,7 @@ body {
   font-weight: 700;
   font-size: 32px;
   line-height: 23px;
-  color: #ee005e;
+  color: #f73bb1;
   margin-bottom: 0;
   margin-left: 15px;
 }
@@ -220,14 +228,14 @@ body {
   margin: 0;
 }
 .sec-second .btn {
-  border: 1px solid #4e5fed;
+  border: 1px solid #f73bb1;
   border-radius: 35px;
   color: #484b59;
   font-weight: 600;
   padding: 4px 0px 4px 0;
 }
 .sec-second .btn:hover {
-  background-color: #4e5fed;
+  background-color: #f73bb1;
   color: #fff;
 }
 .sec-second .bg-warning {
@@ -251,13 +259,13 @@ body {
 .sec-footer .btn-danger {
   border-radius: 4px;
   color: #fff;
-  background-color: #ee005e;
-  border-color: #ee005e;
+  background-color: #f73bb1;
+  border-color: #f73bb1;
   font-size: 14px;
 }
 
 .sec-footer .card {
-  background: #4e5fed;
+  background: #f73bb1;
   border-radius: 10px;
   color: #fff;
   padding: 33px 0px 10px 0px;
@@ -304,7 +312,7 @@ body {
   padding: 6px 9px;
 }
 .sec-footer .ul-social li a:hover {
-  color: #4e5fed;
+  color: #f73bb1;
   background: #c3c9ff73;
   top: -5px;
   border: 1px solid #c3c9ff73;
@@ -388,17 +396,17 @@ body {
 }
 /* 4 */
 .sec-four .card-body {
-  padding: 7px 0px;
+  padding: 8px 0px;
 }
 .sec-four .card {
   /* background-color: #4B5CEA; */
-  background-size: cover;
+  /* background-size: cover; */
   background-repeat: no-repeat;
   padding: 0;
   border: none;
   box-shadow: none;
   position: relative;
-  top: 0px;
+  top: -6px;
   transition: 0.2s ease-in;
   cursor: pointer;
 }
@@ -422,9 +430,15 @@ body {
   top: -47px;
 }
 .sec-four .pro-m-pic {
+  /* position: absolute;
+  top: -40px;
+  width: 86px; */
+  border-radius: 50%;
   position: absolute;
   top: -40px;
-  width: 86px;
+  width: 87px !important;
+  height: 87px;
+  object-fit: cover;
 }
 .sec-four h1 {
   background: linear-gradient(180deg, #ffc700 0%, #ffef9d 53.12%, #ffc700 100%);
@@ -525,7 +539,7 @@ body {
     color:#4E5FED;
 } */
 .sec-five .owl-item.center .item .card:hover .p-t-img {
-  border: 4px solid #4e5fed;
+  border: 4px solid #f73bb1;
 }
 .sec-five .owl-item .item .card {
   /* -webkit-transition: 0.3s;
@@ -557,7 +571,7 @@ body {
   font-weight: 700;
   font-size: 23px;
   line-height: 42px;
-  color: #ee005e;
+  color: #f73bb1;
 }
 .sec-scratch-cards .card img {
   border-radius: 15px 15px 0 0;
@@ -641,22 +655,22 @@ body {
 /* .p-label-lotto-s {
   background: linear-gradient(
     85.85deg,
-    #4e5fed 0.93%,
+    linear-gradient(179.39deg, #32155F -9.48%, #4B1969 95.13%);0.93%,
     #fff 53.56%,
-    #4e5fed 100%
+    linear-gradient(179.39deg, #32155F -9.48%, #4B1969 95.13%);100%
   ) !important;
 } */
 .btn-outline-info {
-  color: #00a3ff;
-  border-color: #00a3ff;
-  border: 1px solid #00a3ff;
+  color: #f73bb1;
+  border-color: #f73bb1;
+  border: 1px solid #f73bb1;
   border-radius: 82px !important;
   font-weight: 600;
   padding: 6px 0px;
 }
 .btn-outline-info:hover {
-  background-color: #00a3ff;
-  border-color: #00a3ff;
+  background-color: #f73bb1;
+  border-color: #f73bb1;
   color: #fff;
 }
 
@@ -689,15 +703,15 @@ body {
   margin: 0 13px;
 }
 .sec-scratch-cards-details .button-add:hover {
-  background: #ee005e;
-  border: 1px solid #ee005e;
+  background: #f73bb1;
+  border: 1px solid #f73bb1;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 42px;
   color: #fff;
 }
 .sec-scratch-cards-details .active {
-  background: #ee005e;
-  border: 1px solid #ee005e;
+  background: #f73bb1;
+  border: 1px solid #f73bb1;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 42px;
   color: #fff;
@@ -735,7 +749,7 @@ body {
   width: 301px;
 }
 .sec-scratch-cards-details .card-footer {
-  background: #ee005e;
+  background: #f73bb1;
   border-radius: 0px 0px 12px 12px;
   text-align: center;
   /* z-index: 999999999 !important; */
@@ -848,7 +862,7 @@ body {
   top: 31.87%;
   height: 50px;
   bottom: 64.44%;
-  background: #00a3ff;
+  background: #f73bb1;
   box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
   border-radius: 12px;
   color: #fff;
@@ -905,17 +919,17 @@ body {
   border-radius: 33px;
   /* margin-left: 10px; */
   font-size: 13px;
-  border: 1px solid #00a3ff;
+  border: 1px solid #f73bb1;
   border-radius: 35px;
   margin-bottom: 7px;
 }
 .card-ticket-details .btn-check:checked + .btn-outline-primary {
-  background: #00a3ff;
-  border: 1px solid #00a3ff;
+  background: #f73bb1;
+  border: 1px solid #f73bb1;
 }
 .card-ticket-details .btn-outline-primary:hover {
-  background: #00a3ff;
-  border: 1px solid #00a3ff;
+  background: #f73bb1;
+  border: 1px solid #f73bb1;
 }
 
 .buy-ticket-dtls .card-ticket-details label {
@@ -973,7 +987,7 @@ body {
   height: 26px;
   /* left: 830px;
     top: 347px; */
-  background: #00a3ff !important;
+  background: #f73bb1 !important;
   border-radius: 39px;
   border: none;
   font-weight: 500;
@@ -1026,7 +1040,7 @@ body {
 }
 .dash-right-side .card-table .card-header {
   border-radius: 15px 15px 0px 0px;
-  background: #ee005e;
+  background: #f73bb1;
   border: none;
 }
 .dash-right-side .card-table .card-header h5 {
@@ -1105,10 +1119,10 @@ tr {
   font-size: 15px;
 }
 .dash-left-side .card-body ul a:hover {
-  color: #4e5fed;
+  color: #f73bb1;
 }
 .dash-left-side .card-body ul li .active {
-  color: #4e5fed;
+  color: #f73bb1;
 }
 
 .dash-left-side .card-body ul li {
@@ -1144,7 +1158,7 @@ tr {
 }
 
 .dash-left-side .card-header[aria-expanded="true"] {
-  background: #4e5fed;
+  background: #f73bb1;
   padding: 4px 0px 9px 20px;
 }
 .dash-left-side .card-header[aria-expanded="true"] h6 {
@@ -1152,20 +1166,20 @@ tr {
 }
 .dash-left-side .card-header[aria-expanded="true"] i {
   color: #fff;
-  background: #4e5fed;
+  background: #f73bb1;
   font-size: 22px;
   padding: 0;
   margin: 0;
 }
 .dash-left-side .card-header:hover {
-  background: #4e5fed;
+  background: #f73bb1;
 }
 .dash-left-side .card-header:hover > h6 {
   color: #fff !important;
 }
 .dash-left-side .card-header:hover > h6 i {
   background: #fff;
-  color: #4e5fed;
+  color: #f73bb1;
 }
 .dash-left-side .card-header[aria-expanded="true"]:hover > h6 i {
   background: transparent;
@@ -1195,7 +1209,7 @@ tr {
   font-size: 12px;
   line-height: 16px;
   text-align: right;
-  color: #00a3ff;
+  color: #f73bb1;
   text-decoration: none;
 }
 .sec-login label {
@@ -1231,7 +1245,7 @@ tr {
   border-radius: 15px;
 }
 .sec-ticket-dtls .crd-img-dtls .card {
-  background: #ee005e;
+  background: #f73bb1;
   border-radius: 15px;
   color: #fff;
   position: absolute;
@@ -1255,7 +1269,7 @@ tr {
   border-radius: 15px 15px 15px 15px;
 }
 .buy-ticket-dtls .instructions-row .card-header {
-  background: #ee005e;
+  background: #f73bb1;
   border-radius: 15px 15px 0px 0px;
 }
 .buy-ticket-dtls .instructions-row .card-header .nav-pills .nav-link {
@@ -1306,16 +1320,16 @@ tr {
 }
 
 .bg-primary {
-  background-color: #4e5fed !important;
+  background-color: #f73bb1 !important;
 }
 .btn-primary {
   color: #fff;
-  background-color: #4e5fed !important;
-  border-color: #4e5fed !important;
+  background-color: #f73bb1 !important;
+  border-color: #f73bb1 !important;
 }
 
 .panel .table th {
-  background: #ee005e;
+  background: #f73bb1;
   color: #fff;
 }
 .panel .table thead tr {
@@ -1393,15 +1407,15 @@ border-right: 3px solid #FFC700; */
   border-right: 3px solid #ffc700;
 }
 .OTP-modal {
-  background: #ee005e;
+  background: #f73bb1;
   color: #fff !important;
 }
 .btn-timer {
-  border: 1px solid #4e5fed;
+  border: 1px solid #f73bb1;
   border-radius: 27px;
   padding: 0px 15px;
-  background: #4e5fed24;
-  color: #4e5fed;
+  background: #f73bb124;
+  color: #f73bb1;
   font-weight: bold;
   line-height: 26px;
 }
@@ -1415,11 +1429,11 @@ border-right: 3px solid #FFC700; */
   line-height: 26px;
 }
 .btn-timer-drawn {
-  border: 1px solid #00a3ff;
+  border: 1px solid #f73bb1;
   border-radius: 27px;
   padding: 0px 15px;
-  background: #00a3ff24;
-  color: #00a3ff;
+  background: #f73bb124;
+  color: #f73bb1;
   font-weight: bold;
   line-height: 26px;
 }
@@ -1440,7 +1454,7 @@ border-right: 3px solid #FFC700; */
 }
 .btn-withdrawal {
   padding: 12px 25px;
-  background: #00a3ff;
+  background: #f73bb1;
   box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
   border-radius: 12px;
   color: #ffee98;
@@ -1505,7 +1519,7 @@ border-right: 3px solid #FFC700; */
 }
 
 .commission-tab .nav-pills .nav-link.active {
-  background: #00a3ff;
+  background: #f73bb1;
   box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
   border-radius: 10px;
   color: #ffee98;
@@ -1516,7 +1530,7 @@ border-right: 3px solid #FFC700; */
 .commission-tab .nav-pills .nav-link {
   padding: 12px 18px;
   border-radius: 10px;
-  color: #00a3ff;
+  color: #f73bb1;
   border-color: transparent;
   position: relative;
   text-decoration: none;
@@ -1661,7 +1675,7 @@ justify-content: space-between; */
 }
 
 .sec-scratch-cards-details .actual-p span {
-  color: #ee005e;
+  color: #f73bb1;
   font-weight: 600;
 }
 .sec-scratch-cards-details .actual-p {
@@ -1695,7 +1709,7 @@ justify-content: space-between; */
   margin-bottom: 7px !important;
 }
 .sec-scratch-cards-details .time-row .border-r {
-  border-right: 1px solid #ee005e;
+  border-right: 1px solid #f73bb1;
 }
 
 .sec-scratch-cards-details .time-row-two h3 {
@@ -1722,7 +1736,7 @@ justify-content: space-between; */
 }
 
 .row-won .wallet-colmn span {
-  color: #ee005e;
+  color: #f73bb1;
 }
 
 .text-danger {
@@ -1744,7 +1758,7 @@ justify-content: space-between; */
 }
 
 .btn-outline-info {
-  border: 1px solid #00a3ff;
+  border: 1px solid #f73bb1;
   padding: 11px 0px;
   font-weight: 600;
 }
@@ -1833,7 +1847,7 @@ justify-content: space-between; */
   display: flex;
   justify-content: center;
   background: white;
-  color: #ee005e8f;
+  color: #F73BB18f;
   border-radius: 50%;
   width: 33px;
   height: 33px;
@@ -1844,7 +1858,7 @@ justify-content: space-between; */
   position: relative;
   top: 0;
   overflow: visible;
-  background: #ee005e;
+  background: #F73BB1;
   display: flex;
   justify-content: center;
   color: #fff;
@@ -2324,7 +2338,7 @@ justify-content: space-between; */
 .message-lose {
   font-size: 20px;
   border-radius: 10px;
-  color: #ee005e;
+  color: #f73bb1;
   background-color: #fff;
   text-align: center;
   max-width: 600px;
@@ -2398,7 +2412,7 @@ justify-content: space-between; */
   font-size: 20px !important;
 }
 .ticket-cardd .ticket-p {
-  /* background: #ee005e; */
+  /* background: #F73BB1; */
   padding: 3px 21px;
   font-size: 20px;
   border-radius: 15px;
@@ -2514,7 +2528,7 @@ justify-content: space-between; */
 .owl-theme .owl-dots {
   position: relative !important;
   z-index: 1 !important;
-  margin-top: -23px !important;
+  margin-top: -45px !important;
   /* left: 0 !important;
   bottom: 0 !important;
   right: 0 !important;

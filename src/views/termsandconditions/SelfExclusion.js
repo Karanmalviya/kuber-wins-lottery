@@ -1,19 +1,19 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
-import {toast} from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import ImageCaptcha from "../schema/Captcha2";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import {stylesDate} from "../../styles/tableStyle";
+import { stylesDate } from "../../styles/tableStyle";
 import moment from "moment";
-import {useRef} from "react";
-import {DateRange} from "react-date-range";
+import { useRef } from "react";
+import { DateRange } from "react-date-range";
 import LoadingSpinner from "../components/LoadingSpinner";
-import {selfExclusion} from "../../api/api";
-import {useEffect} from "react";
+import { selfExclusion } from "../../api/api";
+import { useEffect } from "react";
 import Swal from "sweetalert2";
 
-export default function SelfExclusion({props}) {
+export default function SelfExclusion({ props }) {
   const childRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const [captchaVerified, setCaptchaVerified] = useState(false);
@@ -36,8 +36,8 @@ export default function SelfExclusion({props}) {
   ]);
 
   const contactChange = (e) => {
-    const {name, value} = e.target;
-    setContactData({...contactData, [name]: value});
+    const { name, value } = e.target;
+    setContactData({ ...contactData, [name]: value });
   };
 
   const contactSubmit = async (e) => {
@@ -67,7 +67,7 @@ export default function SelfExclusion({props}) {
         });
         return;
       } else {
-        toast.error("Captcha mismatched", {duration: 3000, id: "clipboard"});
+        toast.error("Captcha mismatched", { duration: 3000, id: "clipboard" });
         return;
       }
     }
@@ -109,7 +109,7 @@ export default function SelfExclusion({props}) {
       }, do you want to continue?`,
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#00a3ff",
+      confirmButtonColor: "#F73BB1",
       cancelButtonColor: "#DC3545",
       confirmButtonText: "Yes!, Deactivate my account",
       cancelButtonText: "No, go back",
@@ -194,7 +194,7 @@ export default function SelfExclusion({props}) {
       {loading && <LoadingSpinner />}
 
       <Navbar props={"general-terms-and-conditions"} />
-      <section style={{background: "#f5f5f5"}} className="sec-second">
+      <section style={{ background: "#f5f5f5" }} className="sec-second">
         <div className="container">
           <h2 className="mt-4 sec-heading">Self Exclusion</h2>
         </div>

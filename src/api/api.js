@@ -961,3 +961,15 @@ export const fetchBannersApi = async (data) => {
     });
   return response;
 };
+
+export const fetchRecentWinnerApi = async () => {
+  const response = await axios
+    .get(`${path.apiUrl}/api/winner-tickets/recent/winner`)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
+  return response;
+};

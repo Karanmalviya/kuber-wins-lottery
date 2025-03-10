@@ -36,7 +36,7 @@ const LoginPage = ({ props }) => {
     <>
       <title>Login - Kuber Wins</title>
 
-      <section className="sec-banner-text" style={{ backgroundColor: "#f5f6ff" }}>
+      <section className="sec-login" style={{ backgroundColor: "#f5f6ff" }}>
         <div className="container">
           <div
             className="row d-flex align-items-center justify-content-center"
@@ -53,11 +53,10 @@ const LoginPage = ({ props }) => {
                 </div> */}
                 <div className="col-lg-12 col-md-12 bg-white d-flex align-items-center justify-content-center">
                   <div className="px-5 pb-4 pt-3">
-                    <h4 className="mb-4">
+                    <h4 className="mb-4 gradient-text">
                       Welcome To&nbsp;
                       <i>
-                        <span style={{ color: "#EE015F" }}>KUBER</span>{" "}
-                        <span style={{ color: "#4E5FED" }}> WINS</span>
+                        <span>KUBER</span> <span> WINS</span>
                       </i>
                     </h4>
                     <form onSubmit={handleSubmit(onFormSubmit)}>
@@ -151,7 +150,7 @@ const LoginPage = ({ props }) => {
                         <div className="col-lg-6">
                           <button
                             type="submit"
-                            className="btn btn-info w-100"
+                            className="btn btn-primary w-100"
                             variant="login-signup-btn"
                             disabled={!isValid}
                           >

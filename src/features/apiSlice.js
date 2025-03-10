@@ -9,6 +9,7 @@ import {
   fetchBannersApi,
   fetchDepositsApi,
   fetchLotteryRewardsApi,
+  fetchRecentWinnerApi,
   fetchWithdrawalById,
   generateLotteryNumber,
   getAllPurchasedScratchCards,
@@ -598,6 +599,18 @@ export const fetchBanners = createAsyncThunk(
   }
 );
 
+export const fetchRecentWinner = createAsyncThunk(
+  "api/fetchRecentWinner",
+  async (data, thunkAPI) => {
+    try {
+      const response = await fetchRecentWinnerApi(data);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response);
+    }
+  }
+);
+
 const apiSlice = createSlice({
   name: "api",
   initialState: {
@@ -793,6 +806,10 @@ const apiSlice = createSlice({
     bannersData: [],
     bannersLoading: false,
     bannersError: null,
+
+    recentWinnersData: [],
+    recentWinnersLoading: false,
+    recentWinnersError: null,
   },
   reducers: {
     clearScratchCardData: (state) => {
@@ -1429,6 +1446,20 @@ const apiSlice = createSlice({
       .addCase(fetchBanners.rejected, (state, action) => {
         state.bannersLoading = false;
         state.bannersError = action.payload;
+      });
+
+    builder
+      .addCase(fetchRecentWinner.pending, (state) => {
+        state.recentWinnersLoading = true;
+        state.recentWinnersError = null;
+      })
+      .addCase(fetchRecentWinner.fulfilled, (state, action) => {
+        state.recentWinnersLoading = false;
+        state.recentWinnersData = action.payload;
+      })
+      .addCase(fetchRecentWinner.rejected, (state, action) => {
+        state.recentWinnersLoading = false;
+        state.recentWinnersError = action.payload;
       });
     // Handle other cases...
   },

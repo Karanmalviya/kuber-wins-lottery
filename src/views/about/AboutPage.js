@@ -19,7 +19,7 @@ export default function AboutPage({ props }) {
             <div className="col-lg-6 py-lg-5">
               <h3 className="mb-0 sec-heading fs-3">
                 About{" "}
-                <em className="text-uppercase" style={{ color: "#4e5fed" }}>
+                <em className="text-uppercase" style={{ color: "#F73BB1" }}>
                   Kuber Wins
                 </em>
               </h3>

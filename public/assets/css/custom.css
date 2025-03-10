@@ -601,18 +601,18 @@ body.react-confirm-alert-body-element {
 
 .btn-outline {
   background-color: #fff !important;
-  border-color: #00a3ff !important;
-  color: #00a3ff !important;
+  border-color: #f73bb1 !important;
+  color: #f73bb1 !important;
 }
 
 .btn-outline:hover {
-  background-color: #00a3ff !important;
-  border-color: #00a3ff !important;
+  background-color: #f73bb1 !important;
+  border-color: #f73bb1 !important;
   color: #fff !important;
 }
 .btn-outline-active {
-  background-color: #00a3ff !important;
-  border-color: #00a3ff !important;
+  background-color: #f73bb1 !important;
+  border-color: #f73bb1 !important;
   color: #fff !important;
 }
 
@@ -678,7 +678,7 @@ body.react-confirm-alert-body-element {
   text-align: center;
 }
 /* .multidraw-active {
-  background-color: #ee005e;
+  background-color: #F73BB1;
   width: 40px;
   height: 40px;
   border-radius: 50% !important;
@@ -692,7 +692,7 @@ body.react-confirm-alert-body-element {
   border-radius: 50% !important;
   width: 35px;
   height: 35px;
-  border: 0.1px solid #ee005e;
+  border: 0.1px solid #F73BB1;
 } */
 
 .swiper-slide {
@@ -733,7 +733,7 @@ body.react-confirm-alert-body-element {
 }
 
 .multidraw-active {
-  background-color: #ee005e !important;
+  background-color: #f73bb1 !important;
   width: 44px !important;
   height: 44px !important;
   position: relative;
@@ -781,7 +781,7 @@ body.react-confirm-alert-body-element {
   display: flex;
   justify-content: center;
   background: white;
-  color: #ee005e8f;
+  color: #F73BB18f;
   border-radius: 50%;
   width: 50%;
   height: 33px;
@@ -791,16 +791,16 @@ body.react-confirm-alert-body-element {
 } */
 
 .mulitDraw {
-  border: 2px solid #4e5fed;
+  border: 2px solid #f73bb1;
   border-radius: 30px;
 }
 .multiDraw-icon:hover {
-  background-color: #4e5fed;
+  background-color: #f73bb1;
   color: #fff;
   border-radius: 20px;
 }
 .multiDraw-icon {
-  color: #4e5fed;
+  color: #f73bb1;
   border-radius: 20px;
 }
 .dropdown-item:active {
@@ -907,7 +907,7 @@ body.react-confirm-alert-body-element {
   color: #fff !important;
 } */
 .rdrDateDisplayWrapper {
-  background: #4e5fed94 !important;
+  background: #f73bb194 !important;
 }
 .rdrMonthAndYearWrapper {
   height: 37px !important;
@@ -921,7 +921,7 @@ body.react-confirm-alert-body-element {
   background: rgb(238, 0, 94) !important;
 }
 .rdrInRange {
-  background: #4e5fedde !important;
+  background: #f73bb1de !important;
 }
 .rdrDay:not(.rdrDayPassive) .rdrInRange ~ .rdrDayNumber span {
   color: rgba(255, 255, 255, 0.85) !important;
@@ -1269,7 +1269,7 @@ body.react-confirm-alert-body-element {
 }
 
 .curr-timer {
-  background: #ee005e;
+  background: #f73bb1;
   border-radius: 15px;
   color: #fff;
 
@@ -1291,5 +1291,21 @@ body.react-confirm-alert-body-element {
 .upi-btn {
   background-color: #ebebeb !important ;
   color: #000 !important;
-  border: 1px solid #00a3ff !important;
+  border: 1px solid #f73bb1 !important;
+}
+.gradient-text {
+  background: linear-gradient(0deg, #f73bb1 -39.51%, #32155f 87.07%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/* .sec-four .owl-carousel .owl-item img{
+  width: auto !important;
+}  */
+.owl-stage {
+  margin-bottom: 10px !important;
+}
+.btn-info.disabled,
+.btn-info:disabled {
+  background-color: #f73bb1a1 !important;
+  border-color: #f73bb1a1 !important;
 }

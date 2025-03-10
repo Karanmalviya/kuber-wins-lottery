@@ -1,5 +1,5 @@
-import React, {ChangeEvent, useState, useEffect, useRef} from "react";
-import {Link, useLocation, useNavigate, useParams} from "react-router-dom";
+import React, { ChangeEvent, useState, useEffect, useRef } from "react";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import Sidebar from "../navbar/Sidebar";
@@ -8,10 +8,10 @@ import {
   CreateSupportTicketReply,
   updateMsg,
 } from "../../utils/index";
-import {FaUserCircle} from "react-icons/fa";
-import {BsImage} from "react-icons/bs";
-import {RxCross1} from "react-icons/rx";
-import {useDispatch, useSelector} from "react-redux";
+import { FaUserCircle } from "react-icons/fa";
+import { BsImage } from "react-icons/bs";
+import { RxCross1 } from "react-icons/rx";
+import { useDispatch, useSelector } from "react-redux";
 import {
   fetchSupportTicketAttachment,
   fetchSupportTicketById,
@@ -20,7 +20,7 @@ import {
 } from "../../features/apiSlice";
 import Swal from "sweetalert2";
 
-export default function SupportTicketReplyPage({props}) {
+export default function SupportTicketReplyPage({ props }) {
   const dispatch = useDispatch();
   const params = useParams();
   const location = useLocation();
@@ -95,7 +95,7 @@ export default function SupportTicketReplyPage({props}) {
         SupportTicketId: supportId,
       };
       const tickets = await CreateSupportTicketReply(body, {});
-      updateMsg({status: 0}, supportId);
+      updateMsg({ status: 0 }, supportId);
       setSupportTickets(tickets);
       var formdata = new FormData();
       for (let i = 0; i < imageFiles.length; i++) {
@@ -137,7 +137,7 @@ export default function SupportTicketReplyPage({props}) {
       {/* {loader && <LoadingSpinner />} */}
       <title>Support Ticket - Kuber Wins</title>
 
-      <Navbar props={{mainPage: "dashboard", subPage: "supportticket"}} />
+      <Navbar props={{ mainPage: "dashboard", subPage: "supportticket" }} />
 
       <section className="sec-dashbaord">
         <div className="container-fluid">
@@ -155,8 +155,8 @@ export default function SupportTicketReplyPage({props}) {
                         className="btn btn-danger"
                         style={
                           supportticketsid?.status === "3"
-                            ? {float: "right", display: "none"}
-                            : {float: "right", display: "block"}
+                            ? { float: "right", display: "none" }
+                            : { float: "right", display: "block" }
                         }
                         onClick={() => {
                           Swal.fire({
@@ -164,14 +164,14 @@ export default function SupportTicketReplyPage({props}) {
                             text: `Your Support ticket will be closed, do you want to continue?`,
                             icon: "warning",
                             showCancelButton: true,
-                            confirmButtonColor: "#00a3ff",
+                            confirmButtonColor: "#F73BB1",
                             cancelButtonColor: "#DC3545",
                             confirmButtonText: "Yes!, Close my support ticket",
                             cancelButtonText: "No, go back",
                             showLoaderOnConfirm: true,
                             preConfirm: async () => {
                               try {
-                                await updateMsg({status: 3}, supportId);
+                                await updateMsg({ status: 3 }, supportId);
                               } catch (error) {
                                 Swal.showValidationMessage(
                                   `Request failed: ${error}`
@@ -204,17 +204,17 @@ export default function SupportTicketReplyPage({props}) {
                       <div
                         className="row "
                         // style={{ backgroundColor: "#e1deeb" }}
-                        style={{backgroundColor: "#f5f6ff"}}
+                        style={{ backgroundColor: "#f5f6ff" }}
                       >
                         <div
-                          style={{overflowY: "scroll", maxHeight: "400px"}}
+                          style={{ overflowY: "scroll", maxHeight: "400px" }}
                           id="scrollContainer"
                         >
                           <div className="d-flex">
                             <div className="w-75 mt-2 message-orange  ">
                               <p className="message-content">
                                 <div className="m-0 p-0">
-                                  <small style={{color: "purple"}}>Me</small>
+                                  <small style={{ color: "purple" }}>Me</small>
                                 </div>
 
                                 <div className="m-0 p-0 ">
@@ -296,7 +296,7 @@ export default function SupportTicketReplyPage({props}) {
                                     className="w-75 mt-2 message-orange"
                                   >
                                     <p className="message-content m-0 p-0">
-                                      <small style={{color: "purple"}}>
+                                      <small style={{ color: "purple" }}>
                                         Me
                                       </small>
                                       <div className="mt-0">{row?.message}</div>
@@ -366,7 +366,7 @@ export default function SupportTicketReplyPage({props}) {
                                     className=" w-75 message-blue "
                                   >
                                     <p className="message-content m-0 p-0">
-                                      <small style={{color: "gray"}}>
+                                      <small style={{ color: "gray" }}>
                                         Admin
                                       </small>
                                       <div className="mt-0">{row?.message}</div>

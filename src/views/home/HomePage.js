@@ -26,12 +26,15 @@ import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchLottery,
+  fetchRecentWinner,
   fetchScratchCard,
   fetchUsers,
   fetchWinnerTickets,
 } from "../../features/apiSlice";
 import Timer from "../components/Timer";
 import { Link } from "react-router-dom";
+import RecentWinners from "../components/RecentWinners";
+import { BsPerson } from "react-icons/bs";
 
 export default function HomePage() {
   const dispatch = useDispatch();
@@ -49,6 +52,7 @@ export default function HomePage() {
     dispatch(fetchLottery());
     dispatch(fetchScratchCard());
     dispatch(fetchWinnerTickets());
+    dispatch(fetchRecentWinner());
   }, [dispatch]);
 
   const lotteryData = useSelector((state) => state.api.lotteryData);
@@ -62,6 +66,8 @@ export default function HomePage() {
   const winnerTicketData = useSelector((state) => state.api.winnerTicketData);
 
   const users = useSelector((state) => state.api.users);
+  const { recentWinnersData } = useSelector((state) => state.api);
+
   useEffect(() => {
     window.addEventListener("resize", () => setCurrentWidth(window.innerWidth));
   });
@@ -121,18 +127,18 @@ export default function HomePage() {
             <div className="container sec-banner-text mt-4">
               <div className="text-center">
                 <h4 className="mb-4">
-                  <i>
+                  <i className="gradient-text">
                     <span
-                      style={{
-                        color: "#EE015F",
-                      }}
+                    // style={{
+                    //   color: "#EE015F",
+                    // }}
                     >
                       Play Kuber Wins,
                     </span>{" "}
                     <span
-                      style={{
-                        color: "#4E5FED",
-                      }}
+                    // style={{
+                    //   color: "#4E5FED",
+                    // }}
                     >
                       {" "}
                       Where your Ticket Never Expire
@@ -428,9 +434,6 @@ export default function HomePage() {
                 className="w-100 swiper"
                 modules={[Navigation, Pagination, Scrollbar, A11y, Parallax]}
                 loop={Boolean(scratchCards.length > 3)}
-                // allowSlideNext={true}
-                // allowSlidePrev={true}
-
                 watchOverflow={true}
                 observer={true}
                 observeParents={true}
@@ -500,6 +503,97 @@ export default function HomePage() {
           ) : (
             <p>No Scratch Card Available...</p>
           )}
+        </div>
+      </section>
+
+      <section className="sec-four">
+        <div className="container pb-5">
+          <h2 className="mt-5 mb-0 sec-heading">Recent Winners</h2>
+          <OwlCarousel
+            className="owl-theme"
+            // loop
+            margin={10}
+            items={3}
+            autoplay={true}
+            nav={false}
+            dots={false}
+            responsive={{
+              0: {
+                items: 1,
+              },
+              768: {
+                items: 2,
+              },
+              1024: {
+                items: 3,
+              },
+            }}
+          >
+            {recentWinnersData.length ? (
+              recentWinnersData.map((winner, index) => (
+                <div
+                  className=" first-w mt-5 pt-5 item"
+                  data-aos="fade-up"
+                  data-aos-duration={1000}
+                  data-aos-easing="ease"
+                  data-aos-delay={200}
+                >
+                  <div
+                    className="card"
+                    style={{
+                      backgroundImage: 'url("assets/images/winner-bg.png")',
+                      backgroundPosition: "center",
+                      backgroundColor: "transparent",
+                    }}
+                  >
+                    <div className="card-body">
+                      <div className="row">
+                        <div className="col-lg-12 win-div justify-content-center align-items-center d-flex">
+                          <img
+                            className="fa-solid_crown w-auto"
+                            src="assets/images/fa-solid_crown.png"
+                          />
+                          <img
+                            className="p-b-14 w-auto"
+                            src="assets/images/p-b-14.png"
+                          />
+                          {winner?.image ? (
+                            <img
+                              className="pro-m-pic img-fluid w-auto"
+                              src={winner?.image}
+                            />
+                          ) : (
+                            <BsPerson className="profileIcons me-2" />
+                          )}
+                        </div>
+                      </div>
+                      <div className="row mt-5">
+                        <div className="col-lg-12 text-center">
+                          <h4>
+                            {winner?.fname} {winner?.lname}
+                          </h4>
+                          {/* <h5>10 August 2022</h5> */}
+                          <h1 className="mb-5">
+                            Won Rs.{" "}
+                            <AbbrNumber
+                              props={{
+                                number: winner?.prize ?? 0,
+                                decPlaces: 2,
+                              }}
+                            />
+                          </h1>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p>No Winners Available...</p>
+            )}
+          </OwlCarousel>
+
+          {/* </div> */}
         </div>
       </section>
 

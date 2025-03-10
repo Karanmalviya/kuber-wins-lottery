@@ -11,7 +11,6 @@ import ContactPage from "./views/contact/ContactPage";
 import LoginPage from "./views/login/LoginPage";
 import ForgotPasswordPage from "./views/login/ForgotPassword";
 import RegistrationPage from "./views/registration/RegistrationPage";
-import PrivacyPolicyPage from "./views/privacypolicy/PrivacyPolicyPage";
 import TermsAndConditionsPage from "./views/termsandconditions/TermsAndConditionsPage";
 import DashboardPage from "./views/dashboard/DashboardPage";
 import DepositesPage from "./views/dashboard/DepositesPage";
@@ -46,19 +45,8 @@ import ScratchCardWinnerList from "./views/winners/ScratchCardWinnerList";
 import ScratchCardBuyMore from "./views/scratchcard/ScratchCardBuyMore";
 import Payment from "./views/components/Payment";
 import KYC from "./views/dashboard/kyc";
-import Navbar from "./views/navbar/Navbar";
-import AccountPayOutBonuses from "./views/termsandconditions/AccountPayOutBonuses";
-import AmlManual from "./views/termsandconditions/AmlManual";
-import AmlPolicy from "./views/termsandconditions/AmlPolicy";
-import FairnessRngTestMethod from "./views/termsandconditions/FairnessRngTestMethod";
-import DisputeResolution from "./views/termsandconditions/DisputeResolution";
-import KycPrivacyPersonalData from "./views/termsandconditions/KycPrivacyPersonalData";
 import ResponsibleGaming from "./views/termsandconditions/ResponsibleGaming";
 import SelfExclusion from "./views/termsandconditions/SelfExclusion";
-
-// const ScratchCardDetailPage = lazy(() =>
-//   import("./views/scratchcard/ScratchCardDetailPage")
-// );
 
 const path = {
   baseUrl: config.mainUrl,
@@ -68,11 +56,6 @@ const path = {
 
 export default function RoutePath() {
   return (
-    // <Suspense
-    //   fallback={
-    //     <Navbar props={{ mainPage: "scratchcard", subPage: "details" }} />
-    //   }
-    // >
     <Routes>
       <Route exact path="/" element={<HomePage props={path} />} />
       <Route exact path="/lotteries" element={<LotteryPage props={path} />} />
@@ -105,33 +88,6 @@ export default function RoutePath() {
         exact
         path="/general-terms-and-conditions"
         element={<TermsAndConditionsPage props={path} />}
-      />
-      <Route
-        exact
-        path="/account-pay-out-bonuses"
-        element={<AccountPayOutBonuses props={path} />}
-      />
-      <Route exact path="/aml-manual" element={<AmlManual props={path} />} />
-      <Route exact path="/aml-policy" element={<AmlPolicy props={path} />} />
-      <Route
-        exact
-        path="/dispute-resolution"
-        element={<DisputeResolution props={path} />}
-      />
-      <Route
-        exact
-        path="/fairness-rng-testing-methods"
-        element={<FairnessRngTestMethod props={path} />}
-      />
-      <Route
-        exact
-        path="/kyc-privacy-personal-data"
-        element={<KycPrivacyPersonalData props={path} />}
-      />
-      <Route
-        exact
-        path="/privacy-policy"
-        element={<PrivacyPolicyPage props={path} />}
       />
       <Route
         exact

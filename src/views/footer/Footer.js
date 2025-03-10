@@ -375,70 +375,7 @@ export default function Footer({ props }) {
                           General Terms &amp; Conditions
                         </Link>{" "}
                       </li>
-                      <li>
-                        <Link
-                          className="a"
-                          to={"/privacy-policy"}
-                          onClick={() => window.scrollTo(0, 0)}
-                        >
-                          Privacy Policy
-                        </Link>{" "}
-                      </li>
-                      <li>
-                        <Link
-                          className="a"
-                          to={"/aml-manual"}
-                          onClick={() => window.scrollTo(0, 0)}
-                        >
-                          AML Manual
-                        </Link>{" "}
-                      </li>
-                      <li>
-                        <Link
-                          className="a"
-                          to={"/aml-policy"}
-                          onClick={() => window.scrollTo(0, 0)}
-                        >
-                          AML Policy
-                        </Link>{" "}
-                      </li>
-                      <li>
-                        <Link
-                          to={"/kyc-privacy-personal-data"}
-                          className="a"
-                          onClick={() => window.scrollTo(0, 0)}
-                        >
-                          KYC Policy, Data Protection
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          className="a"
-                          to={"/account-pay-out-bonuses"}
-                          onClick={() => window.scrollTo(0, 0)}
-                        >
-                          Account, Payout and Bonuses
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          className="a"
-                          to={"/dispute-resolution"}
-                          onClick={() => window.scrollTo(0, 0)}
-                        >
-                          Dispute Resolution
-                        </Link>
-                      </li>
-                      {/* <li>
-                        {" "}
-                        <Link
-                          className="a"
-                          to={"/fairness-rng-testing-methods"}
-                          onClick={() => window.scrollTo(0, 0)}
-                        >
-                          Fairness &amp; RNG Testing
-                        </Link>
-                      </li> */}
+
                       <li>
                         {" "}
                         <Link

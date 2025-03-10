@@ -622,7 +622,7 @@ export default function ScratchCardPlay() {
                             >
                               {scratchCardAllLoading ? (
                                 <div
-                                  style={{ color: "#00a3ff" }}
+                                  style={{ color: "#F73BB1" }}
                                   className="spinner-border spinner-border-sm text-light"
                                   role="status"
                                 ></div>

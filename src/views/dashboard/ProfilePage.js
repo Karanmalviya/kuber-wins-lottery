@@ -224,8 +224,7 @@ export default function ProfilePage({ props }) {
                               ? URL.createObjectURL(image[0])
                               : "https://miro.medium.com/v2/resize:fit:250/1*DSNfSDcOe33E2Aup1Sww2w.jpeg"
                           }
-                          width={150}
-                          height={150}
+                          style={{ height: "126px" }}
                           alt="Profibild"
                         />
                         <div className="profilepic__content">
@@ -255,7 +254,7 @@ export default function ProfilePage({ props }) {
                             <p className="me-3 p-0">Profile Status</p>
 
                             <ProgressBar
-                              bgColor="#4e5fed"
+                              bgColor="#F73BB1"
                               completed={parseInt(filledPercentage)}
                               maxCompleted={100}
                               width="150px"

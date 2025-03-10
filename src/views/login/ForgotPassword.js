@@ -1,16 +1,16 @@
-import React, {useState} from "react";
-import {Link, useNavigate} from "react-router-dom";
-import {forgetPassword, resetPassword} from "../../utils";
-import {Alert} from "@mui/material";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { forgetPassword, resetPassword } from "../../utils";
+import { Alert } from "@mui/material";
 
-export default function ForgotPasswordPage({props}) {
+export default function ForgotPasswordPage({ props }) {
   const navigate = useNavigate();
 
   const [sendOtp, setSendOtp] = useState("");
   const [otp, setOtp] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [forgetEmail, setForgetEmail] = useState("");
-  const [errMsg, setErrMsg] = useState({err: "", type: ""});
+  const [errMsg, setErrMsg] = useState({ err: "", type: "" });
 
   const handleForgetPassword = async (e) => {
     e.preventDefault();
@@ -20,7 +20,7 @@ export default function ForgotPasswordPage({props}) {
         type: "error",
       });
     } else {
-      const res = await forgetPassword({username: forgetEmail}, {});
+      const res = await forgetPassword({ username: forgetEmail }, {});
       if (res) {
         setSendOtp(true);
         setErrMsg({
@@ -47,7 +47,7 @@ export default function ForgotPasswordPage({props}) {
       });
     } else {
       const restResponse = await resetPassword(
-        {email: forgetEmail, newPassword: newPassword, OTP: +otp},
+        { email: forgetEmail, newPassword: newPassword, OTP: +otp },
         {}
       );
       setErrMsg({
@@ -69,28 +69,20 @@ export default function ForgotPasswordPage({props}) {
     <>
       <title>Forgot Password - Kuber Wins</title>
 
-      <section className="sec-login" style={{backgroundColor: "#f5f6ff"}}>
+      <section className="sec-login" style={{ backgroundColor: "#f5f6ff" }}>
         <div className="container">
           <div
             className="row d-flex align-items-center justify-content-center"
-            style={{height: "100vh"}}
+            style={{ height: "100vh" }}
           >
             <div className="col-lg-6">
               <div className="row">
-                {/* <div className="col-lg-4 col-md-4 d-none d-lg-block d-flex justify-content-center align-items-center pe-0">
-                  <img
-                    src="assets/images/login-left-bg_withname.png"
-                    className="img-fluid"
-                    alt=""
-                  />
-                </div> */}
                 <div className="col-lg-12 col-md-12 bg-white">
                   <div className="px-5 pb-4 pt-3">
-                    <h4 className="mb-4">
+                    <h4 className="gradient-text">
                       Welcome To&nbsp;
                       <i>
-                        <span style={{color: "#EE015F"}}>KUBER</span>{" "}
-                        <span style={{color: "#4E5FED"}}> WINS</span>
+                        <span>KUBER</span> <span> WINS</span>
                       </i>
                     </h4>{" "}
                     {errMsg && (
@@ -167,7 +159,7 @@ export default function ForgotPasswordPage({props}) {
                       <div className="row mt-3 d-flex justify-content-center align-items-center">
                         <div className="col-lg-6">
                           <button
-                            className="btn btn-info w-100"
+                            className="btn btn-primary w-100"
                             onClick={handleResetPassword}
                           >
                             Submit
