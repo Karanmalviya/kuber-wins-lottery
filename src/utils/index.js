@@ -112,6 +112,7 @@ export const userRegisteration = async (body, setLoading) => {
   const response = await axios
     .post(`${path.apiUrl}/api/user/register`, body)
     .then((res) => {
+      setLoading(false);
       return res.data;
     })
     .catch((err) => {

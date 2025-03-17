@@ -82,16 +82,9 @@ export const AuthProvider = ({ children }) => {
   const handleRegistration = async (body, setLoading) => {
     try {
       const res = await userRegisteration(body, setLoading);
-      showMessage(
-        res.message,
-        res.message ===
-          "Registration successful. Please check your email to verify your account."
-      );
-      if (
-        res.message ===
-        "Registration successful. Please check your email to verify your account."
-      ) {
-        setTimeout(() => navigate("/login"), 2500);
+      showMessage(res.message, res.message === "Registration successful.");
+      if (res.message === "Registration successful.") {
+        setTimeout(() => navigate("/login"));
         return res;
       }
     } catch (err) {

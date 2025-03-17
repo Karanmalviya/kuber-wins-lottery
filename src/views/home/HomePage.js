@@ -39,6 +39,7 @@ import { BsPerson } from "react-icons/bs";
 export default function HomePage() {
   const dispatch = useDispatch();
   SwiperCore.use([Autoplay, Pagination, Navigation, Parallax]);
+  const userId = localStorage.getItem("userId");
 
   const [lotteryTickets, setLotteryTickets] = useState([]);
   const [scratchCards, setScratchCards] = useState([]);
@@ -156,10 +157,10 @@ export default function HomePage() {
                 </div>
                 <div className="col-lg-3 col-md-2 text-lg-end text-md-end text-center">
                   <Link
-                    to="/registration"
+                    to={userId ? "/lotteries" : "/registration"}
                     className="btn btn-default bg-dark text-light w-100"
                   >
-                    Join Now
+                    {userId ? "Buy Now" : "Join Now"}
                   </Link>
                 </div>{" "}
               </div>
@@ -218,7 +219,8 @@ export default function HomePage() {
                       <div className="cntr-row text-center">
                         <div className="row">
                           <div className="col-lg-12 col-sm col-12">
-                            {users?.count ? users?.count : 0}
+                            {/* {users?.count ? users?.count : 0}  */}
+                            10000 +
                           </div>
                         </div>
                         <p className="py-0 my-0">Total Users</p>
@@ -268,7 +270,8 @@ export default function HomePage() {
                       <div className="cntr-row text-center">
                         <div className="row">
                           <div className="col-lg-12 col-sm col-12">
-                            {winnerTicketsCount ? winnerTicketsCount : 0}
+                            {/* {winnerTicketsCount ? winnerTicketsCount : 0} */}
+                            100 +
                           </div>
                         </div>
                         <p className="py-0 my-0">Total Winners </p>
@@ -318,12 +321,13 @@ export default function HomePage() {
                       <div className="cntr-row text-center">
                         <div className="row">
                           <div className="col-lg-12 col-sm col-12">
-                            <AbbrNumber
+                            {/* <AbbrNumber
                               props={{
                                 number: winnerTicketsPayout,
                                 decPlaces: 2,
                               }}
-                            />
+                            /> */}
+                            2 Cr +
                           </div>
                         </div>
                         <p className="py-0 my-0">Total Rs. Payout</p>
